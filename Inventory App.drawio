@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" modified="2023-04-12T18:44:58.517Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="sUQKBnmRg1qFtU-IlJ-Z" version="21.1.7" type="github">
+  <diagram name="Page-1" id="UyFesd_06ENOZyi_Cuxc">
+    <mxGraphModel dx="1434" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="97V5bBaJQBkMgyNc2pIi-24" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;text-decoration:underline;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Category&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;_id = integer&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;name = string&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;description = string&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;URL = string&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="70" y="270" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="97V5bBaJQBkMgyNc2pIi-25" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;text-decoration:underline;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Item&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;_id = integer&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;name = string&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;category = string&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;description = string&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;price = float&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;number_in_stock = integer&lt;/font&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;URL = string&lt;/font&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="270" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="97V5bBaJQBkMgyNc2pIi-26" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;entryX=-0.011;entryY=0.295;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="97V5bBaJQBkMgyNc2pIi-24" target="97V5bBaJQBkMgyNc2pIi-25">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="364" y="430" as="sourcePoint" />
+            <mxPoint x="464" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
