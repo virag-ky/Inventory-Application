@@ -55,7 +55,7 @@ const BagSchema = new mongoose.Schema({
 BagSchema.virtual('category').get(() => 'bags/carriers');
 
 BagSchema.virtual('url').get(function () {
-  return `/home/bags_carriers/${this._id}`;
+  return `/home/bags-carriers/${this._id}`;
 });
 
 BagSchema.virtual('date_added_formatted').get(function () {

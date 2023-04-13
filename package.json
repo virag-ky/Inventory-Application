@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devStart": "nodemon ./bin/www",
+    "serverStart": "DEBUG=inventory-app:* npm run devStart"
   },
   "dependencies": {
     "async": "^3.2.4",

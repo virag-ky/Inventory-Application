@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+
+  form(method='POST', action='/login/password')
+    section 
+      label(for='username') Username: 
+      input#username(type='text', name='username', autocomplete='username', required, autofocus)
+    section 
+      label(for='current-password') Password: 
+      input#current-password(type='password', name='password', autocomplete='current-password', required)
+    button(type='submit') Sign in
