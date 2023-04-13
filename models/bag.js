@@ -2,9 +2,29 @@ const mongoose = require('mongoose');
 const { DateTime } = require(luxon);
 
 const BagSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  price: { type: mongoose.Decimal128, required: true },
+  name: {
+    type: String,
+    required: true,
+    minLength: [3, 'Name must be minimum 3 characters long.'],
+    maxLength: [
+      15,
+      'Name is too long, must be less than or equal 15 characters.',
+    ],
+  },
+  description: {
+    type: String,
+    required: true,
+    minLength: [10, 'Description must be minimum 10 characters long.'],
+    maxLength: [
+      50,
+      'Description is too long, must be less than or equal 50 characters.',
+    ],
+  },
+  price: {
+    type: mongoose.Decimal128,
+    required: true,
+    min: [1.0, 'Price must be greater than 0.0'],
+  },
   size: {
     type: String,
     required: true,
@@ -16,6 +36,11 @@ const BagSchema = new mongoose.Schema({
     required: true,
     enum: ['white', 'black', 'brown', 'beige'],
     default: 'white',
+  },
+  number_in_stock: {
+    type: Number,
+    required: true,
+    min: [1, 'You must add at least 1 item in the stock.'],
   },
   date_added: { type: Date, default: Date.now },
 });
