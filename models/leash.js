@@ -3,15 +3,7 @@ const { DateTime } = require('luxon');
 
 const LeashSchema = new mongoose.Schema({
   pet: 'dog',
-  name: {
-    type: String,
-    required: true,
-    minLength: [3, 'Name must be minimum 3 characters long.'],
-    maxLength: [
-      15,
-      'Name is too long, must be less than or equal 15 characters long.',
-    ],
-  },
+  name: 'leash',
   description: {
     type: String,
     required: true,
