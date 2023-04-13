@@ -83,7 +83,7 @@ const FoodSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-FoodSchema.virtual('category').get(() => 'food');
+FoodSchema.virtual('category').get(() => 'foods');
 
 FoodSchema.virtual('url').get(function () {
   return `/home/foods/${this._id}`;
