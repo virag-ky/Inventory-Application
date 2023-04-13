@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { DateTime } = require(luxon);
 
 const BagSchema = new mongoose.Schema({
+  pet: { type: String, required: true, enum: ['dog', 'cat'], default: 'dog' },
   name: {
     type: String,
     required: true,
@@ -24,6 +25,12 @@ const BagSchema = new mongoose.Schema({
     type: mongoose.Decimal128,
     required: true,
     min: [1.0, 'Price must be greater than 0.0'],
+  },
+  bag_type: {
+    type: String,
+    required: true,
+    enum: ['handbag', 'carrier', 'shoulder-bag', 'backpack'],
+    default: 'handbag',
   },
   size: {
     type: String,

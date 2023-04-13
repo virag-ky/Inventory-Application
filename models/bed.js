@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const BedSchema = new mongoose.Schema({
+  pet: { type: String, required: true, enum: ['dog', 'cat'], default: 'dog' },
   name: {
     type: String,
     required: true,
