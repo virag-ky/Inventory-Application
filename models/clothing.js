@@ -24,7 +24,7 @@ const ClothingSchema = new mongoose.Schema({
   price: {
     type: mongoose.Decimal128,
     required: true,
-    min: [1.0, 'Price must be greater than 0.0'],
+    min: [0.01, 'Price must be greater than $0.00'],
   },
   clothing_type: {
     type: String,
