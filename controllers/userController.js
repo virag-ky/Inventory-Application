@@ -1,52 +1,50 @@
 const User = require('../models/user');
-const async = require('async');
+const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
-const crypto = require('crypto');
 
-passport.use(
-  new LocalStrategy(function verify(username, password, cb) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return cb(err);
-      }
-      if (!user) {
-        return cb(null, false, { message: 'Incorrect username or password.' });
-      }
-
-      crypto.pbkdf2(
-        password,
-        user.salt,
-        310000,
-        32,
-        'sha256',
-        function (err, hashedPassword) {
-          if (err) {
-            return cb(err);
-          }
-          if (!crypto.timingSafeEqual(user.hashed_password, hashedPassword)) {
-            return cb(null, false, {
-              message: 'Incorrect username or password.',
-            });
-          }
-          return cb(null, user);
-        }
-      );
-    });
-  })
-);
-
-exports.user_create_get = (req, res, next) => {
+exports.user_create_get = (req, res) => {
   res.render('new_user');
 };
 
-exports.user_login_get = (req, res, next) => {
+exports.user_create_post = async (req, res, next) => {
+  const passwordHash = bcrypt.hash(
+    req.body.password,
+    10,
+    async (err, hashedPassword) => {
+      if (err) {
+        return next(err);
+      }
+      return hashedPassword;
+    }
+  );
+  try {
+    const user = new User({
+      username: req.body.username,
+      password: passwordHash,
+    });
+    await user.save();
+    res.redirect('/');
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.user_login_get = (req, res) => {
   res.render('login');
 };
 
-exports.user_login_post = (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
+// This middleware performs numerous functions behind the scenes. Among other things, it looks at the request body for parameters named username and password then runs the LocalStrategy function that we defined earlier to see if the username and password are in the database. It then creates a session cookie that gets stored in the user’s browser, and that we can access in all future requests to see whether or not that user is logged in.
+exports.user_login_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/',
+});
+
+// the passport middleware adds a logout function to the req object
+exports.user_logout_get = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
   });
 };

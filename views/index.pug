@@ -3,6 +3,11 @@ extends layout
 block content
   h1 Pet Shop Inventory 
 
-  a(href='/new-user') New User 
-  br
-  a(href='/login') Login
+  if user 
+    h2 Welcome back #{user.username}!
+    a(href='/log-out') Log out
+
+  else
+    a(href='/new-user') New User 
+    br
+    a(href='/login') Login

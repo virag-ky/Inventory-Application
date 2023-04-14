@@ -4,4 +4,13 @@ block content
 
   h1 Create new user 
 
+  form(method='POST', action='')
+    section 
+      label(for='username') Username: 
+      input#username(type='text', name='username', required, autofocus) 
+    section
+      label(for='password') Password: 
+      input#password(type='password', name='password', required)
+    button(type='submit') Submit
+
   a(href='/') Go back
