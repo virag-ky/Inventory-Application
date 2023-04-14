@@ -3,8 +3,12 @@ extends layout
 block content
   h1 Pet Shop Inventory 
 
-  if user 
-    h2 Welcome back #{user.username}!
+  if new_user 
+    h2=new_user
+    a(href='/log-out') Log out
+
+  else if user  
+    h2 Welcome back #{user.username}
     a(href='/log-out') Log out
 
   else

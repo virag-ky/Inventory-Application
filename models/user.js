@@ -15,10 +15,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: [8, 'Password must be at least 8 characters long.'],
-    maxLength: [
-      15,
-      'Password is too long, must be less than or equal 15 characters long.',
-    ],
   },
   bags: [
     {

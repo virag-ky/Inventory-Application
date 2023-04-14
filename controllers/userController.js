@@ -7,23 +7,14 @@ exports.user_create_get = (req, res) => {
 };
 
 exports.user_create_post = async (req, res, next) => {
-  const passwordHash = bcrypt.hash(
-    req.body.password,
-    10,
-    async (err, hashedPassword) => {
-      if (err) {
-        return next(err);
-      }
-      return hashedPassword;
-    }
-  );
+  const passwordHash = await bcrypt.hash(req.body.password, 10);
   try {
     const user = new User({
       username: req.body.username,
       password: passwordHash,
     });
     await user.save();
-    res.redirect('/');
+    res.redirect(`/?newUser=Welcome%20${user.username}!`);
   } catch (err) {
     return next(err);
   }
