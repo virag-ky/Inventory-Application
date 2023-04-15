@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const ClothingSchema = new mongoose.Schema({
-  pet: { type: String, required: true, enum: ['dog', 'cat'], default: 'dog' },
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  pet: { type: String, enum: ['dog', 'cat'], default: 'dog' },
   name: {
     type: String,
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      15,
-      'Name is too long, must be less than or equal 15 characters.',
+      20,
+      'Name is too long, must be less than or equal 20 characters.',
     ],
   },
   description: {
@@ -28,19 +29,16 @@ const ClothingSchema = new mongoose.Schema({
   },
   clothing_type: {
     type: String,
-    required: true,
     enum: ['sweater', 'jacket', 'overall', 'vest'],
     default: 'sweater',
   },
   color: {
     type: String,
-    required: true,
     enum: ['white', 'black', 'brown', 'yellow', 'red', 'pink', 'blue'],
     default: 'white',
   },
   size: {
     type: String,
-    required: true,
     enum: ['extra-small', 'small', 'medium', 'large'],
     default: 'small',
   },

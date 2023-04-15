@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const ScratchingPostSchema = new mongoose.Schema({
-  pet: 'cat',
-  name: 'scratching post',
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  pet: { type: String, default: 'cat' },
+  name: { type: String, default: 'scratching post' },
   description: {
     type: String,
     required: true,
@@ -15,7 +16,6 @@ const ScratchingPostSchema = new mongoose.Schema({
   },
   color: {
     type: String,
-    required: true,
     enum: ['white', 'brown', 'beige', 'black'],
     default: 'white',
   },

@@ -2,46 +2,14 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const ToySchema = new mongoose.Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
-    required: true,
     enum: ['dog', 'cat', 'rodent', 'bird'],
     default: 'dog',
   },
   name: {
     type: String,
-    required: true,
-    validate: {
-      validator: function (val) {
-        if (
-          (this.pet === 'bird' && val !== 'hanging rope') ||
-          (this.pet === 'bird' && val !== 'branch')
-        ) {
-          return false;
-        }
-        if (
-          (this.pet === 'rodent' && val !== 'running wheel') ||
-          (this.pet === 'rodent' && val !== 'branch')
-        ) {
-          return false;
-        }
-        if (
-          (this.pet === 'cat' && val !== 'ball') ||
-          (this.pet === 'cat' && val !== 'plush toy')
-        ) {
-          return false;
-        }
-        if (
-          (this.pet === 'dog' && val !== 'ball') ||
-          (this.pet === 'dog' && val !== 'plush toy') ||
-          (this.pet === 'dog' && val !== 'chew toy')
-        ) {
-          return false;
-        }
-        return true;
-      },
-      message: 'Invalid toy for pet.',
-    },
     enum: [
       'chew toy',
       'ball',
@@ -52,6 +20,15 @@ const ToySchema = new mongoose.Schema({
       'branch',
     ],
     default: 'chew toy',
+  },
+  description: {
+    type: String,
+    required: true,
+    minLength: [10, 'Description must be minimum 10 characters long.'],
+    maxLength: [
+      50,
+      'Description is too long, must be less than or equal 50 characters.',
+    ],
   },
   price: {
     type: mongoose.Decimal128,

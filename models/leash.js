@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const LeashSchema = new mongoose.Schema({
-  pet: 'dog',
-  name: 'leash',
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  pet: { type: String, default: 'dog' },
+  name: { type: String, default: 'leash' },
   description: {
     type: String,
     required: true,
@@ -15,7 +16,6 @@ const LeashSchema = new mongoose.Schema({
   },
   color: {
     type: String,
-    required: true,
     enum: ['black', 'pink', 'red', 'blue'],
     default: 'black',
   },
@@ -37,7 +37,6 @@ LeashSchema.virtual('category').get(() => 'leashes');
 LeashSchema.virtual('url').get(function () {
   return `/home/leashes/${this._id}`;
 });
-e;
 
 LeashSchema.virtual('date_added_formatted').get(function () {
   return DateTime.fromJSDate(this.date_added).toLocaleString(DateTime.DATE_MED);

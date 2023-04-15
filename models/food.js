@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const FoodSchema = new mongoose.Schema({
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
-    required: true,
     enum: ['dog', 'cat', 'bird', 'fish', 'rodent'],
     default: 'dog',
   },
@@ -13,8 +13,8 @@ const FoodSchema = new mongoose.Schema({
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      15,
-      'Name is too long, must be less than or equal 15 characters.',
+      20,
+      'Name is too long, must be less than or equal 20 characters.',
     ],
   },
   description: {
@@ -28,39 +28,11 @@ const FoodSchema = new mongoose.Schema({
   },
   food_type: {
     type: String,
-    required: true,
-    validate: {
-      validator: function (val) {
-        if (
-          (this.pet === 'fish' && val !== 'dry') ||
-          (this.pet === 'bird' && val !== 'dry') ||
-          (this.pet === 'rodent' && val !== 'dry')
-        ) {
-          return false;
-        }
-        return true;
-      },
-      message: 'Invalid food type for pet.',
-    },
     enum: ['dry', 'canned', 'wet-packet'],
     default: 'dry',
   },
   flavor: {
     type: String,
-    required: true,
-    validate: {
-      validator: function (val) {
-        if (
-          (this.pet === 'fish' && val !== 'veggie') ||
-          (this.pet === 'bird' && val !== 'veggie') ||
-          (this.pet === 'rodent' && val !== 'veggie')
-        ) {
-          return false;
-        }
-        return true;
-      },
-      message: 'Invalid food flavor for pet.',
-    },
     enum: ['chicken', 'beef', 'pork', 'fish', 'veggie'],
     default: 'chicken',
   },
@@ -71,7 +43,6 @@ const FoodSchema = new mongoose.Schema({
   },
   food_weight: {
     type: mongoose.Decimal128,
-    required: true,
     min: [0.5, 'Food-weight must be minimum 0.5kg'],
     max: [5.0, 'Food-weight must be less than or equal 5.0kg'],
   },
