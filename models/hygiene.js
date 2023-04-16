@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const HygieneStuffSchema = new mongoose.Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
     enum: ['dog', 'cat', 'fish', 'bird', 'rodent'],

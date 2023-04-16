@@ -31,7 +31,7 @@ main().catch((err) => console.log(err));
 async function main() {
   console.log('Debug: About to connect');
   await mongoose.connect(mongoDB);
-  console.log('Debug: Should be connected?');
+  console.log('Debug: Should be connected');
   await createBags();
   await createBeds();
   await createFoods();

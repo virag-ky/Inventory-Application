@@ -14,7 +14,7 @@ exports.user_create_post = async (req, res, next) => {
       password: passwordHash,
     });
     await user.save();
-    res.redirect(`/?newUser=Welcome%20${user.username}!`);
+    res.redirect(`/?greeting=Welcome%20${user.username}!`);
   } catch (err) {
     return next(err);
   }

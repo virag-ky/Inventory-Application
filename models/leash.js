@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
 const LeashSchema = new mongoose.Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: { type: String, default: 'dog' },
   name: { type: String, default: 'leash' },
   description: {

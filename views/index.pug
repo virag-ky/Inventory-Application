@@ -3,13 +3,73 @@ extends layout
 block content
   h1 Pet Shop Inventory 
 
-  if new_user 
-    h2=new_user
+  if greeting 
+    h2= greeting
     a(href='/log-out') Log out
 
-  else if user  
-    h2 Welcome back #{user.username}
+    if error 
+      p Error getting the content.
+    else 
+      h3 All items
+      ul 
+        li
+          a(href='/bags') #[strong Bags:]
+          |  !{data.bag_count}
+        li
+          a(href='/beds') #[strong Beds:]
+          |  !{data.bed_count}
+        li
+          a(href='/clothings') #[strong Clothings:]
+          |  !{data.clothing_count}
+        li 
+          a(href='/foods') #[strong Foods:]
+          |  !{data.food_count}
+        li 
+          a(href='/hygiene-stuffs') #[strong Hygiene Stuffs:]
+          |  !{data.hygienestuff_count}
+        li 
+          a(href='/leashes') #[strong Leashes:]
+          |  !{data.leash_count}
+        li 
+          a(href='/scratching-posts') #[strong Scratching Posts:]
+          |  !{data.scratchingpost_count}
+        li 
+          a(href='/toys') #[strong Toys:]
+          |  !{data.toy_count}
+
+  else if user
+    h2 Welcome back #{user.username}!
     a(href='/log-out') Log out
+
+    if error 
+      p Error getting the content.
+    else 
+      h3 All items
+      ul 
+        li 
+          a(href='/bags') #[strong Bags:]
+          |  !{data.bag_count}
+        li
+          a(href='beds') #[strong Beds:]
+          |  !{data.bed_count}
+        li
+          a(href='/clothings') #[strong Clothings:]
+          |  !{data.clothing_count}
+        li
+          a(href='/foods') #[strong Foods:]
+          |  !{data.food_count}
+        li
+          a(href='/hygiene-stuffs') #[strong Hygiene Stuffs:]
+          |  !{data.hygienestuff_count}
+        li
+          a(href='/leashes') #[strong Leashes:]
+          |  !{data.leash_count}
+        li
+          a(href='/scratching-posts') #[strong Scratching Posts:]
+          |  !{data.scratchingpost_count}
+        li
+          a(href='/toys') #[strong Toys:]
+          |  !{data.toy_count}
 
   else
     a(href='/new-user') New User 
