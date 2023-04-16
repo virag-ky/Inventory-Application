@@ -16,6 +16,7 @@ mongoose.set('strictQuery', false);
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const bagsRouter = require('./routes/bags');
 
 const app = express();
 const mongoDB = process.env.MONGODB_URI;
@@ -78,6 +79,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', bagsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

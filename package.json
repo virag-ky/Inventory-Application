@@ -16,6 +16,7 @@
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
     "http-errors": "~1.6.3",
     "luxon": "^3.3.0",
     "mongoose": "^7.0.3",
