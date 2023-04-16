@@ -5,20 +5,13 @@ block content
   h1= title 
 
   each bag in list 
-    div(style='border:solid black;margin-bottom:25px')
-      p 
-        span #[strong Name:] !{bag.name}
-      p
-        span #[strong Description:] !{bag.description}
-      p
-        span #[strong Price:] $!{bag.price}
-      p 
-        span #[strong Number-in-Stock] !{bag.number_in_stock}
-      p 
-        span #[strong User:] #{bag.user!==undefined ? bag.user.username : ''}
-      p 
-        span #[strong Date added:] !{bag.date_added_formatted}
+    a(href=bag.url)
+      div(style='border:solid black;margin-bottom:25px')
+        p 
+          span #[strong Name:] !{bag.name}
+        p
+          span #[strong Price:] $!{bag.price}
 
-  a(href='/bags/create') Add new
+  a(href='/bags/create') Add New
 
-  a(href='/') Go back
+  a(href='/') Go Back

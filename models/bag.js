@@ -3,7 +3,7 @@ const { DateTime } = require('luxon');
 
 const BagSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  pet: { type: String, enum: ['dog', 'cat'], default: 'dog' },
+  pet: { type: String, enum: ['Dog', 'Cat'], default: 'dog' },
   name: {
     type: String,
     required: true,
@@ -29,17 +29,17 @@ const BagSchema = new mongoose.Schema({
   },
   bag_type: {
     type: String,
-    enum: ['handbag', 'carrier', 'shoulder-bag', 'backpack'],
+    enum: ['Handbag', 'Carrier', 'Shoulder-bag', 'Backpack'],
     default: 'handbag',
   },
   size: {
     type: String,
-    enum: ['small', 'medium', 'large'],
+    enum: ['Small', 'Medium', 'Large'],
     default: 'small',
   },
   color: {
     type: String,
-    enum: ['white', 'black', 'brown', 'beige'],
+    enum: ['White', 'Black', 'Brown', 'Beige'],
     default: 'white',
   },
   number_in_stock: {
@@ -53,7 +53,7 @@ const BagSchema = new mongoose.Schema({
 BagSchema.virtual('category').get(() => 'bags/carriers');
 
 BagSchema.virtual('url').get(function () {
-  return `/home/bags-carriers/${this._id}`;
+  return `/bags/${this._id}`;
 });
 
 BagSchema.virtual('date_added_formatted').get(function () {

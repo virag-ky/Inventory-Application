@@ -9,27 +9,27 @@ block content
     input#username(type='text' name='username', value=user, readonly)
     label(for='pet') Pet: 
     select#pet(type='select', name='pet')
-      option(value='dog', selected) Dog 
-      option(value='cat') Cat 
+      option(value='Dog', selected) Dog 
+      option(value='Cat') Cat 
     label(for='name') Name: 
     input#name(type='text', name='name', placeholder='Give a name for the item...', required)
     label(for='type') Type of bag: 
     select#type(type='select', name='type')
-      option(value='handbag', selected) Handbag
-      option(value='carrier') Carrier 
-      option(value='shoulder-bag') Shoulder Bag
-      option(value='backpack') Backpack
+      option(value='Handbag', selected) Handbag
+      option(value='Carrier') Carrier 
+      option(value='Shoulder-bag') Shoulder Bag
+      option(value='Backpack') Backpack
     label(for='size') Size: 
     select#size(type='select', name='size')
-      option(value='small') Small 
-      option(value='medium') Medium 
-      option(value='large') Large
+      option(value='Small') Small 
+      option(value='Medium') Medium 
+      option(value='Large') Large
     label(for='color') Color: 
     select#color(type='select', name='color')
-      option(value='white', selected) White 
-      option(value='black') Black 
-      option(value='brown') Brown 
-      option(value='beige') Beige
+      option(value='White', selected) White 
+      option(value='Black') Black 
+      option(value='Brown') Brown 
+      option(value='Beige') Beige
     label(for='description') Description: 
     textarea#description(type='textarea', name='description', placeholder='Describe the item...', required)
     label(for='price') Price: 
@@ -43,4 +43,4 @@ block content
       for error in errors 
         li!=error.msg
 
-  a(href='/bags') Go back
+  a(href='/bags') Go Back

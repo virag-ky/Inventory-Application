@@ -1,0 +1,54 @@
+extends ../layout
+
+block content 
+
+  h1= title 
+
+  if error 
+    p= error 
+  else 
+
+    if bag.user
+      p 
+        span #[strong Username:]
+        |  !{bag.user.username}
+    p 
+      span #[strong Category:]
+      |  !{bag.category}
+    p 
+      span #[strong Name:]
+      |  !{bag.name}
+    p 
+      span #[strong Pet:]
+      |  !{bag.pet}
+    p 
+      span #[strong Description:]
+      |  !{bag.description}
+    p 
+      span #[strong Type:]
+      |  !{bag.bag_type}
+    p 
+      span #[strong Size:]
+      |  !{bag.size}
+    p 
+      span #[strong Color:]
+      |  !{bag.color}
+    p 
+      span #[strong Price:]
+      |  $!{bag.price}
+    p 
+      span #[strong Quantity:]
+      |  !{bag.number_in_stock}
+    p 
+      span #[strong Date added:]
+      |  !{bag.date_added_formatted}
+
+    if bag.user
+      if bag.user.username === user 
+        button Delete 
+        button Edit 
+
+  br
+  a(href='/bags') Go Back
+  br
+  a(href='/') Home
