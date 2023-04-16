@@ -7,8 +7,8 @@ exports.user_create_get = (req, res) => {
 };
 
 (exports.user_create_post = async (req, res, next) => {
-  const passwordHash = await bcrypt.hash(req.body.password, 10);
   try {
+    const passwordHash = await bcrypt.hash(req.body.password, 10);
     const user = new User({
       username: req.body.username,
       password: passwordHash,
@@ -16,6 +16,9 @@ exports.user_create_get = (req, res) => {
     await user.save();
     res.redirect(`/?greeting=Welcome%20${user.username}!`);
   } catch (err) {
+    res.render('new_user', {
+      error: 'This username already exists, choose another name.',
+    });
     return next(err);
   }
 }),

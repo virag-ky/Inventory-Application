@@ -14,7 +14,11 @@ block content
         span #[strong Price:] $!{bag.price}
       p 
         span #[strong Number-in-Stock] !{bag.number_in_stock}
-        
-  button Add new
+      p 
+        span #[strong User:] #{bag.user!==undefined ? bag.user.username : ''}
+      p 
+        span #[strong Date added:] !{bag.date_added_formatted}
+
+  a(href='/bags/create') Add new
 
   a(href='/') Go back

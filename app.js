@@ -70,7 +70,14 @@ passport.deserializeUser(async function (id, done) {
     done(err);
   }
 });
-app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
+app.use(
+  session({
+    secret: 'cats',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 * 60 },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));

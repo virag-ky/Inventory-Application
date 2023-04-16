@@ -4,6 +4,9 @@ block content
 
   h1 Create new user 
 
+  if error 
+    p= error
+
   form(method='POST', action='')
     section 
       label(for='username') Username: 
