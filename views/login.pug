@@ -2,6 +2,8 @@ extends layout
 
 block content 
 
+  h1 Login
+
   form(method='POST', action='')
     section 
       label(for='username') Username: 
@@ -9,6 +11,6 @@ block content
     section 
       label(for='current-password') Password: 
       input#current-password(type='password', name='password', autocomplete='current-password', required)
-    button(type='submit') Sign in
+    button(type='submit') Login
 
   a(href='/') Go back

@@ -29,6 +29,7 @@ exports.index = async (req, res) => {
       ScratchingPost.countDocuments(),
     ]);
     res.render('index', {
+      title: 'Pet Shop Inventory',
       data: {
         bag_count,
         bed_count,
@@ -43,6 +44,6 @@ exports.index = async (req, res) => {
       greeting: req.query.greeting,
     });
   } catch (err) {
-    res.render('index', { error: err, data: {} });
+    res.render('index', { title: 'Pet Shop Inventory', error: err, data: {} });
   }
 };

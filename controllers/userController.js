@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 exports.user_create_get = (req, res) => {
-  res.render('new_user');
+  res.render('new_user', { title: 'New User' });
 };
 
 (exports.user_create_post = async (req, res, next) => {
@@ -23,7 +23,7 @@ exports.user_create_get = (req, res) => {
   }
 }),
   (exports.user_login_get = (req, res) => {
-    res.render('login');
+    res.render('login', { title: 'Login' });
   });
 
 // This middleware performs numerous functions behind the scenes. Among other things, it looks at the request body for parameters named username and password then runs the LocalStrategy function that we defined earlier to see if the username and password are in the database. It then creates a session cookie that gets stored in the user’s browser, and that we can access in all future requests to see whether or not that user is logged in.

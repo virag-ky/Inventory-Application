@@ -1,11 +1,9 @@
 extends layout
 
 block content
-  h1 Pet Shop Inventory 
 
   if greeting 
     h2= greeting
-    a(href='/log-out') Log out
 
     if error 
       p Error getting the content.
@@ -39,7 +37,6 @@ block content
 
   else if user
     h2 Welcome back #{user.username}!
-    a(href='/log-out') Log out
 
     if error 
       p Error getting the content.

@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator');
 const Bag = require('../models/bag');
+const User = require('../models/user');
 
 // Get all bags
 exports.bag_list_get = async (req, res, next) => {
@@ -84,6 +85,9 @@ exports.bag_create_post = [
         return;
       } else {
         await bag.save();
+        await User.findByIdAndUpdate(req.user._id, {
+          $push: { bags: bag._id },
+        });
         res.redirect(bag.url);
       }
     } catch (err) {
@@ -116,6 +120,9 @@ exports.bag_details_get = async (req, res, next) => {
 exports.bag_delete = async (req, res, next) => {
   try {
     await Bag.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: { bags: req.body.id },
+    });
     res.redirect('/bags');
   } catch (err) {
     next(err);
