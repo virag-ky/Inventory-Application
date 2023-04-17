@@ -9,8 +9,8 @@ block content
     input#username(type='text' name='username', value=user, readonly)
     label(for='pet') Pet: 
     select#pet(type='select', name='pet')
-      option(value='Dog', selected) Dog 
-      option(value='Cat') Cat 
+      option(value='Dog', selected=(undefined === bag ? undefined : (bag.pet === 'Dog' ? 'selected' : undefined))) Dog 
+      option(value='Cat', selected=(undefined === bag ? undefined : (bag.pet === 'Cat' ? 'selected' : undefined))) Cat
     label(for='name') Name: 
     input#name(type='text', name='name', value=(undefined === bag ? '' : bag.name) placeholder='Chihuahua handbag', required)
     label(for='type') Type of bag: 

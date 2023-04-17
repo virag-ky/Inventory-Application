@@ -51,6 +51,7 @@ block content
 
         form(method='GET', action='/bags/update/' + bag._id)
           input#bag_id(type='hidden', name='bag_id', required='true', value=bag._id)
+          input#bag_pet(type='hidden', name='bag_pet', required='true', value=bag.pet)
           button(type='submit') Edit
         
 

@@ -133,7 +133,6 @@ exports.bag_delete = async (req, res, next) => {
 exports.bag_update = async (req, res, next) => {
   try {
     const bag = await Bag.findById(req.params.id);
-    console.log(bag);
     if (!req.user) {
       res.redirect('/login');
     } else {
