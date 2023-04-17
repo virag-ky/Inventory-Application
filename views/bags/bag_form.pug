@@ -12,7 +12,7 @@ block content
       option(value='Dog', selected) Dog 
       option(value='Cat') Cat 
     label(for='name') Name: 
-    input#name(type='text', name='name', placeholder='Give a name for the item...', required)
+    input#name(type='text', name='name', value=(undefined === bag ? '' : bag.name) placeholder='Chihuahua handbag', required)
     label(for='type') Type of bag: 
     select#type(type='select', name='type')
       option(value='Handbag', selected) Handbag
@@ -31,16 +31,16 @@ block content
       option(value='Brown') Brown 
       option(value='Beige') Beige
     label(for='description') Description: 
-    textarea#description(type='textarea', name='description', placeholder='Describe the item...', required)
+    textarea#description(type='textarea', name='description', placeholder='A small sized Chihuahua handbag with 2 pockets.', value=(undefined === bag ? '' : bag.description), required)
     label(for='price') Price: 
-    input#price(type='number', name='price', step='0.01' placeholder='Price of item' required)
+    input#price(type='number', name='price', value=(undefined === bag ? '' : bag.price) step='0.01' placeholder='5.00' required)
     label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', placeholder='Quantity', required)
+    input#quantity(type='number', name='quantity', value=(undefined === bag ? '' : bag.number_in_stock) placeholder='1', required)
     button(type='submit') Submit 
 
   if errors 
     ul 
-      for error in errors 
-        li!=error.msg
+      each error in errors 
+        li!= error.msg
 
   a(href='/bags') Go Back

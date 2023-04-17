@@ -9,8 +9,8 @@ const BagSchema = new mongoose.Schema({
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      20,
-      'Name is too long, must be less than or equal 20 characters.',
+      25,
+      'Name is too long, must be less than or equal 25 characters.',
     ],
   },
   description: {
@@ -19,7 +19,7 @@ const BagSchema = new mongoose.Schema({
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
       50,
-      'Description is too long, must be less than or equal 50 characters.',
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   price: {

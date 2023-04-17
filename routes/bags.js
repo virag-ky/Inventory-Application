@@ -14,4 +14,7 @@ router.post('/bags/create', bagController.bag_create_post);
 // Get the bag's details
 router.get('/bags/:id', bagController.bag_details_get);
 
+// Delete the bag
+router.post('/bags/:id', bagController.bag_delete);
+
 module.exports = router;

@@ -45,8 +45,10 @@ block content
 
     if bag.user
       if bag.user.username === user 
-        button Delete 
-        button Edit 
+        form(method='POST', action='')
+          input#id(type='hidden', name='id', required='true', value=bag._id)
+          button(type='submit') Delete 
+        
 
   br
   a(href='/bags') Go Back
