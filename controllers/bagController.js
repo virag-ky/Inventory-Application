@@ -10,7 +10,7 @@ exports.bag_list_get = async (req, res, next) => {
       .populate('user');
 
     res.render('bags/bag_list', {
-      title: 'All bags',
+      title: 'All bags/carriers',
       list: listOfBags,
       user: req.user.username,
     });
@@ -26,7 +26,7 @@ exports.bag_create_get = (req, res) => {
     res.redirect('/login');
   } else {
     res.render('bags/bag_form', {
-      title: 'Add new bags',
+      title: 'Add new bags/carriers',
       user: req.user.username,
     });
   }
@@ -50,7 +50,7 @@ exports.bag_create_post = [
     .escape(),
   body('price', 'Price must not be empty.')
     .trim()
-    .isDecimal()
+    .isDecimal({ decimal_digits: '1,3' })
     .custom((value) => value >= 0.01)
     .withMessage('Price must be greater than $0.')
     .escape(),
@@ -103,7 +103,7 @@ exports.bag_details_get = async (req, res, next) => {
     if (bag) {
       if (req.user) {
         res.render('bags/bag_details', {
-          title: 'Details of the bag:',
+          title: 'Details of the bag/carrier:',
           bag,
           user: req.user.username,
         });
@@ -124,6 +124,25 @@ exports.bag_delete = async (req, res, next) => {
       $pull: { bags: req.body.id },
     });
     res.redirect('/bags');
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Display the update form
+exports.bag_update = async (req, res, next) => {
+  try {
+    const bag = await Bag.findById(req.params.id);
+    console.log(bag);
+    if (!req.user) {
+      res.redirect('/login');
+    } else {
+      res.render('bags/bag_form', {
+        title: 'Update bag/carrier',
+        bag,
+        user: req.user.username,
+      });
+    }
   } catch (err) {
     next(err);
   }

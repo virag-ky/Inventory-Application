@@ -48,6 +48,10 @@ block content
         form(method='POST', action='')
           input#id(type='hidden', name='id', required='true', value=bag._id)
           button(type='submit') Delete 
+
+        form(method='GET', action='/bags/update/' + bag._id)
+          input#bag_id(type='hidden', name='bag_id', required='true', value=bag._id)
+          button(type='submit') Edit
         
 
   br

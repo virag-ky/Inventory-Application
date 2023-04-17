@@ -17,4 +17,7 @@ router.get('/bags/:id', bagController.bag_details_get);
 // Delete the bag
 router.post('/bags/:id', bagController.bag_delete);
 
+// Display the update form
+router.get('/bags/update/:id', bagController.bag_update);
+
 module.exports = router;
