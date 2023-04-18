@@ -16,7 +16,9 @@ exports.user_create_post = async (req, res, next) => {
       password: passwordHash,
     });
     await user.save();
-    res.redirect(`/?greeting=Welcome%20${user.username}!`);
+    res.redirect(
+      '/login/?message=Please,%20login%20with%20your%20newly%20created%20username.'
+    );
   } catch (err) {
     res.render('new_user', {
       error: 'This username already exists, choose another name.',
@@ -27,7 +29,7 @@ exports.user_create_post = async (req, res, next) => {
 
 // Display login form
 exports.user_login_get = (req, res) => {
-  res.render('login', { title: 'Login' });
+  res.render('login', { title: 'Login', message: req.query.message });
 };
 
 // Login the user

@@ -7,6 +7,9 @@ block content
   if errorMsg 
     p= errorMsg
 
+  if message 
+    p= message
+
   form(method='POST', action='')
     section 
       label(for='username') Username: 

@@ -1,13 +1,10 @@
 const { body, validationResult } = require('express-validator');
 const Bag = require('../models/bag');
-const User = require('../models/user');
 
 // Get all bags
 exports.bag_list_get = async (req, res, next) => {
   try {
-    const listOfBags = await Bag.find({})
-      .sort({ date_added: -1 })
-      .populate('user');
+    const listOfBags = await Bag.find({}).sort({ date_added: -1 });
 
     res.render('bags/bag_list', {
       title: 'All bags/carriers',
@@ -15,7 +12,6 @@ exports.bag_list_get = async (req, res, next) => {
       user: req.user.username,
     });
   } catch (err) {
-    res.redirect('/');
     next(err);
   }
 };

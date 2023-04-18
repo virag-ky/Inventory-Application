@@ -9,11 +9,11 @@ html
       nav 
         a(href='/') Pet Shop Inventory
 
-        if user 
+        if user || greeting
           ul 
             li 
               a(href='/') Home 
             li 
-              a(href='/login') Log out
+              a(href='/log-out') Log out
 
     block content
