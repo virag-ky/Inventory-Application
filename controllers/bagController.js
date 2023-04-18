@@ -38,15 +38,11 @@ exports.bag_create_post = [
     .trim()
     .isLength({ min: 3, max: 25 })
     .withMessage('Name must be between 3-25 characters long.')
-    .isAlpha()
-    .withMessage('Name must only contain letters.')
     .escape(),
   body('description', 'Description must not be empty.')
     .trim()
     .isLength({ min: 10, max: 200 })
     .withMessage('Description must be between 10-200 characters long.')
-    .isAlpha()
-    .withMessage('Description must only contain letters.')
     .escape(),
   body('price', 'Price must not be empty.')
     .trim()
@@ -130,7 +126,7 @@ exports.bag_delete = async (req, res, next) => {
 };
 
 // Display the update form
-exports.bag_update = async (req, res, next) => {
+exports.bag_update_get = async (req, res, next) => {
   try {
     const bag = await Bag.findById(req.params.id);
     if (!req.user) {
@@ -146,3 +142,57 @@ exports.bag_update = async (req, res, next) => {
     next(err);
   }
 };
+
+// Update the bag
+exports.bag_update_post = [
+  body('name', 'Name must not be empty.')
+    .trim()
+    .isLength({ min: 3, max: 25 })
+    .withMessage('Name must be between 3-25 characters long.')
+    .escape(),
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .trim()
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .trim()
+    .isNumeric()
+    .toInt()
+    .custom((value) => value > 0)
+    .withMessage('You must add at least 1 item in the quantity field.'),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const bag = {
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+        color: req.body.color,
+        size: req.body.size,
+        bag_type: req.body.type,
+      };
+      if (!errors.isEmpty()) {
+        res.render('bags/bag_form', {
+          title: 'Update bag/carrier',
+          bag,
+          errors: errors.array(),
+          user: req.user.username,
+        });
+        return;
+      }
+      await Bag.findByIdAndUpdate(req.params.id, bag, {});
+      res.redirect(`/bags/${req.params.id}`);
+    } catch (err) {
+      next(err);
+    }
+  },
+];

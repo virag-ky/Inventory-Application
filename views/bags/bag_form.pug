@@ -15,21 +15,21 @@ block content
     input#name(type='text', name='name', value=(undefined === bag ? '' : bag.name) placeholder='Chihuahua handbag', required)
     label(for='type') Type of bag: 
     select#type(type='select', name='type')
-      option(value='Handbag', selected) Handbag
-      option(value='Carrier') Carrier 
-      option(value='Shoulder-bag') Shoulder Bag
-      option(value='Backpack') Backpack
+      option(value='Handbag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Handbag' ? 'selected' : undefined))) Handbag
+      option(value='Carrier', selected=(undefined === bag ? undefined : (bag.bag_type === 'Carrier' ? 'selected' : undefined))) Carrier 
+      option(value='Shoulder-bag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Shoulder-bag' ? 'selected' : undefined))) Shoulder Bag
+      option(value='Backpack', selected=(undefined === bag ? undefined : (bag.bag_type === 'Backpack' ? 'selected' : undefined))) Backpack
     label(for='size') Size: 
     select#size(type='select', name='size')
-      option(value='Small') Small 
-      option(value='Medium') Medium 
-      option(value='Large') Large
+      option(value='Small', selected=(undefined === bag ? undefined : (bag.size === 'Small' ? 'selected' : undefined))) Small 
+      option(value='Medium', selected=(undefined === bag ? undefined : (bag.size === 'Medium' ? 'selected' : undefined))) Medium 
+      option(value='Large', selected=(undefined === bag ? undefined : (bag.size === 'Large' ? 'selected' : undefined))) Large
     label(for='color') Color: 
     select#color(type='select', name='color')
-      option(value='White', selected) White 
-      option(value='Black') Black 
-      option(value='Brown') Brown 
-      option(value='Beige') Beige
+      option(value='White', selected=(undefined === bag ? undefined : (bag.color === 'White' ? 'selected' : undefined))) White 
+      option(value='Black', selected=(undefined === bag ? undefined : (bag.color === 'Black' ? 'selected' : undefined))) Black 
+      option(value='Brown', selected=(undefined === bag ? undefined : (bag.color === 'Brown' ? 'selected' : undefined))) Brown 
+      option(value='Beige', selected=(undefined === bag ? undefined : (bag.color === 'Beige' ? 'selected' : undefined))) Beige
     label(for='description') Description: 
     textarea#description(type='textarea', name='description', placeholder='A small sized Chihuahua handbag with 2 pockets.', required) #{undefined === bag ? '' : bag.description}
     label(for='price') Price: 
