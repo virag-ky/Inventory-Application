@@ -16,54 +16,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minLength: [8, 'Password must be at least 8 characters long.'],
   },
-  bags: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Bag',
-    },
-  ],
-  beds: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Bed',
-    },
-  ],
-  clothing: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Clothing',
-    },
-  ],
-  hygiene_stuffs: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'HygieneStuff',
-    },
-  ],
-  toys: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Toy',
-    },
-  ],
-  foods: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Food',
-    },
-  ],
-  leashes: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Leash',
-    },
-  ],
-  scratching_posts: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ScratchingPost',
-    },
-  ],
 });
 
 module.exports = mongoose.model('User', UserSchema);

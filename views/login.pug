@@ -4,6 +4,9 @@ block content
 
   h1 Login
 
+  if errorMsg 
+    p= errorMsg
+
   form(method='POST', action='')
     section 
       label(for='username') Username: 

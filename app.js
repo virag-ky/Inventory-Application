@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const User = require('./models/user');
+const flash = require('connect-flash');
 
 // When the "strictQuery" option is set to true (the default), Mongoose only allows querying on fields that are explicitly defined in the schema. If the option is set to false, querying on any field is allowed, even if it is not defined in the schema.
 mongoose.set('strictQuery', false);
@@ -83,6 +84,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
