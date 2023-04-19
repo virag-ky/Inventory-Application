@@ -1,25 +1,77 @@
 const User = require('../models/user');
 const Bag = require('../models/bag');
 
+// Get sum of items helper function
+const getSumOfItems = (array) =>
+  array.reduce((acc, obj) => acc + obj.number_in_stock, 0);
+
+// Get the items count helper function
+const getItemsCount = async (req) => {
+  const currentUser = await User.findById(req.user._id).populate('bags');
+  const bagCount = getSumOfItems(currentUser.bags);
+  const bedCount = getSumOfItems(currentUser.beds);
+  const foodCount = getSumOfItems(currentUser.food);
+  const clothingCount = getSumOfItems(currentUser.clothing);
+  const hygieneCount = getSumOfItems(currentUser.hygiene);
+  const leashCount = getSumOfItems(currentUser.leashes);
+  const toyCount = getSumOfItems(currentUser.toys);
+  const scratchingPostCount = getSumOfItems(currentUser.scratching_posts);
+  const sumOfItems =
+    bagCount +
+    bedCount +
+    toyCount +
+    leashCount +
+    hygieneCount +
+    clothingCount +
+    foodCount +
+    scratchingPostCount;
+  return {
+    sumOfItems,
+    bagCount,
+    bedCount,
+    clothingCount,
+    toyCount,
+    scratchingPostCount,
+    leashCount,
+    hygieneCount,
+    foodCount,
+  };
+};
+
 // Home page
 exports.index = async (req, res) => {
   try {
-    let bagCount;
-    let sumOfItems;
-    if (req.user) {
-      const currentUser = await User.findById(req.user._id).populate('bags');
-      bagCount = currentUser.bags.reduce(
-        (acc, bag) => acc + bag.number_in_stock,
-        0
-      );
-      sumOfItems = bagCount;
+    const user = req.user;
+    if (user) {
+      const {
+        sumOfItems,
+        bagCount,
+        bedCount,
+        clothingCount,
+        toyCount,
+        scratchingPostCount,
+        leashCount,
+        hygieneCount,
+        foodCount,
+      } = await getItemsCount(req);
+      res.render('index', {
+        title: 'Pet Shop Inventory',
+        user,
+        bagCount,
+        bedCount,
+        clothingCount,
+        toyCount,
+        scratchingPostCount,
+        leashCount,
+        hygieneCount,
+        foodCount,
+        sumOfItems,
+      });
+    } else {
+      res.render('index', {
+        title: 'Pet Shop Inventory',
+      });
     }
-    res.render('index', {
-      title: 'Pet Shop Inventory',
-      user: req.user,
-      bagCount,
-      sumOfItems,
-    });
   } catch (err) {
     next(err);
   }
@@ -28,8 +80,37 @@ exports.index = async (req, res) => {
 // Get user's items
 exports.items_get = async (req, res, next) => {
   try {
-    const bags = await Bag.find({ user: req.user._id });
-    res.render('items', { title: 'Your items:', bags, user: req.user });
+    const user = req.user;
+    if (user) {
+      const {
+        sumOfItems,
+        bagCount,
+        bedCount,
+        clothingCount,
+        toyCount,
+        scratchingPostCount,
+        leashCount,
+        hygieneCount,
+        foodCount,
+      } = await getItemsCount(req);
+      const bags = await Bag.find({ user: user._id });
+      res.render('items', {
+        title: 'Your items:',
+        bags,
+        user,
+        bagCount,
+        bedCount,
+        clothingCount,
+        toyCount,
+        scratchingPostCount,
+        leashCount,
+        hygieneCount,
+        foodCount,
+        sumOfItems,
+      });
+    } else {
+      res.redirect('/');
+    }
   } catch (err) {
     next(err);
   }

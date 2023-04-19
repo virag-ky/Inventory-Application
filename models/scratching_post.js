@@ -35,7 +35,7 @@ const ScratchingPostSchema = new mongoose.Schema({
 ScratchingPostSchema.virtual('category').get(() => 'scratching posts');
 
 ScratchingPostSchema.virtual('url').get(function () {
-  return `/home/scrathingposts/${this._id}`;
+  return `/home/scratchingposts/${this._id}`;
 });
 
 ScratchingPostSchema.virtual('date_added_formatted').get(function () {

@@ -2,34 +2,40 @@ extends layout
 
 block content 
 
-  h1= title
+  h1= title + sumOfItems
 
   div
-    h2 Bags: 
+    h2 Bags: #{bagCount}
+
+      br
+      span 
+        a(href='/bags/create') Add New
       if bags
         each bag in bags 
           a(href=bag.url)
             div(style='border:solid black;margin-bottom:25px')
-              p 
-                span #[strong Name:] !{bag.name}
-              p
-                span #[strong Price:] $!{bag.price}
-              p 
-                span #[strong Number-in-Stock:] !{bag.number_in_stock}
+              span #[strong Name:] !{bag.name}
+              br
+              span #[strong Price:] $!{bag.price}
+              br
+              span #[strong Number-in-Stock:] !{bag.number_in_stock}
       else 
         p You didn't add any bags yet.
 
   div 
     h2 Beds: 
+      br
+      span 
+        a(href='/beds/create') Add New
       if beds
         each bed in beds 
           a(href=bed.url)
             div(style='border:solid black;margin-bottom:25px')
-              p 
-                span #[strong Name:] !{bed.name}
-              p
-                span #[strong Price:] $!{bed.price}
-              p 
-                span #[strong Number-in-Stock:] !{bed.number_in_stock}
+              span #[strong Name:] !{bed.name}
+              br
+              span #[strong Price:] $!{bed.price}
+              br
+              span #[strong Number-in-Stock:] !{bed.number_in_stock}
       else 
         p You didn't add any beds yet.
+        
