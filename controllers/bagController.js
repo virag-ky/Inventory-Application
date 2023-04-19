@@ -1,14 +1,17 @@
 const { body, validationResult } = require('express-validator');
 const Bag = require('../models/bag');
+const User = require('../models/user');
 
 // Get all bags
 exports.bag_list_get = async (req, res, next) => {
   try {
     const listOfBags = await Bag.find({}).sort({ date_added: -1 });
+    const bagCount = await Bag.countDocuments();
 
     res.render('bags/bag_list', {
       title: 'All bags/carriers',
       list: listOfBags,
+      bag_count: bagCount,
       user: req.user.username,
     });
   } catch (err) {
@@ -65,7 +68,7 @@ exports.bag_create_post = [
         color: req.body.color,
         price: req.body.price,
         number_in_stock: req.body.quantity,
-        user: req.user,
+        user: req.user._id,
       });
       if (!errors.isEmpty()) {
         res.render('bags/bag_form', {
@@ -77,6 +80,9 @@ exports.bag_create_post = [
         return;
       } else {
         await bag.save();
+        const user = await User.findById(req.user._id).populate('bags', 'name');
+        user.bags.push(bag);
+        await user.save();
         res.redirect(bag.url);
       }
     } catch (err) {

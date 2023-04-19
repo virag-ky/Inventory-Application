@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+
+  h1= title
+
+  div
+    h2 Bags: 
+      each bag in bags 
+        a(href=bag.url)
+          div(style='border:solid black;margin-bottom:25px')
+            p 
+              span #[strong Name:] !{bag.name}
+            p
+              span #[strong Price:] $!{bag.price}
+            p 
+              span #[strong Number-in-Stock:] !{bag.number_in_stock}

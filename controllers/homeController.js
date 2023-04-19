@@ -1,49 +1,36 @@
+const User = require('../models/user');
 const Bag = require('../models/bag');
-const Bed = require('../models/bed');
-const Clothing = require('../models/clothing');
-const Food = require('../models/food');
-const HygieneStuff = require('../models/hygiene');
-const Leash = require('../models/leash');
-const ScratchingPost = require('../models/scratching_post');
-const Toy = require('../models/toy');
 
+// Home page
 exports.index = async (req, res) => {
   try {
-    const [
-      bag_count,
-      bed_count,
-      clothing_count,
-      food_count,
-      hygienestuff_count,
-      leash_count,
-      toy_count,
-      scratchingpost_count,
-    ] = await Promise.all([
-      Bag.countDocuments(),
-      Bed.countDocuments(),
-      Clothing.countDocuments(),
-      Food.countDocuments(),
-      HygieneStuff.countDocuments(),
-      Leash.countDocuments(),
-      Toy.countDocuments(),
-      ScratchingPost.countDocuments(),
-    ]);
+    let bagCount;
+    let sumOfItems;
+    if (req.user) {
+      const currentUser = await User.findById(req.user._id).populate('bags');
+      bagCount = currentUser.bags.reduce(
+        (acc, bag) => acc + bag.number_in_stock,
+        0
+      );
+      sumOfItems = bagCount;
+    }
     res.render('index', {
       title: 'Pet Shop Inventory',
-      data: {
-        bag_count,
-        bed_count,
-        clothing_count,
-        food_count,
-        hygienestuff_count,
-        leash_count,
-        toy_count,
-        scratchingpost_count,
-      },
       user: req.user,
-      greeting: req.query.greeting,
+      bagCount,
+      sumOfItems,
     });
   } catch (err) {
-    res.render('index', { title: 'Pet Shop Inventory', error: err, data: {} });
+    next(err);
+  }
+};
+
+// Get user's items
+exports.items_get = async (req, res, next) => {
+  try {
+    const bags = await Bag.find({ user: req.user._id });
+    res.render('items', { title: 'Your items:', bags, user: req.user });
+  } catch (err) {
+    next(err);
   }
 };
