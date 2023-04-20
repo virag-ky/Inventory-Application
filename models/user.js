@@ -16,6 +16,9 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minLength: [8, 'Password must be at least 8 characters long.'],
   },
+  avatar: {
+    type: String,
+  },
   bags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bag' }],
   beds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bed' }],
   clothes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Clothing' }],

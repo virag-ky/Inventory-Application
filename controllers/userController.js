@@ -14,6 +14,7 @@ exports.user_create_post = async (req, res, next) => {
     const user = new User({
       username: req.body.username,
       password: passwordHash,
+      avatar: req.file ? req.file.filename : 'rabbit.png',
     });
     await user.save();
     res.redirect(

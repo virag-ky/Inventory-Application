@@ -15,5 +15,9 @@ html
               a(href='/') Home 
             li 
               a(href='/log-out') Log out
+            li 
+              div
+                img(src='/uploads/' + user.avatar, alt='profile', width='50px')
+                span= user.username
 
     block content

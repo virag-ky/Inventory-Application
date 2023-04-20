@@ -7,7 +7,10 @@ block content
   if error 
     p= error
 
-  form(method='POST', action='')
+  form(method='POST', action='', enctype='multipart/form-data')
+    section 
+      label(for='avatar') Profile picture: 
+      input#avatar(type='file', name='avatar', multiple)
     section 
       label(for='username') Username: 
       input#username(type='text', name='username', required, autofocus) 
