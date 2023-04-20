@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   },
   bags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bag' }],
   beds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bed' }],
-  clothing: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Clothing' }],
+  clothes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Clothing' }],
   hygiene: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hygiene' }],
   food: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Food' }],
   leashes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Leash' }],
