@@ -5,14 +5,11 @@ const User = require('../models/user');
 // Get all bags
 exports.bag_list_get = async (req, res, next) => {
   try {
-    const listOfBags = await Bag.find({}).sort({ date_added: -1 });
-    const bagCount = await Bag.countDocuments();
-
+    const listOfBags = await Bag.find().sort({ date_added: -1 });
     res.render('bags/bag_list', {
       title: 'All bags/carriers',
       list: listOfBags,
-      bag_count: bagCount,
-      user: req.user.username,
+      user: req.user,
     });
   } catch (err) {
     next(err);
@@ -26,7 +23,7 @@ exports.bag_create_get = (req, res) => {
   } else {
     res.render('bags/bag_form', {
       title: 'Add new bags/carriers',
-      user: req.user.username,
+      user: req.user,
     });
   }
 };
@@ -75,7 +72,7 @@ exports.bag_create_post = [
           title: 'Add new bags',
           bag,
           errors: errors.array(),
-          user: req.user.username,
+          user: req.user,
         });
         return;
       } else {
@@ -100,7 +97,7 @@ exports.bag_details_get = async (req, res, next) => {
         res.render('bags/bag_details', {
           title: 'Details of the bag/carrier:',
           bag,
-          user: req.user.username,
+          user: req.user,
         });
         return;
       }
@@ -131,7 +128,7 @@ exports.bag_update_get = async (req, res, next) => {
       res.render('bags/bag_form', {
         title: 'Update bag/carrier',
         bag,
-        user: req.user.username,
+        user: req.user,
       });
     }
   } catch (err) {
@@ -181,7 +178,7 @@ exports.bag_update_post = [
           title: 'Update bag/carrier',
           bag,
           errors: errors.array(),
-          user: req.user.username,
+          user: req.user,
         });
         return;
       }

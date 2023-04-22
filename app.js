@@ -18,6 +18,12 @@ mongoose.set('strictQuery', false);
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const bagsRouter = require('./routes/bags');
+const bedsRouter = require('./routes/beds');
+const clothesRouter = require('./routes/clothes');
+const hygieneRouter = require('./routes/hygiene');
+const leashesRouter = require('./routes/leashes');
+const toysRouter = require('./routes/toys');
+const scratchingPostsRouter = require('./routes/scratchingPosts');
 
 const app = express();
 const mongoDB = process.env.MONGODB_URI;
@@ -86,9 +92,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
+// We register all the routes with the .use() method.
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/', bagsRouter);
+app.use('/bags', bagsRouter);
+app.use('/beds', bedsRouter);
+app.use('/clothes', clothesRouter);
+app.use('/hygiene', hygieneRouter);
+app.use('/leashes', leashesRouter);
+app.use('/scratchingposts', scratchingPostsRouter);
+app.use('/toys', toysRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

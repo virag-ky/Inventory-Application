@@ -1,4 +1,5 @@
 const express = require('express');
+// This creates a new router object. By calling express.Router(), we create a new instance of the router object, which we can use to define our application routes.
 const router = express.Router();
 const user_controller = require('../controllers/userController');
 const multer = require('multer');
