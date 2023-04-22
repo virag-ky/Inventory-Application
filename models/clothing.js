@@ -3,14 +3,14 @@ const { DateTime } = require('luxon');
 
 const ClothingSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  pet: { type: String, enum: ['dog', 'cat'], default: 'dog' },
+  pet: { type: String, enum: ['Dog', 'Cat'], default: 'Dog' },
   name: {
     type: String,
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      20,
-      'Name is too long, must be less than or equal 20 characters.',
+      25,
+      'Name is too long, must be less than or equal 25 characters.',
     ],
   },
   description: {
@@ -18,8 +18,8 @@ const ClothingSchema = new mongoose.Schema({
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description is too long, must be less than or equal 50 characters.',
+      200,
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   price: {
@@ -29,18 +29,18 @@ const ClothingSchema = new mongoose.Schema({
   },
   clothing_type: {
     type: String,
-    enum: ['sweater', 'jacket', 'overall', 'vest'],
-    default: 'sweater',
+    enum: ['Sweater', 'Jacket', 'Overall', 'Vest'],
+    default: 'Sweater',
   },
   color: {
     type: String,
-    enum: ['white', 'black', 'brown', 'yellow', 'red', 'pink', 'blue'],
-    default: 'white',
+    enum: ['White', 'Black', 'Brown', 'Yellow', 'Red', 'Pink', 'Blue'],
+    default: 'White',
   },
   size: {
     type: String,
-    enum: ['extra-small', 'small', 'medium', 'large'],
-    default: 'small',
+    enum: ['Extra-small', 'Small', 'Medium', 'Large'],
+    default: 'Small',
   },
   number_in_stock: {
     type: Number,
@@ -53,7 +53,7 @@ const ClothingSchema = new mongoose.Schema({
 ClothingSchema.virtual('category').get(() => 'clothing');
 
 ClothingSchema.virtual('url').get(function () {
-  return `/home/clothing/${this._id}`;
+  return `/clothes/${this._id}`;
 });
 
 ClothingSchema.virtual('date_added_formatted').get(function () {

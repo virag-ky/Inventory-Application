@@ -15,3 +15,12 @@ exports.beds_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the bed form
+exports.bed_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('');
+  }
+};

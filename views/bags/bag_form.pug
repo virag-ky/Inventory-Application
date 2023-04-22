@@ -6,7 +6,7 @@ block content
 
   form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
     label(for='user') Username: 
-    input#username(type='text' name='username', value=user, readonly)
+    input#username(type='text', name='username', value=user.username, readonly)
     label(for='pet') Pet: 
     select#pet(type='select', name='pet')
       option(value='Dog', selected=(undefined === bag ? undefined : (bag.pet === 'Dog' ? 'selected' : undefined))) Dog 

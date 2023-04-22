@@ -12,6 +12,7 @@ exports.bag_list_get = async (req, res, next) => {
       user: req.user,
     });
   } catch (err) {
+    res.redirect('/login/?message=Session%20expired.');
     next(err);
   }
 };
@@ -19,7 +20,7 @@ exports.bag_list_get = async (req, res, next) => {
 // Display the bag form
 exports.bag_create_get = (req, res) => {
   if (!req.user) {
-    res.redirect('/login');
+    res.redirect('/login/?message=Session%20expired.');
   } else {
     res.render('bags/bag_form', {
       title: 'Add new bags/carriers',
