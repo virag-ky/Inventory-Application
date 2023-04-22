@@ -1,0 +1,13 @@
+extends ../layout
+
+block content 
+
+  h1= title 
+
+  a(href='/scratching-posts/create') Add New 
+
+  each post in list 
+    a(href=post.url)
+      div(style='border:solid black;margin-bottom:25px')
+        span #[strong Name:] !{post.name}
+        span #[strong Price:] $!{post.price}

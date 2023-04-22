@@ -23,6 +23,7 @@ const clothesRouter = require('./routes/clothes');
 const hygieneRouter = require('./routes/hygiene');
 const leashesRouter = require('./routes/leashes');
 const toysRouter = require('./routes/toys');
+const foodRouter = require('./routes/food');
 const scratchingPostsRouter = require('./routes/scratchingPosts');
 
 const app = express();
@@ -100,8 +101,9 @@ app.use('/beds', bedsRouter);
 app.use('/clothes', clothesRouter);
 app.use('/hygiene', hygieneRouter);
 app.use('/leashes', leashesRouter);
-app.use('/scratchingposts', scratchingPostsRouter);
+app.use('/scratching-posts', scratchingPostsRouter);
 app.use('/toys', toysRouter);
+app.use('/food', foodRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content 
+
+  h1= title 
+
+  a(href='/clothes/create') Add New 
+
+  each clothing in list 
+    a(href=clothing.url)
+      div(style='border:solid black;margin-bottom:25px')
+        span #[strong Name:] !{clothing.name}
+        span #[strong Price:] $!{clothing.price}
