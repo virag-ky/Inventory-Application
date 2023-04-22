@@ -4,12 +4,11 @@ block content
 
   h1= title 
 
+  a(href='/bags/create') Add New
+
   each bag in list 
     a(href=bag.url)
-      div(style='border:solid black;margin-bottom:25px')
-        p 
-          span #[strong Name:] !{bag.name}
-        p
-          span #[strong Price:] $!{bag.price}
+      div(style='border:solid black;margin-bottom:25px') 
+        span #[strong Name:] !{bag.name}
+        span #[strong Price:] $!{bag.price}
 
-  a(href='/bags/create') Add New
