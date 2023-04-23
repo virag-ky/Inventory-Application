@@ -15,3 +15,15 @@ exports.hygiene_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display hygiene form
+exports.hygiene_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('hygiene/hygiene_form', {
+      title: 'Add new hygiene products',
+      user: req.user,
+    });
+  }
+};

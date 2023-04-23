@@ -5,30 +5,30 @@ const HygieneStuffSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
-    enum: ['dog', 'cat', 'fish', 'bird', 'rodent'],
-    default: 'dog',
+    enum: ['Dog', 'Cat', 'Fish', 'Bird', 'Rodent'],
+    default: 'Dog',
   },
   name: {
     type: String,
     enum: [
-      'shampoo - 0.5l',
-      'pads - 1pack/50pc',
-      'brush',
-      'water cleaner',
-      'nail clipper',
-      'sawdust - 1pack/5.0l',
-      'cat litter - 1pack/5.0kg',
-      'bird litter - 1pack/2.0kg',
+      'Shampoo - 0.5l',
+      'Pads - 1pack/50pc',
+      'Brush',
+      'Water cleaner',
+      'Nail clipper',
+      'Sawdust - 1pack/5.0l',
+      'Cat litter - 1pack/5.0kg',
+      'Bird litter - 1pack/2.0kg',
     ],
-    default: 'shampoo - 0.5l',
+    default: 'Shampoo - 0.5l',
   },
   description: {
     type: String,
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description too long, must be less than or equal 50 characters long.',
+      200,
+      'Description too long, must be less than or equal 200 characters long.',
     ],
   },
   price: {
@@ -47,7 +47,7 @@ const HygieneStuffSchema = new mongoose.Schema({
 HygieneStuffSchema.virtual('category').get(() => 'hygiene products');
 
 HygieneStuffSchema.virtual('url').get(function () {
-  return `/home/hygiene/${this._id}`;
+  return `/hygiene/${this._id}`;
 });
 
 HygieneStuffSchema.virtual('date_added_formatted').get(function () {
