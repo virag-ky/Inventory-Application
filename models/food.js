@@ -5,16 +5,16 @@ const FoodSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
-    enum: ['dog', 'cat', 'bird', 'fish', 'rodent'],
-    default: 'dog',
+    enum: ['Dog', 'Cat', 'Bird', 'Fish', 'Rodent'],
+    default: 'Dog',
   },
   name: {
     type: String,
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      20,
-      'Name is too long, must be less than or equal 20 characters.',
+      25,
+      'Name is too long, must be less than or equal 25 characters.',
     ],
   },
   description: {
@@ -22,29 +22,36 @@ const FoodSchema = new mongoose.Schema({
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description is too long, must be less than or equal 50 characters.',
+      200,
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   food_type: {
     type: String,
-    enum: ['dry', 'canned', 'wet-packet'],
-    default: 'dry',
+    enum: [
+      'Dry',
+      'Canned',
+      'Wet-packet',
+      'Fish flakes',
+      'Fish pellets',
+      'Seed mix',
+    ],
+    default: 'Dry',
   },
   flavor: {
     type: String,
-    enum: ['chicken', 'beef', 'pork', 'fish', 'veggie'],
-    default: 'chicken',
+    enum: ['Chicken', 'Beef', 'Pork', 'Fish', 'Veggie', 'Seed'],
+    default: 'Chicken',
   },
   price: {
     type: mongoose.Decimal128,
     required: true,
     min: [0.01, 'Price must be greater then $0.00'],
   },
-  food_weight: {
-    type: mongoose.Decimal128,
-    min: [0.5, 'Food-weight must be minimum 0.5kg'],
-    max: [5.0, 'Food-weight must be less than or equal 5.0kg'],
+  weight: {
+    type: String,
+    enum: ['0.5', '1.0', '1.2', '1.5', '2.0', '2.5', '3.0', '5.0'],
+    default: '0.5',
   },
   number_in_stock: {
     type: Number,
@@ -57,7 +64,7 @@ const FoodSchema = new mongoose.Schema({
 FoodSchema.virtual('category').get(() => 'foods');
 
 FoodSchema.virtual('url').get(function () {
-  return `/home/foods/${this._id}`;
+  return `/foods/${this._id}`;
 });
 
 FoodSchema.virtual('date_added_formatted').get(function () {

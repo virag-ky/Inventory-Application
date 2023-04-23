@@ -15,3 +15,12 @@ exports.food_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display food form
+exports.food_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('food/food_form', { title: 'Add new food', user: req.user });
+  }
+};
