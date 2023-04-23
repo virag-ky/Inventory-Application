@@ -21,6 +21,6 @@ exports.bed_create_get = (req, res) => {
   if (!req.user) {
     res.redirect('/login/?message=Session%20expired.');
   } else {
-    res.render('');
+    res.render('beds/bed_form', { title: 'Add new beds', user: req.user });
   }
 };

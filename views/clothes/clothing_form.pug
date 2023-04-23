@@ -36,7 +36,7 @@ block content
       option(value='Large', selected=(undefined === clothing ? undefined : (clothing.size === 'Large' ? 'selected' : undefined))) Large 
     label(for='description') Description: 
     textarea#description(type='textarea', name='description', required, placeholder='A small sized knitted Chihuahua sweater.') #{undefined === clothing ? '' : clothing.description}
-    label(for='price') Price: 
+    label(for='price') Price/$: 
     input#price(type='number', name='price', step='0.01', placeholder='5.00', required, value=(undefined === clothing ? '' : parseFloat(clothing.price).toFixed(2)))
     label(for='quantity') Quantity: 
     input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === clothing ? '' : clothing.number_in_stock))

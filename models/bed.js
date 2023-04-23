@@ -3,14 +3,14 @@ const { DateTime } = require('luxon');
 
 const BedSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  pet: { type: String, enum: ['dog', 'cat'], default: 'dog' },
+  pet: { type: String, enum: ['Dog', 'Cat'], default: 'Dog' },
   name: {
     type: String,
     required: true,
     minLength: [3, 'Name must be minimum 3 characters long.'],
     maxLength: [
-      20,
-      'Name is too long, must be less than or equal 20 characters.',
+      25,
+      'Name is too long, must be less than or equal 25 characters.',
     ],
   },
   description: {
@@ -18,8 +18,8 @@ const BedSchema = new mongoose.Schema({
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description is too long, must be less than or equal 50 characters.',
+      200,
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   price: {
@@ -29,13 +29,13 @@ const BedSchema = new mongoose.Schema({
   },
   size: {
     type: String,
-    enum: ['small', 'medium', 'large'],
-    default: 'small',
+    enum: ['Small', 'Medium', 'Large'],
+    default: 'Small',
   },
   color: {
     type: String,
-    enum: ['white', 'black', 'brown', 'beige', 'pink', 'blue'],
-    default: 'white',
+    enum: ['White', 'Black', 'Brown', 'Beige', 'Pink', 'Blue'],
+    default: 'White',
   },
   number_in_stock: {
     type: Number,
@@ -48,7 +48,7 @@ const BedSchema = new mongoose.Schema({
 BedSchema.virtual('category').get(() => 'beds');
 
 BedSchema.virtual('url').get(function () {
-  return `/home/beds/${this._id}`;
+  return `/beds/${this._id}`;
 });
 
 BedSchema.virtual('date_added_formatted').get(function () {

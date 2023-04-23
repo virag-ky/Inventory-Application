@@ -32,7 +32,7 @@ block content
       option(value='Beige', selected=(undefined === bag ? undefined : (bag.color === 'Beige' ? 'selected' : undefined))) Beige
     label(for='description') Description: 
     textarea#description(type='textarea', name='description', placeholder='A small sized Chihuahua handbag with 2 pockets.', required) #{undefined === bag ? '' : bag.description}
-    label(for='price') Price: 
+    label(for='price') Price/$: 
     input#price(type='number', name='price', value=(undefined === bag ? '' : parseFloat(bag.price).toFixed(2)) step='0.01' placeholder='5.00' required)
     label(for='quantity') Quantity: 
     input#quantity(type='number', name='quantity', value=(undefined === bag ? '' : bag.number_in_stock) placeholder='1', required)
