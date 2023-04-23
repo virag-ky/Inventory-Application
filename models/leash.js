@@ -3,21 +3,21 @@ const { DateTime } = require('luxon');
 
 const LeashSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  pet: { type: String, default: 'dog' },
-  name: { type: String, default: 'leash' },
+  pet: { type: String, default: 'Dog' },
+  name: { type: String, default: 'Leash' },
   description: {
     type: String,
     required: true,
     minLength: [10, 'Name must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Name is too long, must be less than or equal 50 characters.',
+      200,
+      'Name is too long, must be less than or equal 200 characters.',
     ],
   },
   color: {
     type: String,
-    enum: ['black', 'pink', 'red', 'blue'],
-    default: 'black',
+    enum: ['Black', 'Pink', 'Red', 'Blue'],
+    default: 'Black',
   },
   price: {
     type: mongoose.Decimal128,
@@ -35,7 +35,7 @@ const LeashSchema = new mongoose.Schema({
 LeashSchema.virtual('category').get(() => 'leashes');
 
 LeashSchema.virtual('url').get(function () {
-  return `/home/leashes/${this._id}`;
+  return `leashes/${this._id}`;
 });
 
 LeashSchema.virtual('date_added_formatted').get(function () {

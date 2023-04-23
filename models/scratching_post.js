@@ -3,21 +3,21 @@ const { DateTime } = require('luxon');
 
 const ScratchingPostSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  pet: { type: String, default: 'cat' },
-  name: { type: String, default: 'scratching post' },
+  pet: { type: String, default: 'Cat' },
+  name: { type: String, default: 'Scratching post' },
   description: {
     type: String,
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description is too long, must be less than or equal 50 characters.',
+      200,
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   color: {
     type: String,
-    enum: ['white', 'brown', 'beige', 'black'],
-    default: 'white',
+    enum: ['White', 'Brown', 'Beige', 'Black'],
+    default: 'White',
   },
   price: {
     type: mongoose.Decimal128,
@@ -35,7 +35,7 @@ const ScratchingPostSchema = new mongoose.Schema({
 ScratchingPostSchema.virtual('category').get(() => 'scratching posts');
 
 ScratchingPostSchema.virtual('url').get(function () {
-  return `/home/scratchingposts/${this._id}`;
+  return `/scratching-posts/${this._id}`;
 });
 
 ScratchingPostSchema.virtual('date_added_formatted').get(function () {

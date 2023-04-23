@@ -15,3 +15,15 @@ exports.leash_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display leash form
+exports.leash_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('leashes/leash_form', {
+      title: 'Add new leashes',
+      user: req.user,
+    });
+  }
+};

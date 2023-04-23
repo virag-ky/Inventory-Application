@@ -15,3 +15,12 @@ exports.toy_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display toy form
+exports.toy_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('toys/toy_form', { title: 'Add new toys', user: req.user });
+  }
+};

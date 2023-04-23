@@ -5,29 +5,29 @@ const ToySchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
-    enum: ['dog', 'cat', 'rodent', 'bird'],
-    default: 'dog',
+    enum: ['Dog', 'Cat', 'Rodent', 'Bird'],
+    default: 'Dog',
   },
   name: {
     type: String,
     enum: [
-      'chew toy',
-      'ball',
-      'plush toy',
-      'running wheel',
-      'plastic tunnel',
-      'hanging rope',
-      'branch',
+      'Chew toy',
+      'Ball',
+      'Plush toy',
+      'Running wheel',
+      'Plastic tunnel',
+      'Hanging rope',
+      'Branch',
     ],
-    default: 'chew toy',
+    default: 'Chew toy',
   },
   description: {
     type: String,
     required: true,
     minLength: [10, 'Description must be minimum 10 characters long.'],
     maxLength: [
-      50,
-      'Description is too long, must be less than or equal 50 characters.',
+      200,
+      'Description is too long, must be less than or equal 200 characters.',
     ],
   },
   price: {
@@ -46,7 +46,7 @@ const ToySchema = new mongoose.Schema({
 ToySchema.virtual('category').get(() => 'toys');
 
 ToySchema.virtual('url').get(function () {
-  return `/home/toys/${this._id}`;
+  return `/toys/${this._id}`;
 });
 
 ToySchema.virtual('date_added_formatted').get(function () {

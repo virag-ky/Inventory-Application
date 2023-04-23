@@ -17,3 +17,15 @@ exports.scratching_post_list_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display scratching post form
+exports.scratching_post_create_get = (req, res) => {
+  if (!req.user) {
+    res.redirect('/login/?message=Session%20expired.');
+  } else {
+    res.render('scratching-posts/scratching_post_form', {
+      title: 'Add new scratching posts',
+      user: req.user,
+    });
+  }
+};
