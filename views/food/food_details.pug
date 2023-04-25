@@ -1,0 +1,54 @@
+extends ../layout
+
+block content 
+
+  h1= title 
+
+  if error 
+    p= error 
+  else 
+
+    p 
+      span #[strong Username:]
+      |  !{food.user.username}
+    p 
+      span #[strong Category:]
+      |  !{food.category}
+    p 
+      span #[strong Name:]
+      |  !{food.name}
+    p 
+      span #[strong Pet:]
+      |  !{food.pet}
+    p 
+      span #[strong Type:]
+      |  !{food.food_type}
+    p 
+      span #[strong Flavor:]
+      |  !{food.flavor}
+    p 
+      span #[strong Weight:]
+      |  !{food.weight}
+    p 
+      span #[strong Description:]
+      |  !{food.description}
+    p
+      span #[strong Price:]
+      |  $!{food.price}
+    p 
+      span #[strong Number-in-Stock:]
+      |  !{food.number_in_stock}
+    p 
+      span #[strong Date added:]
+      |  !{food.date_added_formatted}
+
+    if food.user.username === user.username 
+      form(method='POST', action='')
+        input#id(type='hidden', name='id', required='true', value=food._id)
+        button(type='submit') Delete 
+
+      form(method='GET', action='/food/update/' + food._id)
+        input#food_id(type='hidden', name='food_id', required='true', value=food._id)
+        input#food_pet(type='hidden', name='food_pet', required='true', value=food.pet)
+        button(type='submit') Edit
+        

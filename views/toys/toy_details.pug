@@ -1,0 +1,45 @@
+extends ../layout
+
+block content 
+
+  h1= title 
+
+  if error 
+    p= error 
+  else 
+
+    p 
+      span #[strong Username:]
+      |  !{toy.user.username}
+    p 
+      span #[strong Category:]
+      |  !{toy.category}
+    p 
+      span #[strong Name:]
+      |  !{toy.name}
+    p 
+      span #[strong Pet:]
+      |  !{toy.pet}
+    p 
+      span #[strong Description:]
+      |  !{toy.description}
+    p
+      span #[strong Price:]
+      |  $!{toy.price}
+    p 
+      span #[strong Number-in-Stock:]
+      |  !{toy.number_in_stock}
+    p 
+      span #[strong Date added:]
+      |  !{toy.date_added_formatted}
+
+    if toy.user.username === user.username 
+      form(method='POST', action='')
+        input#id(type='hidden', name='id', required='true', value=toy._id)
+        button(type='submit') Delete 
+
+      form(method='GET', action='/toys/update/' + toy._id)
+        input#toy_id(type='hidden', name='toy_id', required='true', value=toy._id)
+        input#toy_pet(type='hidden', name='toy_pet', required='true', value=toy.pet)
+        button(type='submit') Edit
+        
