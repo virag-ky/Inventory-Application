@@ -29,3 +29,75 @@ exports.scratching_post_create_get = (req, res) => {
     });
   }
 };
+
+// Create new scratching posts
+exports.scratching_post_create_post = [
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .isNumeric()
+    .toInt()
+    .custom((value) => value >= 1)
+    .withMessage('You must add at least 1 item to the quantity field.')
+    .escape(),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const post = new ScratchingPost({
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+        color: req.body.color,
+        user: req.user._id,
+      });
+      if (!errors.isEmpty()) {
+        res.render('scratching-posts/scratching_post_form', {
+          title: 'Add new scratching posts',
+          user: req.user,
+          scratching_post: post,
+          errors: errors.array(),
+        });
+      } else {
+        await post.save();
+        const user = await User.findById(req.user._id).populate(
+          'scratching_posts'
+        );
+        user.scratching_posts.push(post);
+        await user.save();
+        res.redirect(post.url);
+      }
+    } catch (err) {
+      next(err);
+    }
+  },
+];
+
+// Get scratching post details
+exports.scratching_post_details_get = async (req, res, next) => {
+  try {
+    const post = await ScratchingPost.findById(req.params.id).populate('user');
+    if (post) {
+      if (req.user) {
+        res.render('scratching-posts/scratching_post_details', {
+          title: 'Details of the scratching post:',
+          scratching_post: post,
+          user: req.user,
+        });
+        return;
+      }
+      res.redirect('/login/?message=Session%20expired.');
+    }
+  } catch (err) {
+    next(err);
+  }
+};

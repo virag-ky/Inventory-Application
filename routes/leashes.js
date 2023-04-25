@@ -8,4 +8,10 @@ router.get('/', leashController.leash_list_get);
 // Display leash form
 router.get('/create', leashController.leash_create_get);
 
+// Create new leashes
+router.post('/create', leashController.leash_create_post);
+
+// Get leash details
+router.get('/:id', leashController.leash_details_get);
+
 module.exports = router;
