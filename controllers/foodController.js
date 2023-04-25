@@ -119,3 +119,21 @@ exports.food_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the food update form
+exports.food_update_get = async (req, res, next) => {
+  try {
+    const meal = await Food.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('food/food_form', {
+        title: 'Update food',
+        food: meal,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

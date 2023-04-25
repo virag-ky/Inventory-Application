@@ -131,7 +131,7 @@ exports.bag_update_get = async (req, res, next) => {
   try {
     const bag = await Bag.findById(req.params.id);
     if (!req.user) {
-      res.redirect('/login');
+      res.redirect('/login/?message=Session%20expired.');
     } else {
       res.render('bags/bag_form', {
         title: 'Update bag/carrier',
@@ -157,13 +157,11 @@ exports.bag_update_post = [
     .withMessage('Description must be between 10-200 characters long.')
     .escape(),
   body('price', 'Price must not be empty.')
-    .trim()
     .isDecimal({ decimal_digits: '1,3' })
     .custom((value) => value >= 0.01)
     .withMessage('Price must be greater than $0.')
     .escape(),
   body('quantity', 'Quantity must not be empty.')
-    .trim()
     .isNumeric()
     .toInt()
     .custom((value) => value > 0)

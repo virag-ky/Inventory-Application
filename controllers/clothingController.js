@@ -126,3 +126,21 @@ exports.clothing_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the clothing update form
+exports.clothing_update_get = async (req, res, next) => {
+  try {
+    const clothing = await Clothing.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('clothes/clothing_form', {
+        title: 'Update clothing',
+        clothing,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

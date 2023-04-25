@@ -17,4 +17,7 @@ router.get('/:id', clothingController.clothing_details_get);
 // Delete the clothing
 router.post('/:id', clothingController.clothing_delete);
 
+// Display the update form
+router.get('/update/:id', clothingController.clothing_update_get);
+
 module.exports = router;

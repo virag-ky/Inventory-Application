@@ -111,3 +111,21 @@ exports.toy_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the toy update form
+exports.toy_update_get = async (req, res, next) => {
+  try {
+    const toy = await Toy.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('toys/toy_form', {
+        title: 'Update toy',
+        toy,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

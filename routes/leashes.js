@@ -17,4 +17,7 @@ router.get('/:id', leashController.leash_details_get);
 // Delete the leash
 router.post('/:id', leashController.leash_delete);
 
+// Display the update form
+router.get('/update/:id', leashController.leash_update_get);
+
 module.exports = router;

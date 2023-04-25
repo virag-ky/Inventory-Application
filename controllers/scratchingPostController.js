@@ -119,3 +119,21 @@ exports.scratching_post_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the scratching post update form
+exports.scratching_post_update_get = async (req, res, next) => {
+  try {
+    const post = await ScratchingPost.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('scratching-posts/scratching_post_form', {
+        title: 'Update scratching post',
+        scratching_post: post,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

@@ -115,3 +115,21 @@ exports.hygiene_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the hygiene update form
+exports.hygiene_update_get = async (req, res, next) => {
+  try {
+    const product = await Hygiene.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('hygiene/hygiene_form', {
+        title: 'Update hygiene product',
+        hygiene: product,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

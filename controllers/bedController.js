@@ -121,3 +121,21 @@ exports.bed_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the bed update form
+exports.bed_update_get = async (req, res, next) => {
+  try {
+    const bed = await Bed.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('beds/bed_form', {
+        title: 'Update bed',
+        bed,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

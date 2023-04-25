@@ -115,3 +115,21 @@ exports.leash_delete = async (req, res, next) => {
     next(err);
   }
 };
+
+// Display the update form
+exports.leash_update_get = async (req, res, next) => {
+  try {
+    const leash = await Leash.findById(req.params.id);
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+    } else {
+      res.render('leashes/leash_form', {
+        title: 'Update leash',
+        leash,
+        user: req.user,
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};

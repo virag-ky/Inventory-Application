@@ -17,4 +17,7 @@ router.get('/:id', scratchingPostController.scratching_post_details_get);
 // Delete scratching post
 router.post('/:id', scratchingPostController.scratching_post_delete);
 
+// Display the update form
+router.get('/update/:id', scratchingPostController.scratching_post_update_get);
+
 module.exports = router;

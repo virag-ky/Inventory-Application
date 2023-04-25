@@ -17,4 +17,7 @@ router.get('/:id', foodController.food_details_get);
 // Delete the food
 router.post('/:id', foodController.food_delete);
 
+// Display the update form
+router.get('/update/:id', foodController.food_update_get);
+
 module.exports = router;
