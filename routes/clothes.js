@@ -20,4 +20,7 @@ router.post('/:id', clothingController.clothing_delete);
 // Display the update form
 router.get('/update/:id', clothingController.clothing_update_get);
 
+// Update the clothing
+router.post('/update:id', clothingController.clothing_update_post);
+
 module.exports = router;

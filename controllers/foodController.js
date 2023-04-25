@@ -137,3 +137,55 @@ exports.food_update_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Update the food
+exports.food_update_post = [
+  body('name', 'Name must not be empty.')
+    .trim()
+    .isLength({ min: 3, max: 25 })
+    .withMessage('Name must be between 3-25 characters long.')
+    .escape(),
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .isNumeric()
+    .toInt()
+    .custom((value) => value > 0)
+    .withMessage('You must add at least 1 item in the quantity field.'),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const food = {
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+        flavor: req.body.flavor,
+        food_type: req.body.type,
+        weight: req.body.weight,
+      };
+      if (!errors.isEmpty()) {
+        res.render('food/food_form', {
+          title: 'Update food',
+          food,
+          errors: errors.array(),
+          user: req.user,
+        });
+        return;
+      }
+      await Food.findByIdAndUpdate(req.params.id, food, {});
+      res.redirect(`/food/${req.params.id}`);
+    } catch (err) {
+      next(err);
+    }
+  },
+];

@@ -20,4 +20,7 @@ router.post('/:id', bedController.bed_delete);
 // Display the update form
 router.get('/update/:id', bedController.bed_update_get);
 
+// Update the bed
+router.post('/update:id', bedController.bed_update_post);
+
 module.exports = router;

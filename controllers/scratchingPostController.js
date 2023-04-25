@@ -137,3 +137,48 @@ exports.scratching_post_update_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Update the scratching post
+exports.scratching_post_update_post = [
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .isNumeric()
+    .toInt()
+    .custom((value) => value > 0)
+    .withMessage('You must add at least 1 item in the quantity field.'),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const post = {
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+        color: req.body.color,
+      };
+      if (!errors.isEmpty()) {
+        res.render('scratching-posts/scratching_post_form', {
+          title: 'Update scratching post',
+          scratching_post: post,
+          errors: errors.array(),
+          user: req.user,
+        });
+        return;
+      }
+      await ScratchingPost.findByIdAndUpdate(req.params.id, post, {});
+      res.redirect(`/scratching-posts/${req.params.id}`);
+    } catch (err) {
+      next(err);
+    }
+  },
+];

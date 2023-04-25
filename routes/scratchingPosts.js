@@ -20,4 +20,7 @@ router.post('/:id', scratchingPostController.scratching_post_delete);
 // Display the update form
 router.get('/update/:id', scratchingPostController.scratching_post_update_get);
 
+// Update the scratching post
+router.post('/update:id', scratchingPostController.scratching_post_update_post);
+
 module.exports = router;

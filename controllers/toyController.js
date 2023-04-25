@@ -129,3 +129,47 @@ exports.toy_update_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Update the toy
+exports.toy_update_post = [
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .isNumeric()
+    .toInt()
+    .custom((value) => value > 0)
+    .withMessage('You must add at least 1 item in the quantity field.'),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const toy = {
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+      };
+      if (!errors.isEmpty()) {
+        res.render('toys/toy_form', {
+          title: 'Update toy',
+          toy,
+          errors: errors.array(),
+          user: req.user,
+        });
+        return;
+      }
+      await Toy.findByIdAndUpdate(req.params.id, toy, {});
+      res.redirect(`/toys/${req.params.id}`);
+    } catch (err) {
+      next(err);
+    }
+  },
+];

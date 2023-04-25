@@ -20,4 +20,7 @@ router.post('/:id', toyController.toy_delete);
 // Display the update form
 router.get('/update/:id', toyController.toy_update_get);
 
+// Update the toy
+router.post('/update:id', toyController.toy_update_post);
+
 module.exports = router;

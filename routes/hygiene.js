@@ -20,4 +20,7 @@ router.post('/:id', hygieneController.hygiene_delete);
 // Display the update form
 router.get('/update/:id', hygieneController.hygiene_update_get);
 
+// Update the hygiene product
+router.post('/update:id', hygieneController.hygiene_update_post);
+
 module.exports = router;
