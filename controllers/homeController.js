@@ -14,7 +14,15 @@ const getSumOfItems = (array) =>
 
 // Get the items count helper function
 const getItemsCount = async (req) => {
-  const currentUser = await User.findById(req.user._id).populate('bags');
+  const currentUser = await User.findById(req.user._id)
+    .populate('bags')
+    .populate('beds')
+    .populate('clothes')
+    .populate('hygiene')
+    .populate('leashes')
+    .populate('toys')
+    .populate('food')
+    .populate('scratching_posts');
   const bagCount = getSumOfItems(currentUser.bags);
   const bedCount = getSumOfItems(currentUser.beds);
   const foodCount = getSumOfItems(currentUser.food);
@@ -46,7 +54,7 @@ const getItemsCount = async (req) => {
 };
 
 // Home page
-exports.index = async (req, res) => {
+exports.index = async (req, res, next) => {
   try {
     const user = req.user;
     if (user) {

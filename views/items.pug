@@ -50,7 +50,7 @@ block content
           div(style='border:solid black;margin-bottom:25px')
             span #[strong Name:] !{clothing.name}
             br
-            span #[strong Price:] !{clothing.price}
+            span #[strong Price:] $!{clothing.price}
             br
             span #[strong Number-in-Stock] !{clothing.number_in_stock}
     else 
@@ -67,7 +67,7 @@ block content
           div(style='border:solid black;margin-bottom:25px')
             span #[strong Name:] !{meal.name}
             br
-            span #[strong Price:] !{meal.price}
+            span #[strong Price:] $!{meal.price}
             br
             span #[strong Number-in-Stock:] !{meal.number_in_stock}
     else 
@@ -84,7 +84,7 @@ block content
           div 
             span #[strong Name:] !{product.name}
             br
-            span #[strong Price:] !{product.price}
+            span #[strong Price:] $!{product.price}
             br
             span #[strong Number-in-Stock:] !{product.number_in_stock}
     else 
@@ -101,7 +101,7 @@ block content
           div 
             span #[strong Name:] !{leash.name}
             br
-            span #[strong Price:] !{leash.price}
+            span #[strong Price:] $!{leash.price}
             br
             span #[strong Number-in-Stock:] !{leash.number_in_stock}
     else 
@@ -111,14 +111,14 @@ block content
     h2 Scratching Posts: #{scratchingPostCount}
     br
     span 
-      a(href='/scratchingposts/create') Add New 
+      a(href='/scratching-posts/create') Add New 
     if scratching_posts.length > 0
       each post in scratching_posts 
         a(href=post.url)
           div 
             span #[strong Name:] !{post.name}
             br
-            span #[strong Price:] !{post.price}
+            span #[strong Price:] $!{post.price}
             br
             span #[strong Number-in-Stock:] !{post.number_in_stock}
     else 
@@ -135,7 +135,7 @@ block content
           div 
             span #[strong Name:] !{toy.name}
             br
-            span #[strong Price:] !{toy.price}
+            span #[strong Price:] $!{toy.price}
             br
             span #[strong Number-in-Stock:] !{toy.number_in_stock}
     else 

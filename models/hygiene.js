@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { DateTime } = require('luxon');
 
-const HygieneStuffSchema = new mongoose.Schema({
+const HygieneSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: {
     type: String,
@@ -44,14 +44,14 @@ const HygieneStuffSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-HygieneStuffSchema.virtual('category').get(() => 'hygiene products');
+HygieneSchema.virtual('category').get(() => 'hygiene products');
 
-HygieneStuffSchema.virtual('url').get(function () {
+HygieneSchema.virtual('url').get(function () {
   return `/hygiene/${this._id}`;
 });
 
-HygieneStuffSchema.virtual('date_added_formatted').get(function () {
+HygieneSchema.virtual('date_added_formatted').get(function () {
   return DateTime.fromJSDate(this.date_added).toLocaleString(DateTime.DATE_MED);
 });
 
-module.exports = mongoose.model('HygieneStuff', HygieneStuffSchema);
+module.exports = mongoose.model('Hygiene', HygieneSchema);

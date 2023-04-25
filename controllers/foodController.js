@@ -24,3 +24,80 @@ exports.food_create_get = (req, res) => {
     res.render('food/food_form', { title: 'Add new food', user: req.user });
   }
 };
+
+// Create new food
+exports.food_create_post = [
+  body('name', 'Name must not be empty.')
+    .trim()
+    .isLength({ min: 3, max: 25 })
+    .withMessage('Name must be between 3-25 characters long.')
+    .escape(),
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 10, max: 200 })
+    .withMessage('Description must be between 10-200 characters long.')
+    .escape(),
+  body('price', 'Price must not be empty.')
+    .isDecimal({ decimal_digits: '1,3' })
+    .custom((value) => value >= 0.01)
+    .withMessage('Price must be greater than $0.')
+    .escape(),
+  body('quantity', 'Quantity must not be empty.')
+    .isNumeric()
+    .toInt()
+    .custom((value) => value >= 1)
+    .withMessage('You must add at least 1 item to the quantity field.')
+    .escape(),
+  async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      const meal = new Food({
+        pet: req.body.pet,
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        number_in_stock: req.body.quantity,
+        flavor: req.body.flavor,
+        weight: req.body.weight,
+        food_type: req.body.type,
+        user: req.user._id,
+      });
+      if (!errors.isEmpty()) {
+        res.render('food/food_form', {
+          title: 'Add new food',
+          food: meal,
+          user: req.user,
+          errors: errors.array(),
+        });
+      } else {
+        await meal.save();
+        const user = await User.findById(req.user._id).populate('food');
+        user.food.push(meal);
+        await user.save();
+        res.redirect(meal.url);
+      }
+    } catch (err) {
+      next(err);
+    }
+  },
+];
+
+// Get food details
+exports.food_details_get = async (req, res, next) => {
+  try {
+    const meal = await Food.findById(req.params.id).populate('user');
+    if (meal) {
+      if (req.user) {
+        res.render('food/food_details', {
+          title: 'Details of the food:',
+          food: meal,
+          user: req.user,
+        });
+        return;
+      }
+      res.redirect('/login/?message=Session%20expired.');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
