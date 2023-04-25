@@ -42,13 +42,12 @@ exports.bag_create_post = [
     .withMessage('Description must be between 10-200 characters long.')
     .escape(),
   body('price', 'Price must not be empty.')
-    .trim()
+    // number being checked must have between 1 and 3 decimal digits, inclusive
     .isDecimal({ decimal_digits: '1,3' })
     .custom((value) => value >= 0.01)
     .withMessage('Price must be greater than $0.')
     .escape(),
   body('quantity', 'Quantity must not be empty.')
-    .trim()
     .isNumeric()
     .toInt()
     .custom((value) => value >= 1)
@@ -102,7 +101,7 @@ exports.bag_details_get = async (req, res, next) => {
         });
         return;
       }
-      res.redirect('/login');
+      res.redirect('/login/?message=Session%20expired.');
     }
   } catch (err) {
     next(err);
