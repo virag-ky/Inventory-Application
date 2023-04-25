@@ -103,3 +103,21 @@ exports.bed_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the bed
+exports.bed_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+    await Bed.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { beds: req.body.id } }
+    );
+    res.redirect('/beds');
+  } catch (err) {
+    next(err);
+  }
+};

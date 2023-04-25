@@ -50,7 +50,7 @@ const BagSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-BagSchema.virtual('category').get(() => 'bags/carriers');
+BagSchema.virtual('category').get(() => 'Bags/Carriers');
 
 BagSchema.virtual('url').get(function () {
   return `/bags/${this._id}`;

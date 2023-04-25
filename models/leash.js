@@ -4,7 +4,7 @@ const { DateTime } = require('luxon');
 const LeashSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: { type: String, default: 'Dog' },
-  name: { type: String, default: 'Leash' },
+  name: { type: String, default: 'Dog leash' },
   description: {
     type: String,
     required: true,
@@ -32,10 +32,10 @@ const LeashSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-LeashSchema.virtual('category').get(() => 'leashes');
+LeashSchema.virtual('category').get(() => 'Leashes');
 
 LeashSchema.virtual('url').get(function () {
-  return `leashes/${this._id}`;
+  return `/leashes/${this._id}`;
 });
 
 LeashSchema.virtual('date_added_formatted').get(function () {

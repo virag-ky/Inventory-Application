@@ -14,4 +14,7 @@ router.post('/create', scratchingPostController.scratching_post_create_post);
 // Get scratching post details
 router.get('/:id', scratchingPostController.scratching_post_details_get);
 
+// Delete scratching post
+router.post('/:id', scratchingPostController.scratching_post_delete);
+
 module.exports = router;

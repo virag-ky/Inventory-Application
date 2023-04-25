@@ -50,7 +50,7 @@ const ClothingSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-ClothingSchema.virtual('category').get(() => 'clothing');
+ClothingSchema.virtual('category').get(() => 'Clothing');
 
 ClothingSchema.virtual('url').get(function () {
   return `/clothes/${this._id}`;

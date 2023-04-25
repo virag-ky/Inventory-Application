@@ -14,4 +14,7 @@ router.post('/create', hygieneController.hygiene_create_post);
 // Get hygiene product details
 router.get('/:id', hygieneController.hygiene_details_get);
 
+// Delete the hygiene product
+router.post('/:id', hygieneController.hygiene_delete);
+
 module.exports = router;

@@ -14,4 +14,7 @@ router.post('/create', clothingController.clothing_create_post);
 // Get clothing details
 router.get('/:id', clothingController.clothing_details_get);
 
+// Delete the clothing
+router.post('/:id', clothingController.clothing_delete);
+
 module.exports = router;

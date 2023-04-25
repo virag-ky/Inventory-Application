@@ -111,7 +111,15 @@ exports.bag_details_get = async (req, res, next) => {
 // Delete the bag
 exports.bag_delete = async (req, res, next) => {
   try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
     await Bag.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { bags: req.body.id } }
+    );
     res.redirect('/bags');
   } catch (err) {
     next(err);

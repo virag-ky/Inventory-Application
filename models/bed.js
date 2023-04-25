@@ -45,7 +45,7 @@ const BedSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-BedSchema.virtual('category').get(() => 'beds');
+BedSchema.virtual('category').get(() => 'Beds');
 
 BedSchema.virtual('url').get(function () {
   return `/beds/${this._id}`;

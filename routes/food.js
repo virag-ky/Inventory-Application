@@ -14,4 +14,7 @@ router.post('/create', foodController.food_create_post);
 // Get food details
 router.get('/:id', foodController.food_details_get);
 
+// Delete the food
+router.post('/:id', foodController.food_delete);
+
 module.exports = router;

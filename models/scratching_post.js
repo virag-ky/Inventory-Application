@@ -4,7 +4,7 @@ const { DateTime } = require('luxon');
 const ScratchingPostSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   pet: { type: String, default: 'Cat' },
-  name: { type: String, default: 'Scratching post' },
+  name: { type: String, default: 'Cat scratching post' },
   description: {
     type: String,
     required: true,
@@ -32,7 +32,7 @@ const ScratchingPostSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-ScratchingPostSchema.virtual('category').get(() => 'scratching posts');
+ScratchingPostSchema.virtual('category').get(() => 'Scratching posts');
 
 ScratchingPostSchema.virtual('url').get(function () {
   return `/scratching-posts/${this._id}`;

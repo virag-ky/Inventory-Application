@@ -14,4 +14,7 @@ router.post('/create', toyController.toy_create_post);
 // Get toy details
 router.get('/:id', toyController.toy_details_get);
 
+// Delete the toy
+router.post('/:id', toyController.toy_delete);
+
 module.exports = router;

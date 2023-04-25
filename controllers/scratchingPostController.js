@@ -101,3 +101,21 @@ exports.scratching_post_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the scratching post
+exports.scratching_post_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+    await ScratchingPost.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { scratching_post: req.body.id } }
+    );
+    res.redirect('/scratching-posts');
+  } catch (err) {
+    next(err);
+  }
+};

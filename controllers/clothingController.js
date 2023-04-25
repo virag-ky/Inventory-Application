@@ -108,3 +108,21 @@ exports.clothing_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the clothing
+exports.clothing_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+    await Clothing.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { clothes: req.body.id } }
+    );
+    res.redirect('/clothes');
+  } catch (err) {
+    next(err);
+  }
+};

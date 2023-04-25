@@ -97,3 +97,21 @@ exports.leash_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the leash
+exports.leash_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+    await Leash.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { leashes: req.body.id } }
+    );
+    res.redirect('/leashes');
+  } catch (err) {
+    next(err);
+  }
+};

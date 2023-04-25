@@ -61,10 +61,10 @@ const FoodSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-FoodSchema.virtual('category').get(() => 'foods');
+FoodSchema.virtual('category').get(() => 'Food');
 
 FoodSchema.virtual('url').get(function () {
-  return `/foods/${this._id}`;
+  return `/food/${this._id}`;
 });
 
 FoodSchema.virtual('date_added_formatted').get(function () {

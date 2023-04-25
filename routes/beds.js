@@ -14,4 +14,7 @@ router.post('/create', bedController.bed_create_post);
 // Get the bed's details
 router.get('/:id', bedController.bed_details_get);
 
+// Delete the bed
+router.post('/:id', bedController.bed_delete);
+
 module.exports = router;

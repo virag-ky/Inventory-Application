@@ -43,7 +43,7 @@ const ToySchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-ToySchema.virtual('category').get(() => 'toys');
+ToySchema.virtual('category').get(() => 'Toys');
 
 ToySchema.virtual('url').get(function () {
   return `/toys/${this._id}`;

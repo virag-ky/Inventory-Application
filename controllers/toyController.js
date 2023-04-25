@@ -93,3 +93,21 @@ exports.toy_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the toy
+exports.toy_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+    await Toy.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { toys: req.body.id } }
+    );
+    res.redirect('/toys');
+  } catch (err) {
+    next(err);
+  }
+};

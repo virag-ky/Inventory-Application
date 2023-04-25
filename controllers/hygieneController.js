@@ -96,3 +96,22 @@ exports.hygiene_details_get = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete the hygiene product
+exports.hygiene_delete = async (req, res, next) => {
+  try {
+    if (!req.user) {
+      res.redirect('/login/?message=Session%20expired.');
+      return;
+    }
+
+    await Hygiene.findByIdAndRemove(req.body.id);
+    await User.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $pull: { hygiene: req.body.id } }
+    );
+    res.redirect('/hygiene');
+  } catch (err) {
+    next(err);
+  }
+};

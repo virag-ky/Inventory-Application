@@ -14,4 +14,7 @@ router.post('/create', leashController.leash_create_post);
 // Get leash details
 router.get('/:id', leashController.leash_details_get);
 
+// Delete the leash
+router.post('/:id', leashController.leash_delete);
+
 module.exports = router;

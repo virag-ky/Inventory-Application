@@ -44,7 +44,7 @@ const HygieneSchema = new mongoose.Schema({
   date_added: { type: Date, default: Date.now },
 });
 
-HygieneSchema.virtual('category').get(() => 'hygiene products');
+HygieneSchema.virtual('category').get(() => 'Hygiene products');
 
 HygieneSchema.virtual('url').get(function () {
   return `/hygiene/${this._id}`;
