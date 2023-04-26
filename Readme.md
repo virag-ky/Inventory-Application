@@ -10,3 +10,14 @@
 - <a href="https://www.flaticon.com/free-icons/leash" title="leash icons">Leash icons created by Freepik - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/paw" title="paw icons">Paw icons created by afif fudin - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/animals" title="animals icons">Animals icons created by Freepik - Flaticon</a>
+
+## Images
+
+- <a href="https://storyset.com/friends">Friends illustrations by Storyset</a>
+- <a href="https://storyset.com/friends">Friends illustrations by Storyset</a>
+- <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
+- <a href="https://storyset.com/home">Home illustrations by Storyset</a>
+- <a href="https://storyset.com/home">Home illustrations by Storyset</a>
+- <a href="https://storyset.com/food">Food illustrations by Storyset</a>
+- <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
+- <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>

@@ -32,6 +32,10 @@ block content
               a(href='/toys') #[strong Toys]
 
     else
-      a(href='/new-user') New User 
-      br
-      a(href='/login') Login
+      div.login-page
+        img.main-image(src='/images/main_image.png', alt='cat and dog')
+        div.login-container
+          a(href='/new-user')
+            button Sign Up
+          a(href='/login')
+            button Login

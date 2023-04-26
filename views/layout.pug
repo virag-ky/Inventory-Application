@@ -1,24 +1,24 @@
 doctype html
 html
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon' href='/images/pet-logo.png')
   body
-    header 
-      nav 
-        a(href='/') Pet Shop Inventory
+    nav 
 
-        if user
-          ul 
-            li 
-              a(href='/') Home 
-            li 
-              a(href='/log-out') Log out
-            li 
-              div
-                img(src='/uploads/' + user.avatar, alt='profile', width='50px')
-                span= user.username
+      if user
+        a.logo(href='/') Pet Shop Inventory
+        ul 
+          li 
+            a(href='/') Home 
+          li 
+            a(href='/log-out') Log out
+          li 
+            div
+              img(src='/uploads/' + user.avatar, alt='profile', width='50px')
+              span= user.username
     if user 
       a(href='javascript:void(0)', onclick='goBack()') Go Back
 

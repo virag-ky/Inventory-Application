@@ -25,7 +25,8 @@
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "sass": "^1.62.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

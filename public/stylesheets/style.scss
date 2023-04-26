@@ -1,0 +1,43 @@
+@use 'base';
+
+nav {
+  .logo {
+    font-family: base.$title;
+  }
+}
+
+div.login-page {
+  width: 70%;
+  max-width: 500px;
+  margin-top: 50px;
+
+  img.main-image {
+    width: 100%;
+  }
+
+  div.login-container {
+    @extend %centered;
+
+    flex-direction: row;
+    gap: 25px;
+    height: 100px;
+
+    button {
+      color: base.$secondary-color1;
+      font-weight: 700;
+      font-size: 1rem;
+      background: base.$primary-color;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 12px;
+      width: 120px;
+      box-shadow: 5px 5px 0 base.$secondary-color1;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: none;
+        margin-top: 5px;
+      }
+    }
+  }
+}

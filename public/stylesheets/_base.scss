@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap');
+
+$primary-color: #92e3a9;
+$secondary-color1: #263238;
+$secondary-color2: #629871;
+$title: 'Chewy', sans-serif;
+$font-stack: 'Baloo 2', sans-serif;
+
+%centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+}
+
+body {
+  height: 100vh;
+  @extend %centered;
+
+  h1 {
+    color: $secondary-color1;
+  }
+}

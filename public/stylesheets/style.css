@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap");
+div.login-page div.login-container, body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Baloo 2", sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+body h1 {
+  color: #263238;
+}
+
+nav .logo {
+  font-family: "Chewy", sans-serif;
+}
+
+div.login-page {
+  width: 70%;
+  max-width: 500px;
+  margin-top: 50px;
+}
+div.login-page img.main-image {
+  width: 100%;
+}
+div.login-page div.login-container {
+  flex-direction: row;
+  gap: 25px;
+  height: 100px;
+}
+div.login-page div.login-container button {
+  color: #263238;
+  font-weight: 700;
+  font-size: 1rem;
+  background: #92e3a9;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  width: 120px;
+  box-shadow: 5px 5px 0 #263238;
+}
+div.login-page div.login-container button:hover {
+  cursor: pointer;
+  box-shadow: none;
+  margin-top: 5px;
+}/*# sourceMappingURL=style.css.map */
