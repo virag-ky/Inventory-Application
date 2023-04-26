@@ -6,7 +6,8 @@ nav {
   }
 }
 
-div.login-page {
+// Intro page
+div.intro-page {
   width: 70%;
   max-width: 500px;
   margin-top: 50px;
@@ -15,7 +16,7 @@ div.login-page {
     width: 100%;
   }
 
-  div.login-container {
+  div.intro-container {
     @extend %centered;
 
     flex-direction: row;
@@ -23,21 +24,91 @@ div.login-page {
     height: 100px;
 
     button {
-      color: base.$secondary-color1;
-      font-weight: 700;
-      font-size: 1rem;
-      background: base.$primary-color;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 12px;
-      width: 120px;
-      box-shadow: 5px 5px 0 base.$secondary-color1;
+      @extend %button;
 
       &:hover {
-        cursor: pointer;
-        box-shadow: none;
-        margin-top: 5px;
+        @extend %button-hover;
       }
     }
   }
+}
+
+// Sign up page
+div.signup-page {
+  width: 80%;
+  max-width: 500px;
+
+  @extend %centered;
+  div.title {
+    margin-bottom: 50px;
+
+    div.decor {
+      width: 100px;
+      height: 3px;
+      border-radius: 3px;
+      background: base.$primary-color;
+      margin: 0 auto;
+    }
+  }
+
+  p.error {
+    color: red;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    margin-top: 25px;
+    @extend %centered;
+    align-items: flex-start;
+    gap: 20px;
+
+    input,
+    label {
+      width: 100%;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: -15px;
+    }
+
+    input {
+      border-radius: 5px;
+      font-size: 1rem;
+      border: none;
+      outline: 2px solid base.$secondary-color1;
+      padding: 5px;
+
+      &:focus {
+        outline: solid base.$primary-color;
+      }
+    }
+
+    input#avatar {
+      outline: none;
+    }
+  }
+
+  div.signup-container {
+    width: 100%;
+    height: 100px;
+    @extend %centered;
+    flex-direction: row;
+    gap: 25px;
+
+    button {
+      @extend %button;
+
+      &:hover {
+        @extend %button-hover;
+      }
+    }
+  }
+}
+
+// Login page
+div.login-page {
 }

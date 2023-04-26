@@ -13,6 +13,24 @@ $font-stack: 'Baloo 2', sans-serif;
   align-items: center;
 }
 
+%button {
+  color: $secondary-color1;
+  font-weight: 700;
+  font-size: 1rem;
+  background: $primary-color;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px;
+  width: 120px;
+  box-shadow: 5px 5px 0 $secondary-color1;
+}
+
+%button-hover {
+  cursor: pointer;
+  box-shadow: none;
+  margin-top: 5px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +40,7 @@ $font-stack: 'Baloo 2', sans-serif;
 
 body {
   height: 100vh;
+  color: $secondary-color1;
   @extend %centered;
 
   h1 {

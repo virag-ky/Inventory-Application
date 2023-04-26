@@ -2,21 +2,25 @@ extends layout
 
 block content 
 
-  h1 Login
+  div.login-page
 
-  if errorMsg 
-    p= errorMsg
+    div.title
+      h1 Login
+      div.decor
 
-  if message 
-    p= message
+    if errorMsg 
+      p= errorMsg
 
-  form(method='POST', action='')
-    section 
+    if message 
+      p= message
+
+    form(method='POST', id='login-form' action='')
       label(for='username') Username: 
       input#username(type='text', name='username', autocomplete='username', required, autofocus)
-    section 
       label(for='current-password') Password: 
       input#current-password(type='password', name='password', autocomplete='current-password', required)
-    button(type='submit') Login
 
-  a(href='/') Go back
+    div.login-container
+      button(type='submit', form='login-form') Login
+      a(href='/') 
+        button Go Back

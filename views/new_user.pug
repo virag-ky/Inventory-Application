@@ -2,21 +2,23 @@ extends layout
 
 block content 
 
-  h1 Create a new user
+  div.signup-page
+    div.title
+      h1 Create a new user
+      div.decor
 
-  if error 
-    p= error
+    if error 
+      p.error= error
 
-  form(method='POST', action='', enctype='multipart/form-data')
-    section 
+    form(method='POST', id='signup-form', action='', enctype='multipart/form-data')
       label(for='avatar') Profile picture: 
       input#avatar(type='file', name='avatar', multiple)
-    section 
       label(for='username') Username: 
       input#username(type='text', name='username', required, autofocus) 
-    section
       label(for='password') Password: 
       input#password(type='password', name='password', required)
-    button(type='submit') Sign Up
-
-  a(href='/') Go back
+      
+    div.signup-container
+      button(type='submit', form='signup-form') Sign Up
+      a(href='/')
+        button Go Back
