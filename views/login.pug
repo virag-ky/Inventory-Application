@@ -9,10 +9,10 @@ block content
       div.decor
 
     if errorMsg 
-      p= errorMsg
+      p.error= errorMsg
 
     if message 
-      p= message
+      p.info= message
 
     form(method='POST', id='login-form' action='')
       label(for='username') Username: 
