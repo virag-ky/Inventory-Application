@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap");
-nav, nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.home-page, div.home-page div.welcome-container, div.home-page div.category, div.home-page ul li a, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
+nav, nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.home-page, div.home-page div.welcome-container, div.home-page div.category, div.home-page ul li a, div.items-page, div.items-page div.title, div.items-page div.category, div.items-page div.category a div.item, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,7 @@ div.signup-page p.error, div.login-page p.error, div.signup-page p.info, div.log
   font-size: 1.1rem;
 }
 
-div.home-page div.category div.decor, div.signup-page div.title div.decor, div.login-page div.title div.decor {
+div.home-page div.category div.decor, div.items-page div.title div.decor, div.signup-page div.title div.decor, div.login-page div.title div.decor {
   width: 100px;
   height: 3px;
   border-radius: 3px;
@@ -46,6 +46,7 @@ div.home-page div.category div.decor, div.signup-page div.title div.decor, div.l
 }
 
 body {
+  min-height: 100vh;
   color: #263238;
 }
 body h1 {
@@ -242,7 +243,13 @@ div.home-page {
 div.home-page div.welcome-container {
   flex-direction: row;
   padding: 0 10px;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+}
+@media only screen and (min-width: 1440px) {
+  div.home-page div.welcome-container {
+    height: 70vh;
+    width: 80vw;
+  }
 }
 div.home-page div.welcome-container div.welcome-text h1 {
   color: #629871;
@@ -251,7 +258,7 @@ div.home-page div.welcome-container div.welcome-text h1 {
 @media only screen and (min-width: 601px) {
   div.home-page div.welcome-container div.welcome-text h1 {
     font-size: 2rem;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
   }
 }
 div.home-page div.welcome-container div.welcome-text p {
@@ -285,7 +292,7 @@ div.home-page div.welcome-container img {
   max-width: 600px;
 }
 div.home-page div.category {
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 div.home-page div.category h2 {
   font-size: 1.4rem;
@@ -305,7 +312,8 @@ div.home-page ul {
   div.home-page ul {
     -moz-column-gap: 25px;
          column-gap: 25px;
-    row-gap: 25px;
+    row-gap: 50px;
+    width: 40vw;
   }
 }
 div.home-page ul li {
@@ -319,7 +327,7 @@ div.home-page ul li a {
 }
 @media only screen and (min-width: 601px) {
   div.home-page ul li a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }
 div.home-page ul li a img {
@@ -327,9 +335,103 @@ div.home-page ul li a img {
 }
 @media only screen and (min-width: 601px) {
   div.home-page ul li a img {
-    width: 80px;
+    width: 100px;
   }
 }
 div.home-page ul li a:hover {
   color: orange;
+}
+
+div.items-page {
+  margin: 100px 0;
+  width: 100%;
+  padding: 0 10px;
+}
+@media only screen and (min-width: 601px) {
+  div.items-page {
+    width: 60%;
+    max-width: 500px;
+  }
+}
+div.items-page div.title {
+  margin-bottom: 80px;
+}
+div.items-page div.title h1 {
+  font-size: 1.5rem;
+}
+@media only screen and (min-width: 1440px) {
+  div.items-page div.title h1 {
+    font-size: 1.8rem;
+  }
+}
+div.items-page div.category {
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 25px;
+}
+div.items-page div.category h2 {
+  font-size: 1.3rem;
+}
+@media only screen and (min-width: 1440px) {
+  div.items-page div.category h2 {
+    font-size: 1.6rem;
+  }
+}
+div.items-page div.category a.add {
+  color: #263238;
+  font-weight: 700;
+  background: #92e3a9;
+  border-radius: 5px;
+  padding: 5px;
+}
+div.items-page div.category a.add:hover {
+  background: #629871;
+  color: #fff;
+}
+div.items-page div.category a {
+  width: 100%;
+}
+div.items-page div.category a div.item {
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: solid #263238;
+}
+div.items-page div.category a div.item div.info {
+  width: 60%;
+}
+@media only screen and (min-width: 1440px) {
+  div.items-page div.category a div.item div.info {
+    font-size: 1.2rem;
+  }
+}
+div.items-page div.category a div.item div.info span {
+  color: #263238;
+  font-weight: 700;
+  word-break: break-all;
+}
+div.items-page div.category a div.item img {
+  width: 50px;
+}
+div.items-page div.category a div.item:hover {
+  background: rgb(255, 191, 72);
+}
+div.items-page div.category p {
+  font-weight: 700;
+  margin-top: 20px;
+}
+@media only screen and (min-width: 1440px) {
+  div.items-page div.category p {
+    font-size: 1.2rem;
+  }
+}
+div.items-page div.divider {
+  width: 100%;
+  height: 3px;
+  background: #629871;
+  margin-bottom: 25px;
 }/*# sourceMappingURL=style.css.map */

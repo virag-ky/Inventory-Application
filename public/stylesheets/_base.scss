@@ -73,6 +73,7 @@ $font-stack: 'Baloo 2', sans-serif;
 }
 
 body {
+  min-height: 100vh;
   color: $secondary-color1;
   @extend %centered;
 

@@ -191,7 +191,12 @@ div.home-page {
     @extend %centered;
     flex-direction: row;
     padding: 0 10px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
+
+    @include base.devices(desktop) {
+      height: 70vh;
+      width: 80vw;
+    }
 
     div.welcome-text {
       h1 {
@@ -200,7 +205,7 @@ div.home-page {
 
         @include base.devices(tablet) {
           font-size: 2rem;
-          margin-bottom: 25px;
+          margin-bottom: 50px;
         }
       }
 
@@ -243,7 +248,7 @@ div.home-page {
 
   div.category {
     @extend %centered;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 
     h2 {
       font-size: 1.4rem;
@@ -266,7 +271,8 @@ div.home-page {
 
     @include base.devices(tablet) {
       column-gap: 25px;
-      row-gap: 25px;
+      row-gap: 50px;
+      width: 40vw;
     }
 
     li {
@@ -280,14 +286,14 @@ div.home-page {
         font-weight: 700;
 
         @include base.devices(tablet) {
-          font-size: 1.1rem;
+          font-size: 1.2rem;
         }
 
         img {
           width: 50px;
 
           @include base.devices(tablet) {
-            width: 80px;
+            width: 100px;
           }
         }
 
@@ -296,5 +302,117 @@ div.home-page {
         }
       }
     }
+  }
+}
+
+// Item's page
+div.items-page {
+  @extend %centered;
+  margin: 100px 0;
+  width: 100%;
+  padding: 0 10px;
+
+  @include base.devices(tablet) {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  div.title {
+    @extend %centered;
+    margin-bottom: 80px;
+
+    h1 {
+      font-size: 1.5rem;
+
+      @include base.devices(desktop) {
+        font-size: 1.8rem;
+      }
+    }
+
+    div.decor {
+      @extend %underline;
+    }
+  }
+
+  div.category {
+    @extend %centered;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 25px;
+
+    h2 {
+      font-size: 1.3rem;
+
+      @include base.devices(desktop) {
+        font-size: 1.6rem;
+      }
+    }
+
+    a.add {
+      color: base.$secondary-color1;
+      font-weight: 700;
+      background: base.$primary-color;
+      border-radius: 5px;
+      padding: 5px;
+
+      &:hover {
+        background: base.$secondary-color2;
+        color: #fff;
+      }
+    }
+
+    a {
+      width: 100%;
+
+      div.item {
+        @extend %centered;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 20px;
+        padding: 10px 0;
+        border-radius: 5px;
+        border: solid base.$secondary-color1;
+
+        div.info {
+          width: 60%;
+
+          @include base.devices(desktop) {
+            font-size: 1.2rem;
+          }
+
+          span {
+            color: base.$secondary-color1;
+            font-weight: 700;
+            word-break: break-all;
+          }
+        }
+
+        img {
+          width: 50px;
+        }
+
+        &:hover {
+          background: rgb(255, 191, 72);
+        }
+      }
+    }
+
+    p {
+      font-weight: 700;
+      margin-top: 20px;
+
+      @include base.devices(desktop) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  div.divider {
+    width: 100%;
+    height: 3px;
+    background: base.$secondary-color2;
+    margin-bottom: 25px;
   }
 }
