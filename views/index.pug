@@ -6,28 +6,53 @@ block content
       if error 
         p Error getting the content.
       else 
-        h2 Welcome #{user.username}!
-        h3 You added #{sumOfItems} items to the stock.
-        h3 
-          a(href='/items') Your items
-        h3 Category:
+        div.home-page
+          div.welcome-container
+            div.welcome-text
+              h1 Welcome #{user.username}!
+              p You added 
+                span #{sumOfItems} 
+                | items to the stock. 
+              a(href='/items')
+                button#items Go to your items
+            img(src='/images/paws.png', alt='paws')
+          div.category
+            h2 Categories:
+            div.decor
           ul 
             li 
-              a(href='/bags') #[strong Bags/Carriers]
+              a(href='/bags')
+                img(src='/images/carrier.png', alt='pet carrier')
+                | Bags/Carriers
             li
-              a(href='beds') #[strong Beds]
+              a(href='beds')
+                img(src='/images/bed.png', alt='pet bed')
+                | Beds
             li
-              a(href='/clothes') #[strong Clothes]
+              a(href='/clothes') 
+                img(src='/images/clothing.png', alt='pet clothing')
+                | Clothes
             li
-              a(href='/food') #[strong Food]
+              a(href='/food') 
+                img(src='/images/food.png', alt='pet food')
+                | Food
             li
-              a(href='/hygiene') #[strong Hygiene]
+              a(href='/hygiene') 
+                img(src='/images/shampoo.png', alt='pet shampoo')
+                | Hygiene
             li
-              a(href='/leashes') #[strong Leashes]
+              a(href='/leashes')
+                img(src='/images/leash.png', alt='dog leash')
+                | Leashes
             li
-              a(href='/scratching-posts') #[strong Scratching Posts]
+              a(href='/scratching-posts') 
+                img(src='/images/post.png', alt='cat scratching post')
+                | Scratching posts
             li
-              a(href='/toys') #[strong Toys]
+              a(href='/toys') 
+                img(src='/images/toy.png', alt='pet toy')
+                | Toys
+
 
     else
       div.intro-page

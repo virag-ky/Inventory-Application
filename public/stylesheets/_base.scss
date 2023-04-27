@@ -37,14 +37,11 @@ $font-stack: 'Baloo 2', sans-serif;
   font-size: 1.1rem;
 }
 
-%navbar {
-  width: 100%;
-  position: absolute;
-  top: 0%;
-  @extend %centered;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 2px solid $secondary-color1;
+%underline {
+  width: 100px;
+  height: 3px;
+  border-radius: 3px;
+  background: $primary-color;
 }
 
 @mixin devices($breakpoint) {
@@ -76,7 +73,6 @@ $font-stack: 'Baloo 2', sans-serif;
 }
 
 body {
-  height: 100vh;
   color: $secondary-color1;
   @extend %centered;
 

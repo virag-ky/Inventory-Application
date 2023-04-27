@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap");
-nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body, nav {
+nav, nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.home-page, div.home-page div.welcome-container, div.home-page div.category, div.home-page ul li a, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-div.intro-page div.intro-container button, div.signup-page div.signup-container button, div.login-page div.login-container button {
+button#go-back, div.intro-page div.intro-container button, div.home-page div.welcome-container div.welcome-text button#items, div.signup-page div.signup-container button, div.login-page div.login-container button {
   color: #263238;
   font-weight: 700;
   font-size: 1rem;
@@ -18,7 +18,7 @@ div.intro-page div.intro-container button, div.signup-page div.signup-container 
   box-shadow: 5px 5px 0 #263238;
 }
 
-div.intro-page div.intro-container button:hover, div.signup-page div.signup-container button:hover, div.login-page div.login-container button:hover {
+button#go-back:hover, div.intro-page div.intro-container button:hover, div.home-page div.welcome-container div.welcome-text button#items:hover, div.signup-page div.signup-container button:hover, div.login-page div.login-container button:hover {
   cursor: pointer;
   box-shadow: none;
   margin-top: 5px;
@@ -30,13 +30,11 @@ div.signup-page p.error, div.login-page p.error, div.signup-page p.info, div.log
   font-size: 1.1rem;
 }
 
-nav {
-  width: 100%;
-  position: absolute;
-  top: 0%;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 2px solid #263238;
+div.home-page div.category div.decor, div.signup-page div.title div.decor, div.login-page div.title div.decor {
+  width: 100px;
+  height: 3px;
+  border-radius: 3px;
+  background: #92e3a9;
 }
 
 * {
@@ -48,7 +46,6 @@ nav {
 }
 
 body {
-  height: 100vh;
   color: #263238;
 }
 body h1 {
@@ -61,12 +58,6 @@ div.signup-page, div.login-page {
 }
 div.signup-page div.title, div.login-page div.title {
   margin-bottom: 50px;
-}
-div.signup-page div.title div.decor, div.login-page div.title div.decor {
-  width: 100px;
-  height: 3px;
-  border-radius: 3px;
-  background: #92e3a9;
 }
 div.signup-page p.error, div.login-page p.error {
   color: red;
@@ -105,6 +96,13 @@ div.signup-page div.signup-container, div.login-page div.login-container {
   gap: 25px;
 }
 nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #263238;
   padding: 8px 0;
 }
 @media only screen and (min-width: 601px) {
@@ -122,6 +120,7 @@ nav a.logo {
 @media only screen and (min-width: 601px) {
   nav a.logo {
     width: unset;
+    font-size: 1.5rem;
   }
 }
 nav div.divider {
@@ -150,6 +149,11 @@ nav ul li {
   list-style: none;
   font-size: 1rem;
   font-weight: 700;
+}
+@media only screen and (min-width: 601px) {
+  nav ul li {
+    font-size: 1.2rem;
+  }
 }
 nav ul li a {
   color: #263238;
@@ -190,6 +194,17 @@ nav ul li img#avatar {
   }
 }
 
+button#go-back {
+  width: 80px;
+  padding: 5px;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+button#go-back:hover {
+  bottom: 4.5%;
+}
+
 div.intro-page {
   width: 70%;
   max-width: 500px;
@@ -220,4 +235,101 @@ div.intro-page div.intro-container {
 }
 div.signup-page input#avatar {
   outline: none;
+}
+div.home-page {
+  padding: 100px 0;
+}
+div.home-page div.welcome-container {
+  flex-direction: row;
+  padding: 0 10px;
+  margin-bottom: 80px;
+}
+div.home-page div.welcome-container div.welcome-text h1 {
+  color: #629871;
+  font-size: 1.6rem;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page div.welcome-container div.welcome-text h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+}
+div.home-page div.welcome-container div.welcome-text p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page div.welcome-container div.welcome-text p {
+    font-size: 1.5rem;
+  }
+}
+div.home-page div.welcome-container div.welcome-text p span {
+  color: #629871;
+}
+div.home-page div.welcome-container div.welcome-text button#items {
+  width: 140px;
+  padding: 5px 0;
+  font-size: 0.9rem;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page div.welcome-container div.welcome-text button#items {
+    font-size: 1rem;
+  }
+}
+div.home-page div.welcome-container div.welcome-text button#items:hover {
+  margin-bottom: -5px;
+}
+div.home-page div.welcome-container img {
+  width: 40%;
+  max-width: 600px;
+}
+div.home-page div.category {
+  margin-bottom: 50px;
+}
+div.home-page div.category h2 {
+  font-size: 1.4rem;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page div.category h2 {
+    font-size: 1.8rem;
+  }
+}
+div.home-page ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 20px;
+  padding: 0 10px;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page ul {
+    -moz-column-gap: 25px;
+         column-gap: 25px;
+    row-gap: 25px;
+  }
+}
+div.home-page ul li {
+  list-style: none;
+}
+div.home-page ul li a {
+  text-align: center;
+  color: #629871;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page ul li a {
+    font-size: 1.1rem;
+  }
+}
+div.home-page ul li a img {
+  width: 50px;
+}
+@media only screen and (min-width: 601px) {
+  div.home-page ul li a img {
+    width: 80px;
+  }
+}
+div.home-page ul li a:hover {
+  color: orange;
 }/*# sourceMappingURL=style.css.map */

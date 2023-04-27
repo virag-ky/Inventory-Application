@@ -10,10 +10,7 @@
     @extend %centered;
 
     div.decor {
-      width: 100px;
-      height: 3px;
-      border-radius: 3px;
-      background: base.$primary-color;
+      @extend %underline;
     }
   }
 
