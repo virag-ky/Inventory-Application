@@ -37,11 +37,42 @@ $font-stack: 'Baloo 2', sans-serif;
   font-size: 1.1rem;
 }
 
+%navbar {
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  @extend %centered;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid $secondary-color1;
+}
+
+@mixin devices($breakpoint) {
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 1440px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: 601px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: $font-stack;
+  text-decoration: none;
 }
 
 body {

@@ -10,6 +10,8 @@
 - <a href="https://www.flaticon.com/free-icons/leash" title="leash icons">Leash icons created by Freepik - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/paw" title="paw icons">Paw icons created by afif fudin - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/animals" title="animals icons">Animals icons created by Freepik - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/logout" title="logout icons">Logout icons created by dmitri13 - Flaticon</a>
 
 ## Images
 

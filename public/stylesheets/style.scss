@@ -2,8 +2,93 @@
 @use 'loginComponent';
 
 nav {
-  .logo {
+  @extend %navbar;
+  padding: 8px 0;
+
+  @include base.devices(tablet) {
+    padding: 8px 50px;
+  }
+
+  a.logo {
     font-family: base.$title;
+    font-size: 1.2rem;
+    color: base.$secondary-color1;
+    width: 50%;
+    text-align: center;
+
+    @include base.devices(tablet) {
+      width: unset;
+    }
+  }
+
+  div.divider {
+    width: 3px;
+    height: 25px;
+    background: base.$primary-color;
+    @include base.devices(tablet) {
+      display: none;
+    }
+  }
+
+  ul {
+    @extend %centered;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 50%;
+
+    @include base.devices(tablet) {
+      justify-content: flex-end;
+      gap: 10%;
+      max-width: 500px;
+    }
+
+    li {
+      @extend %centered;
+      list-style: none;
+      font-size: 1rem;
+      font-weight: 700;
+
+      a {
+        @extend %centered;
+        color: base.$secondary-color1;
+
+        &:hover {
+          text-decoration: 5px underline;
+          text-decoration-color: base.$primary-color;
+        }
+      }
+
+      img#home-icon {
+        width: 20px;
+        @include base.devices(tablet) {
+          display: none;
+        }
+      }
+
+      img#logout-icon {
+        width: 18px;
+        @include base.devices(tablet) {
+          display: none;
+        }
+      }
+
+      img#avatar {
+        border-radius: 50%;
+        width: 35px;
+      }
+    }
+
+    li#home-text {
+      @include base.devices(mobile) {
+        display: none;
+      }
+    }
+
+    li#logout-text {
+      @include base.devices(mobile) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -11,10 +96,25 @@ nav {
 div.intro-page {
   width: 70%;
   max-width: 500px;
-  margin-top: 50px;
+  @extend %centered;
+
+  h1 {
+    font-family: base.$title;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+
+    @include base.devices(desktop) {
+      font-size: 3rem;
+    }
+
+    @include base.devices(tablet) {
+      font-size: 2.2rem;
+    }
+  }
 
   img.main-image {
     width: 100%;
+    margin-top: 30px;
   }
 
   div.intro-container {
@@ -55,3 +155,5 @@ div.login-page {
     @extend %button-container;
   }
 }
+
+// Home page

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap");
-div.intro-page div.intro-container, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
+nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body, nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,11 +30,21 @@ div.signup-page p.error, div.login-page p.error, div.signup-page p.info, div.log
   font-size: 1.1rem;
 }
 
+nav {
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid #263238;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Baloo 2", sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -94,17 +104,114 @@ div.signup-page div.signup-container, div.login-page div.login-container {
   flex-direction: row;
   gap: 25px;
 }
-nav .logo {
+nav {
+  padding: 8px 0;
+}
+@media only screen and (min-width: 601px) {
+  nav {
+    padding: 8px 50px;
+  }
+}
+nav a.logo {
   font-family: "Chewy", sans-serif;
+  font-size: 1.2rem;
+  color: #263238;
+  width: 50%;
+  text-align: center;
+}
+@media only screen and (min-width: 601px) {
+  nav a.logo {
+    width: unset;
+  }
+}
+nav div.divider {
+  width: 3px;
+  height: 25px;
+  background: #92e3a9;
+}
+@media only screen and (min-width: 601px) {
+  nav div.divider {
+    display: none;
+  }
+}
+nav ul {
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+}
+@media only screen and (min-width: 601px) {
+  nav ul {
+    justify-content: flex-end;
+    gap: 10%;
+    max-width: 500px;
+  }
+}
+nav ul li {
+  list-style: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+nav ul li a {
+  color: #263238;
+}
+nav ul li a:hover {
+  -webkit-text-decoration: 5px underline;
+          text-decoration: 5px underline;
+  text-decoration-color: #92e3a9;
+}
+nav ul li img#home-icon {
+  width: 20px;
+}
+@media only screen and (min-width: 601px) {
+  nav ul li img#home-icon {
+    display: none;
+  }
+}
+nav ul li img#logout-icon {
+  width: 18px;
+}
+@media only screen and (min-width: 601px) {
+  nav ul li img#logout-icon {
+    display: none;
+  }
+}
+nav ul li img#avatar {
+  border-radius: 50%;
+  width: 35px;
+}
+@media only screen and (max-width: 600px) {
+  nav ul li#home-text {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  nav ul li#logout-text {
+    display: none;
+  }
 }
 
 div.intro-page {
   width: 70%;
   max-width: 500px;
-  margin-top: 50px;
+}
+div.intro-page h1 {
+  font-family: "Chewy", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+@media only screen and (min-width: 1440px) {
+  div.intro-page h1 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (min-width: 601px) {
+  div.intro-page h1 {
+    font-size: 2.2rem;
+  }
 }
 div.intro-page img.main-image {
   width: 100%;
+  margin-top: 30px;
 }
 div.intro-page div.intro-container {
   flex-direction: row;

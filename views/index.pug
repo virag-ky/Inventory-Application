@@ -1,8 +1,6 @@
 extends layout
 
 block content
-
-    h1= title
     
     if user
       if error 
@@ -33,6 +31,7 @@ block content
 
     else
       div.intro-page
+        h1 Pet Shop Inventory
         img.main-image(src='/images/main_image.png', alt='cat and dog')
         div.intro-container
           a(href='/new-user')

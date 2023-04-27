@@ -6,21 +6,27 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='icon' href='/images/pet-logo.png')
   body
-    nav 
 
-      if user
+    if user
+      nav 
         a.logo(href='/') Pet Shop Inventory
+        div.divider
         ul 
-          li 
+          li#home-text 
             a(href='/') Home 
           li 
+            a(href='/')
+              img#home-icon(src='/images/home.png', alt='home icon')
+          li#logout-text
             a(href='/log-out') Log out
+          li
+            a(href='/log-out')
+              img#logout-icon(src='/images/logout.png', alt='logout icon')
           li 
-            div
-              img(src='/uploads/' + user.avatar, alt='profile', width='50px')
-              span= user.username
-    if user 
-      a(href='javascript:void(0)', onclick='goBack()') Go Back
+            img#avatar(src='/uploads/' + user.avatar, alt='profile')
+    
+      a(href='javascript:void(0)', onclick='goBack()')
+        button Go Back
 
     block content
 
@@ -28,3 +34,4 @@ html
       function goBack() {
         window.history.back()
       }
+
