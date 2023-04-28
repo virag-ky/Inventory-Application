@@ -23,5 +23,14 @@ block content
               span #[strong Number-in-Stock:] 
               |!{bag.number_in_stock}
             a(href=bag.url) View details
-          img(src='/images/carrier.png', alt='pet bag')
+          if bag.bag_type === 'Shoulder-bag'
+            img(src='/images/shoulder-bag.png', alt='shoulder bag')
+          else if bag.bag_type === 'Backpack'
+            img(src='/images/backpack.png', alt='backpack')
+          else if bag.bag_type === 'Handbag'
+            img(src='/images/handbag.png', alt='handbag')
+          else 
+            img(src='/images/carrier.png', alt='pet carrier')
+
+
 

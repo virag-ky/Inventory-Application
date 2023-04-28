@@ -2,12 +2,38 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.items-page
+    div.title
+      h1= title
+      div.decor
 
-  a(href='/toys/create') Add New 
+    div.category
+      a.add(href='/toys/create') Add New
 
-  each toy in list 
-    a(href=toy.url)
-      div(style='border:solid black;margin-bottom:25px')
-        span #[strong Name:] !{toy.name}
-        span #[strong Price:] $!{toy.price}
+      each toy in list 
+        div.item
+          div.info
+            p
+              span #[strong Name:] 
+              |!{toy.name}
+            p
+              span #[strong Price:] 
+              |$!{toy.price}
+            p
+              span #[strong Number-in-Stock:] 
+              |!{toy.number_in_stock}
+            a(href=toy.url) View details
+          if toy.name === 'Chew toy'
+            img(src='/images/bone.png', alt='chew bone')
+          else if toy.name === 'Running wheel'
+            img(src='/images/running-wheel.png', alt='running wheel')
+          else if toy.name === 'Branch'
+            img(src='/images/branch.png', alt='branch')
+          else if toy.name === 'Plastic tunnel'
+            img(src='/images/tunnel.png', alt='plastic tunnel')
+          else if toy.name === 'Hanging rope'
+            img(src='/images/rope.png', alt='rope')
+          else if toy.name === 'Plush toy'
+            img(src='/images/plush-toy.png', alt='plush toy')
+          else
+            img(src='/images/ball.png', alt='ball')

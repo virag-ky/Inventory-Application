@@ -2,12 +2,32 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.items-page
+    div.title
+      h1= title
+      div.decor
 
-  a(href='/clothes/create') Add New 
+    div.category
+      a.add(href='/clothes/create') Add New
 
-  each clothing in list 
-    a(href=clothing.url)
-      div(style='border:solid black;margin-bottom:25px')
-        span #[strong Name:] !{clothing.name}
-        span #[strong Price:] $!{clothing.price}
+      each clothing in list 
+        div.item
+          div.info
+            p
+              span #[strong Name:] 
+              |!{clothing.name}
+            p
+              span #[strong Price:] 
+              |$!{clothing.price}
+            p
+              span #[strong Number-in-Stock:] 
+              |!{clothing.number_in_stock}
+            a(href=clothing.url) View details
+          if clothing.clothing_type === 'Jacket'
+            img(src='/images/jacket.png', alt='pet jacket')
+          else if clothing.clothing_type === 'Vest'
+            img(src='/images/vest.png', alt='pet vest')
+          else if clothing.clothing_type === 'Overall'
+            img(src='/images/overall.png', alt='pet overall')
+          else 
+            img(src='/images/clothing.png', alt='pet shirt')

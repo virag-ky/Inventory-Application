@@ -29,7 +29,14 @@ block content
                 |!{bag.number_in_stock}
             
               a(href=bag.url) View details
-            img(src='/images/carrier.png', alt='pet carrier')
+            if bag.bag_type === 'Shoulder-bag'
+              img(src='/images/shoulder-bag.png', alt='shoulder bag')
+            else if bag.bag_type === 'Backpack'
+              img(src='/images/backpack.png', alt='backpack')
+            else if bag.bag_type === 'Handbag'
+              img(src='/images/handbag.png', alt='handbag')
+            else 
+              img(src='/images/carrier.png', alt='pet carrier')
       else 
         p.status You haven't added any bags or carriers yet.
 
@@ -79,7 +86,14 @@ block content
                 |!{clothing.number_in_stock}
               
               a(href=clothing.url) View details
-            img(src='/images/clothing.png', alt='pet clothing')
+            if clothing.clothing_type === 'Jacket'
+              img(src='/images/jacket.png', alt='pet jacket')
+            else if clothing.clothing_type === 'Vest'
+              img(src='/images/vest.png', alt='pet vest')
+            else if clothing.clothing_type === 'Overall'
+              img(src='/images/overall.png', alt='pet overall')
+            else 
+              img(src='/images/clothing.png', alt='pet shirt')
       else 
         p.status You haven't added any clothing yet.
 
@@ -104,7 +118,16 @@ block content
                 |!{meal.number_in_stock}
               
               a(href=meal.url) View details
-            img(src='/images/food.png', alt='pet food')
+            if meal.food_type === 'Dry'
+              img(src='/images/food.png', alt='dry pet food')
+            else if meal.food_type === 'Wet-packet'
+              img(src='/images/packet.png', alt='wet pet food')
+            else if meal.food_type === 'Canned'
+              img(src='/images/canned.png', alt='canned pet food')
+            else if meal.food_type === 'Seed mix'
+              img(src='/images/seeds.png', alt='seed mix')
+            else 
+              img(src='/images/fish-food.png', alt='fish food')
       else 
         p.status You haven't added any food yet.
 
@@ -129,7 +152,20 @@ block content
                 |!{product.number_in_stock}
               
               a(href=product.url) View details
-            img(src='/images/shampoo.png', alt='pet shampoo')
+            if product.name === 'Shampoo - 0.5l'
+              img(src='/images/shampoo.png', alt='pet shampoo')
+            else if product.name === 'Pads - 1pack/50pc'
+              img(src='/images/pad.png', alt='pet pad')
+            else if product.name === 'Brush'
+              img(src='/images/pet-brush.png', alt='pet brush')
+            else if product.name === 'Nail clipper'
+              img(src='/images/nail-clipper.png', alt='nail clipper')
+            else if product.name === 'Water cleaner'
+              img(src='/images/water-cleaner.png', alt='water cleaner')
+            else if product.name === 'Sawdust - 1pack/5.0l'
+              img(src='/images/sawdust.png', alt='sawdust')
+            else 
+              img(src='/images/litter-box.png', alt='pet litter')
       else 
         p.status You haven't added any hygiene products yet.
 
@@ -204,7 +240,21 @@ block content
                 |!{toy.number_in_stock}
               
               a(href=toy.url) View details
-            img(src='/images/toy.png', alt='pet toy')
+            if toy.name === 'Chew toy'
+              img(src='/images/bone.png', alt='chew bone')
+            else if toy.name === 'Running wheel'
+              img(src='/images/running-wheel.png', alt='running wheel')
+            else if toy.name === 'Branch'
+              img(src='/images/branch.png', alt='branch')
+            else if toy.name === 'Plastic tunnel'
+              img(src='/images/tunnel.png', alt='plastic tunnel')
+            else if toy.name === 'Hanging rope'
+              img(src='/images/rope.png', alt='rope')
+            else if toy.name === 'Plush toy'
+              img(src='/images/plush-toy.png', alt='plush toy')
+            else
+              img(src='/images/ball.png', alt='ball')
+
       else 
         p.status You haven't added any toys yet.
 

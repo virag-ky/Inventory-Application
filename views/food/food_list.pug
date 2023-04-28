@@ -2,12 +2,34 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.items-page
+    div.title
+      h1= title
+      div.decor
 
-  a(href='/food/create') Add New 
+    div.category
+      a.add(href='/food/create') Add New
 
-  each food in list 
-    a(href=food.url)
-      div(style='border:solid black;margin-bottom:25px')
-        span #[strong Name:] !{food.name}
-        span #[strong Price:] $!{food.price}
+      each meal in list 
+        div.item
+          div.info
+            p
+              span #[strong Name:] 
+              |!{meal.name}
+            p
+              span #[strong Price:] 
+              |$!{meal.price}
+            p
+              span #[strong Number-in-Stock:] 
+              |!{meal.number_in_stock}
+            a(href=meal.url) View details
+          if meal.food_type === 'Dry'
+            img(src='/images/food.png', alt='dry pet food')
+          else if meal.food_type === 'Wet-packet'
+            img(src='/images/packet.png', alt='wet pet food')
+          else if meal.food_type === 'Canned'
+            img(src='/images/canned.png', alt='canned pet food')
+          else if meal.food_type === 'Seed mix'
+            img(src='/images/seeds.png', alt='seed mix')
+          else 
+            img(src='/images/fish-food.png', alt='fish food')

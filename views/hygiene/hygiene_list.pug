@@ -2,12 +2,38 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.items-page
+    div.title
+      h1= title
+      div.decor
 
-  a(href='/hygiene/create') Add New 
+    div.category
+      a.add(href='/hygiene/create') Add New
 
-  each product in list 
-    a(href=product.url)
-      div(style='border:solid black;margin-bottom:25px')
-        span #[strong Name:] !{product.name}
-        span #[strong Price:] $!{product.price}
+      each product in list 
+        div.item
+          div.info
+            p
+              span #[strong Name:] 
+              |!{product.name}
+            p
+              span #[strong Price:] 
+              |$!{product.price}
+            p
+              span #[strong Number-in-Stock:] 
+              |!{product.number_in_stock}
+            a(href=product.url) View details
+          if product.name === 'Shampoo - 0.5l'
+            img(src='/images/shampoo.png', alt='pet shampoo')
+          else if product.name === 'Pads - 1pack/50pc'
+            img(src='/images/pad.png', alt='pet pad')
+          else if product.name === 'Brush'
+            img(src='/images/pet-brush.png', alt='pet brush')
+          else if product.name === 'Nail clipper'
+            img(src='/images/nail-clipper.png', alt='nail clipper')
+          else if product.name === 'Water cleaner'
+            img(src='/images/water-cleaner.png', alt='water cleaner')
+          else if product.name === 'Sawdust - 1pack/5.0l'
+            img(src='/images/sawdust.png', alt='sawdust')
+          else 
+            img(src='/images/litter-box.png', alt='pet litter')
