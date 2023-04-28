@@ -2,47 +2,50 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.details-page
+    div.title
+      h1= title
+      div.decor
 
-  if error 
-    p= error 
-  else 
+    if error 
+      p= error 
+    else 
+      div.details
+        p 
+          span #[strong Username:]
+          |  !{scratching_post.user.username}
+        p 
+          span #[strong Category:]
+          |  !{scratching_post.category}
+        p 
+          span #[strong Name:]
+          |  !{scratching_post.name}
+        p 
+          span #[strong Pet:]
+          |  !{scratching_post.pet}
+        p 
+          span #[strong Color:]
+          |  !{scratching_post.color}
+        p 
+          span #[strong Description:]
+          |  !{scratching_post.description}
+        p
+          span #[strong Price:]
+          |  $!{scratching_post.price}
+        p 
+          span #[strong Number-in-Stock:]
+          |  !{scratching_post.number_in_stock}
+        p 
+          span #[strong Date added:]
+          |  !{scratching_post.date_added_formatted}
 
-    p 
-      span #[strong Username:]
-      |  !{scratching_post.user.username}
-    p 
-      span #[strong Category:]
-      |  !{scratching_post.category}
-    p 
-      span #[strong Name:]
-      |  !{scratching_post.name}
-    p 
-      span #[strong Pet:]
-      |  !{scratching_post.pet}
-    p 
-      span #[strong Color:]
-      |  !{scratching_post.color}
-    p 
-      span #[strong Description:]
-      |  !{scratching_post.description}
-    p
-      span #[strong Price:]
-      |  $!{scratching_post.price}
-    p 
-      span #[strong Number-in-Stock:]
-      |  !{scratching_post.number_in_stock}
-    p 
-      span #[strong Date added:]
-      |  !{scratching_post.date_added_formatted}
+        if scratching_post.user.username === user.username 
+          div.form-container
+            form(method='POST', action='')
+              input#id(type='hidden', name='id', required='true', value=scratching_post._id)
+              button(type='submit') Delete 
 
-    if scratching_post.user.username === user.username 
-      form(method='POST', action='')
-        input#id(type='hidden', name='id', required='true', value=scratching_post._id)
-        button(type='submit') Delete 
-
-      form(method='GET', action='/scratching-posts/update/' + scratching_post._id)
-        input#scratching_post_id(type='hidden', name='scratching_post_id', required='true', value=scratching_post._id)
-        input#scratching_post_pet(type='hidden', name='scratching_post_pet', required='true', value=scratching_post.pet)
-        button(type='submit') Edit
-        
+            form(method='GET', action='/scratching-posts/update/' + scratching_post._id)
+              input#scratching_post_id(type='hidden', name='scratching_post_id', required='true', value=scratching_post._id)
+              input#scratching_post_pet(type='hidden', name='scratching_post_pet', required='true', value=scratching_post.pet)
+              button(type='submit') Edit

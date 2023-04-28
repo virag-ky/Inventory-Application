@@ -488,3 +488,50 @@ div.form-page {
     }
   }
 }
+
+// Details page
+div.details-page {
+  margin: 100px 0;
+  padding: 0 15px;
+
+  @include base.devices(tablet) {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  div.title {
+    @extend %title-component;
+  }
+
+  div.details {
+    p {
+      margin-bottom: 20px;
+
+      @include base.devices(tablet) {
+        font-size: 1.2rem;
+      }
+
+      span {
+        color: base.$secondary-color2;
+      }
+    }
+
+    div.form-container {
+      display: flex;
+      gap: 25px;
+      margin-top: 25px;
+
+      form {
+        button {
+          @extend %button;
+          width: 100px;
+          padding: 5px;
+
+          &:hover {
+            @extend %button-hover;
+          }
+        }
+      }
+    }
+  }
+}

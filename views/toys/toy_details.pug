@@ -2,44 +2,47 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.details-page
+    div.title
+      h1= title
+      div.decor
 
-  if error 
-    p= error 
-  else 
+    if error 
+      p= error 
+    else 
+      div.details
+        p 
+          span #[strong Username:]
+          |  !{toy.user.username}
+        p 
+          span #[strong Category:]
+          |  !{toy.category}
+        p 
+          span #[strong Name:]
+          |  !{toy.name}
+        p 
+          span #[strong Pet:]
+          |  !{toy.pet}
+        p 
+          span #[strong Description:]
+          |  !{toy.description}
+        p
+          span #[strong Price:]
+          |  $!{toy.price}
+        p 
+          span #[strong Number-in-Stock:]
+          |  !{toy.number_in_stock}
+        p 
+          span #[strong Date added:]
+          |  !{toy.date_added_formatted}
 
-    p 
-      span #[strong Username:]
-      |  !{toy.user.username}
-    p 
-      span #[strong Category:]
-      |  !{toy.category}
-    p 
-      span #[strong Name:]
-      |  !{toy.name}
-    p 
-      span #[strong Pet:]
-      |  !{toy.pet}
-    p 
-      span #[strong Description:]
-      |  !{toy.description}
-    p
-      span #[strong Price:]
-      |  $!{toy.price}
-    p 
-      span #[strong Number-in-Stock:]
-      |  !{toy.number_in_stock}
-    p 
-      span #[strong Date added:]
-      |  !{toy.date_added_formatted}
+        if toy.user.username === user.username 
+          div.form-container
+            form(method='POST', action='')
+              input#id(type='hidden', name='id', required='true', value=toy._id)
+              button(type='submit') Delete 
 
-    if toy.user.username === user.username 
-      form(method='POST', action='')
-        input#id(type='hidden', name='id', required='true', value=toy._id)
-        button(type='submit') Delete 
-
-      form(method='GET', action='/toys/update/' + toy._id)
-        input#toy_id(type='hidden', name='toy_id', required='true', value=toy._id)
-        input#toy_pet(type='hidden', name='toy_pet', required='true', value=toy.pet)
-        button(type='submit') Edit
-        
+            form(method='GET', action='/toys/update/' + toy._id)
+              input#toy_id(type='hidden', name='toy_id', required='true', value=toy._id)
+              input#toy_pet(type='hidden', name='toy_pet', required='true', value=toy.pet)
+              button(type='submit') Edit
