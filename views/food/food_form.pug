@@ -2,56 +2,59 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/foods.png', alt='pet food')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === food ? undefined : (food.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === food ? undefined : (food.pet === 'Cat' ? 'selected' : undefined))) Cat 
-      option(value='Bird', selected=(undefined === food ? undefined : (food.pet === 'Bird' ? 'selected' : undefined))) Bird 
-      option(value='Fish', selected=(undefined === food ? undefined : (food.pet === 'Fish' ? 'selected' : undefined))) Fish 
-      option(value='Rodent', selected=(undefined === food ? undefined : (food.pet === 'Rodent' ? 'selected' : undefined))) Rodent 
-    label(for='name') Name: 
-    input#name(type='text', name='name', required, placeholder='Puppy Meal', value=(undefined === food ? '' : food.name))
-    label(for='type') Type: 
-    select#type(type='select', name='type')
-      option(value='Dry', selected=(undefined === food ? undefined : (food.food_type === 'Dry' ? 'selected' : undefined))) Dry 
-      option(value='Canned', selected=(undefined === food ? undefined : (food.food_type === 'Canned' ? 'selected' : undefined))) Canned
-      option(value='Wet-packet', selected=(undefined === food ? undefined : (food.food_type === 'Wet-packet' ? 'selected' : undefined))) Wet-packet 
-      option(value='Fish pellets', selected=(undefined === food ? undefined : (food.food_type === 'Fish pellets' ? 'selected' : undefined))) Fish pellets 
-      option(value='Fish flakes', selected=(undefined === food ? undefined : (food.food_type === 'Fish flakes' ? 'selected' : undefined))) Fish flakes 
-      option(value='Seed mix', selected=(undefined === food ? undefined : (food.food_type === 'Seed mix' ? 'selected' : undefined))) Seed mix
-    label(for='flavor') Flavor: 
-    select#flavor(type='select', name='flavor')
-      option(value='Chicken', selected=(undefined === food ? undefined : (food.flavor === 'Chicken' ? 'selected' : undefined))) Chicken 
-      option(value='Beef', selected=(undefined === food ? undefined : (food.flavor === 'Beef' ? 'selected' : undefined))) Beef 
-      option(value='Pork', selected=(undefined === food ? undefined : (food.flavor === 'Pork' ? 'selected' : undefined))) Pork 
-      option(value='Fish', selected=(undefined === food ? undefined : (food.flavor === 'Fish' ? 'selected' : undefined))) Fish 
-      option(value='Veggie', selected=(undefined === food ? undefined : (food.flavor === 'Veggie' ? 'selected' : undefined))) Veggie
-      option(value='Seed', selected=(undefined === food ? undefined : (food.flavor === 'Seed' ? 'selected' : undefined))) Seed 
-    label(for='weight') Food weight/kg: 
-    select#weight(type='select', name='weight')
-      option(value='0.5', selected=(undefined === food ? undefined : (food.weight === '0.5' ? 'selected' : undefined))) 0.5
-      option(value='1.0', selected=(undefined === food ? undefined : (food.weight === '1.0' ? 'selected' : undefined))) 1.0
-      option(value='1.2', selected=(undefined === food ? undefined : (food.weight === '1.2' ? 'selected' : undefined))) 1.2
-      option(value='1.5', selected=(undefined === food ? undefined : (food.weight === '1.5' ? 'selected' : undefined))) 1.5
-      option(value='2.0', selected=(undefined === food ? undefined : (food.weight === '2.0' ? 'selected' : undefined))) 2.0
-      option(value='2.5', selected=(undefined === food ? undefined : (food.weight === '2.5' ? 'selected' : undefined))) 2.5
-      option(value='3.0', selected=(undefined === food ? undefined : (food.weight === '3.0' ? 'selected' : undefined))) 3.0
-      option(value='5.0', selected=(undefined === food ? undefined : (food.weight === '5.0' ? 'selected' : undefined))) 5.0
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', placeholder='A bag of chicken flavored puppy dry food.', required) #{undefined === food ? '' : food.description}
-    label(for='price') Price/$:
-    input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === food ? '' : parseFloat(food.price).toFixed(2)))
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === food ? '' : food.number_in_stock))
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
-    
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === food ? undefined : (food.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === food ? undefined : (food.pet === 'Cat' ? 'selected' : undefined))) Cat 
+        option(value='Bird', selected=(undefined === food ? undefined : (food.pet === 'Bird' ? 'selected' : undefined))) Bird 
+        option(value='Fish', selected=(undefined === food ? undefined : (food.pet === 'Fish' ? 'selected' : undefined))) Fish 
+        option(value='Rodent', selected=(undefined === food ? undefined : (food.pet === 'Rodent' ? 'selected' : undefined))) Rodent 
+      label(for='name') Name: 
+      input#name(type='text', name='name', required, placeholder='Puppy Meal', value=(undefined === food ? '' : food.name))
+      label(for='type') Type: 
+      select#type(type='select', name='type')
+        option(value='Dry', selected=(undefined === food ? undefined : (food.food_type === 'Dry' ? 'selected' : undefined))) Dry 
+        option(value='Canned', selected=(undefined === food ? undefined : (food.food_type === 'Canned' ? 'selected' : undefined))) Canned
+        option(value='Wet-packet', selected=(undefined === food ? undefined : (food.food_type === 'Wet-packet' ? 'selected' : undefined))) Wet-packet 
+        option(value='Fish pellets', selected=(undefined === food ? undefined : (food.food_type === 'Fish pellets' ? 'selected' : undefined))) Fish pellets 
+        option(value='Fish flakes', selected=(undefined === food ? undefined : (food.food_type === 'Fish flakes' ? 'selected' : undefined))) Fish flakes 
+        option(value='Seed mix', selected=(undefined === food ? undefined : (food.food_type === 'Seed mix' ? 'selected' : undefined))) Seed mix
+      label(for='flavor') Flavor: 
+      select#flavor(type='select', name='flavor')
+        option(value='Chicken', selected=(undefined === food ? undefined : (food.flavor === 'Chicken' ? 'selected' : undefined))) Chicken 
+        option(value='Beef', selected=(undefined === food ? undefined : (food.flavor === 'Beef' ? 'selected' : undefined))) Beef 
+        option(value='Pork', selected=(undefined === food ? undefined : (food.flavor === 'Pork' ? 'selected' : undefined))) Pork 
+        option(value='Fish', selected=(undefined === food ? undefined : (food.flavor === 'Fish' ? 'selected' : undefined))) Fish 
+        option(value='Veggie', selected=(undefined === food ? undefined : (food.flavor === 'Veggie' ? 'selected' : undefined))) Veggie
+        option(value='Seed', selected=(undefined === food ? undefined : (food.flavor === 'Seed' ? 'selected' : undefined))) Seed 
+      label(for='weight') Food weight/kg: 
+      select#weight(type='select', name='weight')
+        option(value='0.5', selected=(undefined === food ? undefined : (food.weight === '0.5' ? 'selected' : undefined))) 0.5
+        option(value='1.0', selected=(undefined === food ? undefined : (food.weight === '1.0' ? 'selected' : undefined))) 1.0
+        option(value='1.2', selected=(undefined === food ? undefined : (food.weight === '1.2' ? 'selected' : undefined))) 1.2
+        option(value='1.5', selected=(undefined === food ? undefined : (food.weight === '1.5' ? 'selected' : undefined))) 1.5
+        option(value='2.0', selected=(undefined === food ? undefined : (food.weight === '2.0' ? 'selected' : undefined))) 2.0
+        option(value='2.5', selected=(undefined === food ? undefined : (food.weight === '2.5' ? 'selected' : undefined))) 2.5
+        option(value='3.0', selected=(undefined === food ? undefined : (food.weight === '3.0' ? 'selected' : undefined))) 3.0
+        option(value='5.0', selected=(undefined === food ? undefined : (food.weight === '5.0' ? 'selected' : undefined))) 5.0
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', placeholder='A bag of chicken flavored puppy dry food.', required) #{undefined === food ? '' : food.description}
+      label(for='price') Price/$:
+      input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === food ? '' : parseFloat(food.price).toFixed(2)))
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === food ? '' : food.number_in_stock))
+      button(type='submit') Submit 

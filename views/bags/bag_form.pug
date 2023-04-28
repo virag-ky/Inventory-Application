@@ -2,43 +2,47 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/play.png', alt='dog and its owner playing')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='user') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === bag ? undefined : (bag.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === bag ? undefined : (bag.pet === 'Cat' ? 'selected' : undefined))) Cat
-    label(for='name') Name: 
-    input#name(type='text', name='name', value=(undefined === bag ? '' : bag.name) placeholder='Chihuahua handbag', required)
-    label(for='type') Type of bag: 
-    select#type(type='select', name='type')
-      option(value='Handbag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Handbag' ? 'selected' : undefined))) Handbag
-      option(value='Carrier', selected=(undefined === bag ? undefined : (bag.bag_type === 'Carrier' ? 'selected' : undefined))) Carrier 
-      option(value='Shoulder-bag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Shoulder-bag' ? 'selected' : undefined))) Shoulder Bag
-      option(value='Backpack', selected=(undefined === bag ? undefined : (bag.bag_type === 'Backpack' ? 'selected' : undefined))) Backpack
-    label(for='size') Size: 
-    select#size(type='select', name='size')
-      option(value='Small', selected=(undefined === bag ? undefined : (bag.size === 'Small' ? 'selected' : undefined))) Small 
-      option(value='Medium', selected=(undefined === bag ? undefined : (bag.size === 'Medium' ? 'selected' : undefined))) Medium 
-      option(value='Large', selected=(undefined === bag ? undefined : (bag.size === 'Large' ? 'selected' : undefined))) Large
-    label(for='color') Color: 
-    select#color(type='select', name='color')
-      option(value='White', selected=(undefined === bag ? undefined : (bag.color === 'White' ? 'selected' : undefined))) White 
-      option(value='Black', selected=(undefined === bag ? undefined : (bag.color === 'Black' ? 'selected' : undefined))) Black 
-      option(value='Brown', selected=(undefined === bag ? undefined : (bag.color === 'Brown' ? 'selected' : undefined))) Brown 
-      option(value='Beige', selected=(undefined === bag ? undefined : (bag.color === 'Beige' ? 'selected' : undefined))) Beige
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', placeholder='A small sized Chihuahua handbag with 2 pockets.', required) #{undefined === bag ? '' : bag.description}
-    label(for='price') Price/$: 
-    input#price(type='number', name='price', value=(undefined === bag ? '' : parseFloat(bag.price).toFixed(2)) step='0.01' placeholder='5.00' required)
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', value=(undefined === bag ? '' : bag.number_in_stock) placeholder='1', required)
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === bag ? undefined : (bag.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === bag ? undefined : (bag.pet === 'Cat' ? 'selected' : undefined))) Cat
+      label(for='name') Name: 
+      input#name(type='text', name='name', value=(undefined === bag ? '' : bag.name) placeholder='Chihuahua handbag', required)
+      label(for='type') Type of bag: 
+      select#type(type='select', name='type')
+        option(value='Handbag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Handbag' ? 'selected' : undefined))) Handbag
+        option(value='Carrier', selected=(undefined === bag ? undefined : (bag.bag_type === 'Carrier' ? 'selected' : undefined))) Carrier 
+        option(value='Shoulder-bag', selected=(undefined === bag ? undefined : (bag.bag_type === 'Shoulder-bag' ? 'selected' : undefined))) Shoulder Bag
+        option(value='Backpack', selected=(undefined === bag ? undefined : (bag.bag_type === 'Backpack' ? 'selected' : undefined))) Backpack
+      label(for='size') Size: 
+      select#size(type='select', name='size')
+        option(value='Small', selected=(undefined === bag ? undefined : (bag.size === 'Small' ? 'selected' : undefined))) Small 
+        option(value='Medium', selected=(undefined === bag ? undefined : (bag.size === 'Medium' ? 'selected' : undefined))) Medium 
+        option(value='Large', selected=(undefined === bag ? undefined : (bag.size === 'Large' ? 'selected' : undefined))) Large
+      label(for='color') Color: 
+      select#color(type='select', name='color')
+        option(value='White', selected=(undefined === bag ? undefined : (bag.color === 'White' ? 'selected' : undefined))) White 
+        option(value='Black', selected=(undefined === bag ? undefined : (bag.color === 'Black' ? 'selected' : undefined))) Black 
+        option(value='Brown', selected=(undefined === bag ? undefined : (bag.color === 'Brown' ? 'selected' : undefined))) Brown 
+        option(value='Beige', selected=(undefined === bag ? undefined : (bag.color === 'Beige' ? 'selected' : undefined))) Beige
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', placeholder='A small sized Chihuahua handbag with 2 pockets.', required) #{undefined === bag ? '' : bag.description}
+      label(for='price') Price/$: 
+      input#price(type='number', name='price', value=(undefined === bag ? '' : parseFloat(bag.price).toFixed(2)) step='0.01' placeholder='5.00' required)
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', value=(undefined === bag ? '' : bag.number_in_stock) placeholder='1', required)
+      button(type='submit') Submit 

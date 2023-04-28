@@ -1,5 +1,6 @@
 @use 'base';
 @use 'loginComponent';
+@use 'titleComponent';
 
 nav {
   width: 100%;
@@ -323,25 +324,7 @@ div.items-page {
   }
 
   div.title {
-    @extend %centered;
-    margin-bottom: 80px;
-
-    h1 {
-      font-size: 1.5rem;
-
-      @include base.devices(desktop) {
-        font-size: 1.8rem;
-      }
-    }
-
-    div.decor {
-      @extend %underline;
-    }
-
-    img {
-      margin-top: 50px;
-      width: 60%;
-    }
+    @extend %title-component;
   }
 
   div.category {
@@ -436,5 +419,72 @@ div.items-page {
     height: 3px;
     background: base.$secondary-color2;
     margin-bottom: 25px;
+  }
+}
+
+// Form page
+div.form-page {
+  margin: 100px 0;
+  padding: 0 15px;
+
+  @include base.devices(tablet) {
+    width: 60%;
+    max-width: 500px;
+  }
+
+  div.title {
+    @extend %title-component;
+  }
+
+  ul {
+    padding: 0 25px;
+    margin-bottom: 25px;
+
+    li {
+      color: red;
+      font-size: 1.1rem;
+    }
+  }
+
+  form {
+    @extend %centered;
+    align-items: flex-start;
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 5px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      outline: 1px solid base.$secondary-color1;
+
+      &:focus {
+        outline: solid base.$primary-color;
+      }
+    }
+
+    select {
+      background: #fff;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: base.$secondary-color2;
+      margin-bottom: 5px;
+    }
+
+    button {
+      @extend %button;
+      width: 100px;
+      font-size: 1rem;
+
+      &:hover {
+        @extend %button-hover;
+      }
+    }
   }
 }

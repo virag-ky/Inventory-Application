@@ -2,37 +2,41 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/hygiene.png', alt='pet hygiene products')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Cat' ? 'selected' : undefined))) Cat 
-      option(value='Bird', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Bird' ? 'selected' : undefined))) Bird 
-      option(value='Fish', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Fish' ? 'selected' : undefined))) Fish 
-      option(value='Rodent', selected=(undefined === hygiene ? undefined : (hygiene.pet == 'Rodent' ? 'selected' : undefined))) Rodent 
-    label(for='name') Name: 
-    select#name(type='select', name='name')
-      option(value='Shampoo - 0.5l', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Shampoo - 0.5l' ? 'selected' : undefined))) Shampoo - 0.5l
-      option(value='Pads - 1pack/50pc', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Pads - 1pack/50pc' ? 'selected' : undefined))) Pads - 1pack/50pc
-      option(value='Brush', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Brush' ? 'selected' : undefined))) Brush 
-      option(value='Water cleaner', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Water cleaner' ? 'selected' : undefined))) Water cleaner 
-      option(value='Nail clipper', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Nail clipper' ? 'selected' : undefined))) Nail clipper 
-      option(value='Sawdust - 1pack/5.0l', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Sawdust - 1pack/5.0l' ? 'selected' : undefined))) Sawdust - 1pack/5.0l
-      option(value='Cat litter - 1pack/5.0kg', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Cat litter - 1pack/5.0kg' ? 'selected' : undefined))) Cat litter - 1pack/5.0kg
-      option(value='Bird litter - 1pack/2.0kg', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Bird litter - 1pack/2.0kg' ? 'selected' : undefined))) Bird litter - 1pack/5.0kg
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', required, placeholder='A tear free organic puppy shampoo.') #{undefined === hygiene ? '' : hygiene.description}
-    label(for='price') Price/$:
-    input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === hygiene ? '' : hygiene.price))
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === hygiene ? '' : hygiene.number_in_stock))
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Cat' ? 'selected' : undefined))) Cat 
+        option(value='Bird', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Bird' ? 'selected' : undefined))) Bird 
+        option(value='Fish', selected=(undefined === hygiene ? undefined : (hygiene.pet === 'Fish' ? 'selected' : undefined))) Fish 
+        option(value='Rodent', selected=(undefined === hygiene ? undefined : (hygiene.pet == 'Rodent' ? 'selected' : undefined))) Rodent 
+      label(for='name') Name: 
+      select#name(type='select', name='name')
+        option(value='Shampoo - 0.5l', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Shampoo - 0.5l' ? 'selected' : undefined))) Shampoo - 0.5l
+        option(value='Pads - 1pack/50pc', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Pads - 1pack/50pc' ? 'selected' : undefined))) Pads - 1pack/50pc
+        option(value='Brush', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Brush' ? 'selected' : undefined))) Brush 
+        option(value='Water cleaner', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Water cleaner' ? 'selected' : undefined))) Water cleaner 
+        option(value='Nail clipper', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Nail clipper' ? 'selected' : undefined))) Nail clipper 
+        option(value='Sawdust - 1pack/5.0l', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Sawdust - 1pack/5.0l' ? 'selected' : undefined))) Sawdust - 1pack/5.0l
+        option(value='Cat litter - 1pack/5.0kg', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Cat litter - 1pack/5.0kg' ? 'selected' : undefined))) Cat litter - 1pack/5.0kg
+        option(value='Bird litter - 1pack/2.0kg', selected=(undefined === hygiene ? undefined : (hygiene.name === 'Bird litter - 1pack/2.0kg' ? 'selected' : undefined))) Bird litter - 1pack/5.0kg
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', required, placeholder='A tear free organic puppy shampoo.') #{undefined === hygiene ? '' : hygiene.description}
+      label(for='price') Price/$:
+      input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === hygiene ? '' : hygiene.price))
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === hygiene ? '' : hygiene.number_in_stock))
+      button(type='submit') Submit 

@@ -2,30 +2,34 @@ extends ../layout
 
 block content 
 
-  h1= title
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/leashes.png', alt='dog walking')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    input#pet(type='text', name='pet', value='Dog', readonly)
-    label(for='name') Name: 
-    input#name(type='text', name='name', value='Leash', readonly)
-    label(for='color') Color: 
-    select#color(type='select', name='color')
-      option(value='Black', selected=(undefined === leash ? undefined : (leash.color === 'Black' ? 'selected' : undefined))) Black 
-      option(value='Pink', selected=(undefined === leash ? undefined : (leash.color === 'Pink' ? 'selected' : undefined))) Pink 
-      option(value='Blue', selected=(undefined === leash ? undefined : (leash.color === 'Blue' ? 'selected' : undefined))) Blue 
-      option(value='Red', selected=(undefined === leash ? undefined : (leash.color === 'Red' ? 'selected' : undefined))) Red 
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', placeholder='A red leash for puppies.', required) #{undefined === leash ? '' : leash.description}
-    label(for='price') Price/$:
-    input#price(type='number', name='price', step='0.01', placeholder='5.00', value=(undefined === leash ? '' : parseFloat(leash.price).toFixed(2)) required)
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', placeholder='1', value=(undefined === leash ? '' : leash.number_in_stock), required)
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      input#pet(type='text', name='pet', value='Dog', readonly)
+      label(for='name') Name: 
+      input#name(type='text', name='name', value='Dog leash', readonly)
+      label(for='color') Color: 
+      select#color(type='select', name='color')
+        option(value='Black', selected=(undefined === leash ? undefined : (leash.color === 'Black' ? 'selected' : undefined))) Black 
+        option(value='Pink', selected=(undefined === leash ? undefined : (leash.color === 'Pink' ? 'selected' : undefined))) Pink 
+        option(value='Blue', selected=(undefined === leash ? undefined : (leash.color === 'Blue' ? 'selected' : undefined))) Blue 
+        option(value='Red', selected=(undefined === leash ? undefined : (leash.color === 'Red' ? 'selected' : undefined))) Red 
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', placeholder='A red leash for puppies.', required) #{undefined === leash ? '' : leash.description}
+      label(for='price') Price/$:
+      input#price(type='number', name='price', step='0.01', placeholder='5.00', value=(undefined === leash ? '' : parseFloat(leash.price).toFixed(2)) required)
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', placeholder='1', value=(undefined === leash ? '' : leash.number_in_stock), required)
+      button(type='submit') Submit 

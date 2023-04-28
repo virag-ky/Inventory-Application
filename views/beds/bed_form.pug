@@ -2,39 +2,43 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/walking.png', alt='dog walking')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', readonly, name='username', value=user.username)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === bed ? undefined : (bed.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === bed ? undefined : (bed.pet === 'Cat' ? 'selected' : undefined))) Cat 
-    label(for='name') Name: 
-    input#name(type='text', name='name', required, placeholder='Chihuahua bed', value=(undefined === bed ? '' : bed.name))
-    label(for='size') Size: 
-    select#size(type='select', name='size')
-      option(value='Small', selected=(undefined === bed ? undefined : (bed.size === 'Small' ? 'selected' : undefined))) Small 
-      option(value='Medium', selected=(undefined === bed ? undefined : (bed.size === 'Medium' ? 'selected' : undefined))) Medium 
-      option(value='Large', selected=(undefined === bed ? undefined : (bed.size === 'Large' ? 'selected' : undefined))) Large 
-    label(for='color') Color: 
-    select#color(type='select', name='color')
-      option(value='White', selected=(undefined === bed ? undefined : (bed.color === 'White' ? 'selected' : undefined))) White 
-      option(value='Black', selected=(undefined === bed ? undefined : (bed.color === 'Black' ? 'selected' : undefined))) Black 
-      option(value='Brown', selected=(undefined === bed ? undefined : (bed.color === 'Brown' ? 'selected' : undefined))) Brown 
-      option(value='Beige', selected=(undefined === bed ? undefined : (bed.color === 'Beige' ? 'selected' : undefined))) Beige 
-      option(value='Pink', selected=(undefined === bed ? undefined : (bed.color === 'Pink' ? 'selected' : undefined))) Pink 
-      option(value='Blue', selected=(undefined === bed ? undefined : (bed.color === 'Blue' ? 'selected' : undefined))) Blue
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', required, placeholder='A rounded shaped fluffy blue Chihuahua bed.') #{undefined === bed ? '' : bed.description}
-    label(for='price') Price/$:
-    input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === bed ? '' : parseFloat(bed.price).toFixed(2)))
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === bed ? '' : bed.number_in_stock))
-    button(type='submit') Submit
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', readonly, name='username', value=user.username)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === bed ? undefined : (bed.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === bed ? undefined : (bed.pet === 'Cat' ? 'selected' : undefined))) Cat 
+      label(for='name') Name: 
+      input#name(type='text', name='name', required, placeholder='Chihuahua bed', value=(undefined === bed ? '' : bed.name))
+      label(for='size') Size: 
+      select#size(type='select', name='size')
+        option(value='Small', selected=(undefined === bed ? undefined : (bed.size === 'Small' ? 'selected' : undefined))) Small 
+        option(value='Medium', selected=(undefined === bed ? undefined : (bed.size === 'Medium' ? 'selected' : undefined))) Medium 
+        option(value='Large', selected=(undefined === bed ? undefined : (bed.size === 'Large' ? 'selected' : undefined))) Large 
+      label(for='color') Color: 
+      select#color(type='select', name='color')
+        option(value='White', selected=(undefined === bed ? undefined : (bed.color === 'White' ? 'selected' : undefined))) White 
+        option(value='Black', selected=(undefined === bed ? undefined : (bed.color === 'Black' ? 'selected' : undefined))) Black 
+        option(value='Brown', selected=(undefined === bed ? undefined : (bed.color === 'Brown' ? 'selected' : undefined))) Brown 
+        option(value='Beige', selected=(undefined === bed ? undefined : (bed.color === 'Beige' ? 'selected' : undefined))) Beige 
+        option(value='Pink', selected=(undefined === bed ? undefined : (bed.color === 'Pink' ? 'selected' : undefined))) Pink 
+        option(value='Blue', selected=(undefined === bed ? undefined : (bed.color === 'Blue' ? 'selected' : undefined))) Blue
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', required, placeholder='A rounded shaped fluffy blue Chihuahua bed.') #{undefined === bed ? '' : bed.description}
+      label(for='price') Price/$:
+      input#price(type='number', name='price', required, step='0.01', placeholder='5.00', value=(undefined === bed ? '' : parseFloat(bed.price).toFixed(2)))
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === bed ? '' : bed.number_in_stock))
+      button(type='submit') Submit

@@ -1,0 +1,23 @@
+@use 'base';
+
+%title-component {
+  @extend %centered;
+  margin-bottom: 50px;
+
+  h1 {
+    font-size: 1.5rem;
+
+    @include base.devices(desktop) {
+      font-size: 1.8rem;
+    }
+  }
+
+  div.decor {
+    @extend %underline;
+  }
+
+  img {
+    margin-top: 20px;
+    width: 60%;
+  }
+}

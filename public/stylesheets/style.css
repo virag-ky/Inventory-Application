@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&family=Chewy&display=swap");
-nav, nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.home-page, div.home-page div.welcome-container, div.home-page div.category, div.home-page ul li a, div.items-page, div.items-page div.title, div.items-page div.category, div.items-page div.category div.item, div.items-page div.category div.item div.info, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
+nav, nav ul, nav ul li, nav ul li a, div.intro-page, div.intro-page div.intro-container, div.home-page, div.home-page div.welcome-container, div.home-page div.category, div.home-page ul li a, div.items-page, div.items-page div.category, div.items-page div.category div.item, div.items-page div.category div.item div.info, div.form-page form, div.items-page div.title, div.form-page div.title, div.signup-page, div.login-page, div.signup-page div.title, div.login-page div.title, div.signup-page form, div.login-page form, div.signup-page div.signup-container, div.login-page div.login-container, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-button#go-back, div.intro-page div.intro-container button, div.home-page div.welcome-container div.welcome-text button#items, div.items-page div.category a.add, div.signup-page div.signup-container button, div.login-page div.login-container button {
+button#go-back, div.intro-page div.intro-container button, div.home-page div.welcome-container div.welcome-text button#items, div.items-page div.category a.add, div.form-page form button, div.signup-page div.signup-container button, div.login-page div.login-container button {
   color: #263238;
   font-weight: 700;
   font-size: 1rem;
@@ -18,7 +18,7 @@ button#go-back, div.intro-page div.intro-container button, div.home-page div.wel
   box-shadow: 5px 5px 0 #263238;
 }
 
-button#go-back:hover, div.intro-page div.intro-container button:hover, div.home-page div.welcome-container div.welcome-text button#items:hover, div.items-page div.category a.add:hover, div.signup-page div.signup-container button:hover, div.login-page div.login-container button:hover {
+button#go-back:hover, div.intro-page div.intro-container button:hover, div.home-page div.welcome-container div.welcome-text button#items:hover, div.items-page div.category a.add:hover, div.form-page form button:hover, div.signup-page div.signup-container button:hover, div.login-page div.login-container button:hover {
   cursor: pointer;
   box-shadow: none;
   transform: translateY(2px);
@@ -30,7 +30,7 @@ div.signup-page p.error, div.login-page p.error, div.signup-page p.info, div.log
   font-size: 1.1rem;
 }
 
-div.home-page div.category div.decor, div.items-page div.title div.decor, div.signup-page div.title div.decor, div.login-page div.title div.decor {
+div.home-page div.category div.decor, div.items-page div.title div.decor, div.form-page div.title div.decor, div.signup-page div.title div.decor, div.login-page div.title div.decor {
   width: 100px;
   height: 3px;
   border-radius: 3px;
@@ -96,6 +96,22 @@ div.signup-page div.signup-container, div.login-page div.login-container {
   flex-direction: row;
   gap: 25px;
 }
+div.items-page div.title, div.form-page div.title {
+  margin-bottom: 50px;
+}
+div.items-page div.title h1, div.form-page div.title h1 {
+  font-size: 1.5rem;
+}
+@media only screen and (min-width: 1440px) {
+  div.items-page div.title h1, div.form-page div.title h1 {
+    font-size: 1.8rem;
+  }
+}
+div.items-page div.title img, div.form-page div.title img {
+  margin-top: 20px;
+  width: 60%;
+}
+
 nav {
   width: 100%;
   position: fixed;
@@ -357,21 +373,6 @@ div.items-page {
     max-width: 500px;
   }
 }
-div.items-page div.title {
-  margin-bottom: 80px;
-}
-div.items-page div.title h1 {
-  font-size: 1.5rem;
-}
-@media only screen and (min-width: 1440px) {
-  div.items-page div.title h1 {
-    font-size: 1.8rem;
-  }
-}
-div.items-page div.title img {
-  margin-top: 50px;
-  width: 60%;
-}
 div.items-page div.category {
   justify-content: space-between;
   width: 100%;
@@ -448,4 +449,55 @@ div.items-page div.divider {
   height: 3px;
   background: #629871;
   margin-bottom: 25px;
+}
+
+div.form-page {
+  margin: 100px 0;
+  padding: 0 15px;
+}
+@media only screen and (min-width: 601px) {
+  div.form-page {
+    width: 60%;
+    max-width: 500px;
+  }
+}
+div.form-page ul {
+  padding: 0 25px;
+  margin-bottom: 25px;
+}
+div.form-page ul li {
+  color: red;
+  font-size: 1.1rem;
+}
+div.form-page form {
+  align-items: flex-start;
+}
+div.form-page form input,
+div.form-page form textarea,
+div.form-page form select {
+  width: 100%;
+  padding: 5px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  outline: 1px solid #263238;
+}
+div.form-page form input:focus,
+div.form-page form textarea:focus,
+div.form-page form select:focus {
+  outline: solid #92e3a9;
+}
+div.form-page form select {
+  background: #fff;
+}
+div.form-page form label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #629871;
+  margin-bottom: 5px;
+}
+div.form-page form button {
+  width: 100px;
+  font-size: 1rem;
 }/*# sourceMappingURL=style.css.map */

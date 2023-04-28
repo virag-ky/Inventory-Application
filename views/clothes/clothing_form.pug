@@ -2,47 +2,51 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/costume.png', alt='pets in Halloween costume')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === clothing ? undefined : (clothing.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === clothing ? undefined : (clothing.pet === 'Cat' ? 'selected' : undefined)))
-    label(for='name') Name: 
-    input#name(type='text', name='name', placeholder='Chihuahua sweater', required, value=(undefined === clothing ? '' : clothing.name))
-    label(for='type') Type: 
-    select#type(type='select', name='type')
-      option(value='Sweater', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Sweater' ? 'selected' : undefined))) Sweater 
-      option(value='Jacket', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Jacket' ? 'selected' : undefined))) Jacket
-      option(value='Overall', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Overall' ? 'selected' : undefined))) Overall 
-      option(value='Vest', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Vest' ? 'selected' : undefined))) Vest 
-    label(for='color') Color: 
-    select#color(type='select', name='color')
-      option(value='White', selected=(undefined === clothing ? undefined : (clothing.color === 'White' ? 'selected' : undefined))) White 
-      option(value='Black', selected=(undefined === clothing ? undefined : (clothing.color === 'Black' ? 'selected' : undefined))) Black 
-      option(value='Brown', selected=(undefined === clothing ? undefined : (clothing.color === 'Brown' ? 'selected' : undefined))) Brown 
-      option(value='Yellow', selected=(undefined === clothing ? undefined : (clothing.color === 'Yellow' ? 'selected' : undefined))) Yellow 
-      option(value='Red', selected=(undefined === clothing ? undefined : (clothing.color === 'Red' ? 'selected' : undefined))) Red 
-      option(value='Pink', selected=(undefined === clothing ? undefined : (clothing.color === 'Pink' ? 'selected' : undefined))) Pink 
-      option(value='Blue', selected=(undefined === clothing ? undefined : (clothing.color === 'Blue' ? 'selected' : undefined ))) Blue
-    label(for='size') Size: 
-    select#size(type='select', name='size')
-      option(value='Extra-small', selected=(undefined === clothing ? undefined : (clothing.size === 'Extra-small' ? 'selected' : undefined))) Extra-small 
-      option(value='Small', selected=(undefined === clothing ? undefined : (clothing.size === 'Small' ? 'selected' : undefined))) Small 
-      option(value='Medium', selected=(undefined === clothing ? undefined : (clothing.size === 'Medium' ? 'selected' : undefined))) Medium 
-      option(value='Large', selected=(undefined === clothing ? undefined : (clothing.size === 'Large' ? 'selected' : undefined))) Large 
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', required, placeholder='A small sized knitted Chihuahua sweater.') #{undefined === clothing ? '' : clothing.description}
-    label(for='price') Price/$: 
-    input#price(type='number', name='price', step='0.01', placeholder='5.00', required, value=(undefined === clothing ? '' : parseFloat(clothing.price).toFixed(2)))
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === clothing ? '' : clothing.number_in_stock))
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === clothing ? undefined : (clothing.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === clothing ? undefined : (clothing.pet === 'Cat' ? 'selected' : undefined)))
+      label(for='name') Name: 
+      input#name(type='text', name='name', placeholder='Chihuahua sweater', required, value=(undefined === clothing ? '' : clothing.name))
+      label(for='type') Type: 
+      select#type(type='select', name='type')
+        option(value='Sweater', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Sweater' ? 'selected' : undefined))) Sweater 
+        option(value='Jacket', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Jacket' ? 'selected' : undefined))) Jacket
+        option(value='Overall', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Overall' ? 'selected' : undefined))) Overall 
+        option(value='Vest', selected=(undefined === clothing ? undefined : (clothing.clothing_type === 'Vest' ? 'selected' : undefined))) Vest 
+      label(for='color') Color: 
+      select#color(type='select', name='color')
+        option(value='White', selected=(undefined === clothing ? undefined : (clothing.color === 'White' ? 'selected' : undefined))) White 
+        option(value='Black', selected=(undefined === clothing ? undefined : (clothing.color === 'Black' ? 'selected' : undefined))) Black 
+        option(value='Brown', selected=(undefined === clothing ? undefined : (clothing.color === 'Brown' ? 'selected' : undefined))) Brown 
+        option(value='Yellow', selected=(undefined === clothing ? undefined : (clothing.color === 'Yellow' ? 'selected' : undefined))) Yellow 
+        option(value='Red', selected=(undefined === clothing ? undefined : (clothing.color === 'Red' ? 'selected' : undefined))) Red 
+        option(value='Pink', selected=(undefined === clothing ? undefined : (clothing.color === 'Pink' ? 'selected' : undefined))) Pink 
+        option(value='Blue', selected=(undefined === clothing ? undefined : (clothing.color === 'Blue' ? 'selected' : undefined ))) Blue
+      label(for='size') Size: 
+      select#size(type='select', name='size')
+        option(value='Extra-small', selected=(undefined === clothing ? undefined : (clothing.size === 'Extra-small' ? 'selected' : undefined))) Extra-small 
+        option(value='Small', selected=(undefined === clothing ? undefined : (clothing.size === 'Small' ? 'selected' : undefined))) Small 
+        option(value='Medium', selected=(undefined === clothing ? undefined : (clothing.size === 'Medium' ? 'selected' : undefined))) Medium 
+        option(value='Large', selected=(undefined === clothing ? undefined : (clothing.size === 'Large' ? 'selected' : undefined))) Large 
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', required, placeholder='A small sized knitted Chihuahua sweater.') #{undefined === clothing ? '' : clothing.description}
+      label(for='price') Price/$: 
+      input#price(type='number', name='price', step='0.01', placeholder='5.00', required, value=(undefined === clothing ? '' : parseFloat(clothing.price).toFixed(2)))
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', required, placeholder='1', value=(undefined === clothing ? '' : clothing.number_in_stock))
+      button(type='submit') Submit 

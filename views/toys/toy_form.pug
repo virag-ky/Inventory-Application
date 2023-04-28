@@ -2,36 +2,40 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.form-page
+    div.title
+      h1= title
+      div.decor
+      img(src='/images/cat2.png', alt='cat playing')
 
-  form(method='POST', action='', style='display:flex;flex-direction:column;width:500px')
-    label(for='username') Username: 
-    input#username(type='text', name='username', value=user.username, readonly)
-    label(for='pet') Pet: 
-    select#pet(type='select', name='pet')
-      option(value='Dog', selected=(undefined === toy ? undefined : (toy.pet === 'Dog' ? 'selected' : undefined))) Dog 
-      option(value='Cat', selected=(undefined === toy ? undefined : (toy.pet === 'Cat' ? 'selected' : undefined))) Cat 
-      option(value='Rodent', selected=(undefined === toy ? undefined : (toy.pet === 'Rodent' ? 'selected' : undefined))) Rodent 
-      option(value='Bird', selected=(undefined === toy ? undefined : (toy.pet === 'Bird' ? 'selected' : undefined))) Bird
-    label(for='name') Name: 
-    select#name(type='select', name='name')
-      option(value='Chew toy', selected=(undefined === toy ? undefined : (toy.name === 'Chew toy' ? 'selected' : undefined))) Chew toy
-      option(value='Ball', selected=(undefined === toy ? undefined : (toy.name === 'Ball' ? 'selected' : undefined))) Ball
-      option(value='Plush toy', selected=(undefined === toy ? undefined : (toy.name === 'Plush toy' ? 'selected' : undefined))) Plush toy 
-      option(value='Running wheel', selected=(undefined === toy ? undefined : (toy.name === 'Running wheel' ? 'selected' : undefined))) Running wheel 
-      option(value='Plastic tunnel', selected=(undefined === toy ? undefined : (toy.name === 'Plastic tunnel' ? 'selected' : undefined))) Plastic tunnel
-      option(value='Hanging rope', selected=(undefined === toy ? undefined : (toy.name === 'Hanging rope' ? 'selected' : undefined))) Hanging rope 
-      option(value='Branch', selected=(undefined === toy ? undefined : (toy.name === 
-    'Branch' ? 'selected' : undefined))) Branch 
-    label(for='description') Description: 
-    textarea#description(type='textarea', name='description', placeholder='A bone shaped chewing toy for puppies.', required) #{undefined === toy ? '' : toy.description}
-    label(for='price') Price/$:
-    input#price(type='number', name='price', step='0.01', placeholder='5.00', value=(undefined === toy ? '' : parseFloat(toy.price).toFixed(2)), required)
-    label(for='quantity') Quantity: 
-    input#quantity(type='number', name='quantity', placeholder='1', value=(undefined === toy ? '' : toy.number_in_stock), required)
-    button(type='submit') Submit 
+    if errors 
+      ul 
+        each error in errors 
+          li!= error.msg
 
-  if errors 
-    ul 
-      each error in errors 
-        li!= error.msg
+    form(method='POST', action='')
+      label(for='username') Username: 
+      input#username(type='text', name='username', value=user.username, readonly)
+      label(for='pet') Pet: 
+      select#pet(type='select', name='pet')
+        option(value='Dog', selected=(undefined === toy ? undefined : (toy.pet === 'Dog' ? 'selected' : undefined))) Dog 
+        option(value='Cat', selected=(undefined === toy ? undefined : (toy.pet === 'Cat' ? 'selected' : undefined))) Cat 
+        option(value='Rodent', selected=(undefined === toy ? undefined : (toy.pet === 'Rodent' ? 'selected' : undefined))) Rodent 
+        option(value='Bird', selected=(undefined === toy ? undefined : (toy.pet === 'Bird' ? 'selected' : undefined))) Bird
+      label(for='name') Name: 
+      select#name(type='select', name='name')
+        option(value='Chew toy', selected=(undefined === toy ? undefined : (toy.name === 'Chew toy' ? 'selected' : undefined))) Chew toy
+        option(value='Ball', selected=(undefined === toy ? undefined : (toy.name === 'Ball' ? 'selected' : undefined))) Ball
+        option(value='Plush toy', selected=(undefined === toy ? undefined : (toy.name === 'Plush toy' ? 'selected' : undefined))) Plush toy 
+        option(value='Running wheel', selected=(undefined === toy ? undefined : (toy.name === 'Running wheel' ? 'selected' : undefined))) Running wheel 
+        option(value='Plastic tunnel', selected=(undefined === toy ? undefined : (toy.name === 'Plastic tunnel' ? 'selected' : undefined))) Plastic tunnel
+        option(value='Hanging rope', selected=(undefined === toy ? undefined : (toy.name === 'Hanging rope' ? 'selected' : undefined))) Hanging rope 
+        option(value='Branch', selected=(undefined === toy ? undefined : (toy.name === 
+      'Branch' ? 'selected' : undefined))) Branch 
+      label(for='description') Description: 
+      textarea#description(type='textarea', name='description', placeholder='A bone shaped chewing toy for puppies.', required) #{undefined === toy ? '' : toy.description}
+      label(for='price') Price/$:
+      input#price(type='number', name='price', step='0.01', placeholder='5.00', value=(undefined === toy ? '' : parseFloat(toy.price).toFixed(2)), required)
+      label(for='quantity') Quantity: 
+      input#quantity(type='number', name='quantity', placeholder='1', value=(undefined === toy ? '' : toy.number_in_stock), required)
+      button(type='submit') Submit 

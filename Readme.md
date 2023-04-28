@@ -63,3 +63,8 @@
 - <a href="https://storyset.com/food">Food illustrations by Storyset</a>
 - <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
 - <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
+- <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
+- <a href="https://storyset.com/cute">Cute illustrations by Storyset</a>
+- <a href="https://storyset.com/event">Event illustrations by Storyset</a>
+- <a href="https://storyset.com/animal">Animal illustrations by Storyset</a>
+- <a href="https://storyset.com/people">People illustrations by Storyset</a>
