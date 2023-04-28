@@ -6,166 +6,207 @@ block content
     div.title
       h1= title + ' ' + sumOfItems
       div.decor
+      img(src='/images/cat.png', alt='cat image')
 
     div.category
       h2 Bags/Carriers: #{bagCount}
 
       br
-      span 
-        a.add(href='/bags/create') Add New
+      
+      a.add(href='/bags/create') Add New
       if bags.length > 0
         each bag in bags 
-          a(href=bag.url)
-            div.item
-              div.info
-                span #[strong Name:] !{bag.name}
-                br
-                span #[strong Price:] $!{bag.price}
-                br
-                span #[strong Number-in-Stock:] !{bag.number_in_stock}
-              img(src='/images/carrier.png', alt='pet carrier')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{bag.name}
+              p
+                span #[strong Price:] 
+                |$!{bag.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{bag.number_in_stock}
+            
+              a(href=bag.url) View details
+            img(src='/images/carrier.png', alt='pet carrier')
       else 
-        p You haven't added any bags or carriers yet.
+        p.status You haven't added any bags or carriers yet.
 
     div.divider
     div.category
       h2 Beds: #{bedCount}
       br
-      span 
-        a.add(href='/beds/create') Add New
+      
+      a.add(href='/beds/create') Add New
       if beds.length > 0
         each bed in beds 
-          a(href=bed.url)
-            div.item
-              div.info
-                span #[strong Name:] !{bed.name}
-                br
-                span #[strong Price:] $!{bed.price}
-                br
-                span #[strong Number-in-Stock:] !{bed.number_in_stock}
-              img(src='/images/bed.png', alt='pet bed')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{bed.name}
+              p
+                span #[strong Price:] 
+                |$!{bed.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{bed.number_in_stock}
+              
+              a(href=bed.url) View details
+            img(src='/images/bed.png', alt='pet bed')
       else 
-        p You haven't added any beds yet.
+        p.status You haven't added any beds yet.
 
     div.divider
     div.category
       h2 Clothes: #{clothingCount}
       br
-      span 
-        a.add(href='/clothes/create') Add New
+      
+      a.add(href='/clothes/create') Add New
       if clothes.length > 0 
         each clothing in clothes 
-          a(href=clothing.url)
-            div.item
-              div.info
-                span #[strong Name:] !{clothing.name}
-                br
-                span #[strong Price:] $!{clothing.price}
-                br
-                span #[strong Number-in-Stock] !{clothing.number_in_stock}
-              img(src='/images/clothing.png', alt='pet clothing')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{clothing.name}
+              p
+                span #[strong Price:] 
+                |$!{clothing.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{clothing.number_in_stock}
+              
+              a(href=clothing.url) View details
+            img(src='/images/clothing.png', alt='pet clothing')
       else 
-        p You haven't added any clothing yet.
+        p.status You haven't added any clothing yet.
 
     div.divider
     div.category
       h2 Food: #{foodCount}
       br
-      span 
-        a.add(href='/food/create') Add New 
+      
+      a.add(href='/food/create') Add New 
       if food.length > 0
         each meal in food 
-          a(href=meal.url)
-            div.item
-              div.info
-                span #[strong Name:] !{meal.name}
-                br
-                span #[strong Price:] $!{meal.price}
-                br
-                span #[strong Number-in-Stock:] !{meal.number_in_stock}
-              img(src='/images/food.png', alt='pet food')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{meal.name}
+              p
+                span #[strong Price:] 
+                |$!{meal.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{meal.number_in_stock}
+              
+              a(href=meal.url) View details
+            img(src='/images/food.png', alt='pet food')
       else 
-        p You haven't added any food yet.
+        p.status You haven't added any food yet.
 
     div.divider
     div.category
       h2 Hygiene: #{hygieneCount}
       br
-      span 
-        a.add(href='/hygiene/create') Add New 
+      
+      a.add(href='/hygiene/create') Add New 
       if hygiene.length > 0
         each product in hygiene 
-          a(href=product.url)
-            div.item
-              div.info
-                span #[strong Name:] !{product.name}
-                br
-                span #[strong Price:] $!{product.price}
-                br
-                span #[strong Number-in-Stock:] !{product.number_in_stock}
-              img(src='/images/shampoo.png', alt='pet shampoo')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{product.name}
+              p
+                span #[strong Price:] 
+                |$!{product.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{product.number_in_stock}
+              
+              a(href=product.url) View details
+            img(src='/images/shampoo.png', alt='pet shampoo')
       else 
-        p You haven't added any hygiene products yet.
+        p.status You haven't added any hygiene products yet.
 
     div.divider
     div.category
       h2 Leashes: #{leashCount}
       br
-      span 
-        a.add(href='/leashes/create') Add New 
+      
+      a.add(href='/leashes/create') Add New 
       if leashes.length > 0
         each leash in leashes 
-          a(href=leash.url)
-            div.item
-              div.info
-                span #[strong Name:] !{leash.name}
-                br
-                span #[strong Price:] $!{leash.price}
-                br
-                span #[strong Number-in-Stock:] !{leash.number_in_stock}
-              img(src='/images/leash.png', alt='dog leash')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{leash.name}
+              p
+                span #[strong Price:] 
+                |$!{leash.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{leash.number_in_stock}
+              
+              a(href=leash.url) View details
+            img(src='/images/leash.png', alt='dog leash')
       else 
-        p You haven't added any leash yet.
+        p.status You haven't added any leash yet.
 
     div.divider
     div.category
       h2 Scratching Posts: #{scratchingPostCount}
       br
-      span 
-        a.add(href='/scratching-posts/create') Add New 
+      
+      a.add(href='/scratching-posts/create') Add New 
       if scratching_posts.length > 0
         each post in scratching_posts 
-          a(href=post.url)
-            div.item
-              div.info
-                span #[strong Name:] !{post.name}
-                br
-                span #[strong Price:] $!{post.price}
-                br
-                span #[strong Number-in-Stock:] !{post.number_in_stock}
-              img(src='/images/post.png', alt='cat scratching post')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{post.name}
+              p
+                span #[strong Price:] 
+                |$!{post.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{post.number_in_stock}
+              
+              a(href=post.url) View details
+            img(src='/images/post.png', alt='cat scratching post')
       else 
-        p You haven't added any scratching posts yet.
+        p.status You haven't added any scratching posts yet.
 
     div.divider
     div.category
       h2 Toys: #{toyCount}
       br
-      span 
-        a.add(href='/toys/create') Add New 
+      
+      a.add(href='/toys/create') Add New 
       if toys.length > 0
         each toy in toys 
-          a(href=toy.url)
-            div.item
-              div.info
-                span #[strong Name:] !{toy.name}
-                br
-                span #[strong Price:] $!{toy.price}
-                br
-                span #[strong Number-in-Stock:] !{toy.number_in_stock}
-              img(src='/images/toy.png', alt='pet toy')
+          div.item
+            div.info
+              p
+                span #[strong Name:] 
+                |!{toy.name}
+              p
+                span #[strong Price:] 
+                |$!{toy.price}
+              p
+                span #[strong Number-in-Stock:] 
+                |!{toy.number_in_stock}
+              
+              a(href=toy.url) View details
+            img(src='/images/toy.png', alt='pet toy')
       else 
-        p You haven't added any toys yet.
+        p.status You haven't added any toys yet.
 
       
 

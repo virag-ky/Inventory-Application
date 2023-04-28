@@ -2,13 +2,26 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.items-page
+    div.title
+      h1= title
+      div.decor
 
-  a(href='/bags/create') Add New
+    div.category
+      a.add(href='/bags/create') Add New
 
-  each bag in list 
-    a(href=bag.url)
-      div(style='border:solid black;margin-bottom:25px') 
-        span #[strong Name:] !{bag.name}
-        span #[strong Price:] $!{bag.price}
+      each bag in list 
+        div.item
+          div.info
+            p
+              span #[strong Name:] 
+              |!{bag.name}
+            p
+              span #[strong Price:] 
+              |$!{bag.price}
+            p
+              span #[strong Number-in-Stock:] 
+              |!{bag.number_in_stock}
+            a(href=bag.url) View details
+          img(src='/images/carrier.png', alt='pet bag')
 

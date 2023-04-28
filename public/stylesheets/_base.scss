@@ -28,7 +28,7 @@ $font-stack: 'Baloo 2', sans-serif;
 %button-hover {
   cursor: pointer;
   box-shadow: none;
-  margin-top: 5px;
+  transform: translateY(2px);
 }
 
 %message {

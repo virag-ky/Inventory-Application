@@ -185,17 +185,20 @@ div.login-page {
 // Home page
 div.home-page {
   @extend %centered;
-  padding: 100px 0;
+  padding-bottom: 100px;
 
   div.welcome-container {
     @extend %centered;
     flex-direction: row;
     padding: 0 10px;
-    margin-bottom: 100px;
+    margin: 80px 0;
+    height: 40vh;
 
     @include base.devices(desktop) {
-      height: 70vh;
+      height: 100vh;
       width: 80vw;
+      margin: unset;
+      margin-bottom: 100px;
     }
 
     div.welcome-text {
@@ -235,7 +238,6 @@ div.home-page {
 
         &:hover {
           @extend %button-hover;
-          margin-bottom: -5px;
         }
       }
     }
@@ -269,10 +271,13 @@ div.home-page {
     row-gap: 20px;
     padding: 0 10px;
 
+    @include base.devices(desktop) {
+      height: 50vh;
+    }
+
     @include base.devices(tablet) {
       column-gap: 25px;
       row-gap: 50px;
-      width: 40vw;
     }
 
     li {
@@ -332,14 +337,17 @@ div.items-page {
     div.decor {
       @extend %underline;
     }
+
+    img {
+      margin-top: 50px;
+      width: 60%;
+    }
   }
 
   div.category {
     @extend %centered;
-    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    min-height: 150px;
     margin-bottom: 25px;
 
     h2 {
@@ -351,55 +359,69 @@ div.items-page {
     }
 
     a.add {
-      color: base.$secondary-color1;
-      font-weight: 700;
-      background: base.$primary-color;
-      border-radius: 5px;
+      @extend %button;
+      width: 80px;
+      font-size: 0.9rem;
       padding: 5px;
+      text-align: center;
+      margin-bottom: 25px;
 
       &:hover {
-        background: base.$secondary-color2;
-        color: #fff;
+        @extend %button-hover;
       }
     }
 
-    a {
+    div.item {
+      @extend %centered;
       width: 100%;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 15px 0;
+      border-radius: 5px;
+      border: solid base.$secondary-color2;
+      margin-bottom: 25px;
 
-      div.item {
+      div.info {
         @extend %centered;
-        flex-direction: row;
-        justify-content: space-around;
-        margin-top: 20px;
-        padding: 10px 0;
-        border-radius: 5px;
-        border: solid base.$secondary-color1;
+        align-items: flex-start;
+        width: 60%;
 
-        div.info {
-          width: 60%;
+        @include base.devices(desktop) {
+          font-size: 1.2rem;
+        }
 
-          @include base.devices(desktop) {
-            font-size: 1.2rem;
-          }
-
+        p {
           span {
-            color: base.$secondary-color1;
-            font-weight: 700;
+            color: base.$secondary-color2;
             word-break: break-all;
           }
         }
 
-        img {
-          width: 50px;
-        }
+        a {
+          font-weight: 700;
+          background: base.$primary-color;
+          color: base.$secondary-color1;
+          border-radius: 5px;
+          padding: 5px;
+          font-size: 0.9rem;
+          margin-top: 25px;
 
-        &:hover {
-          background: rgb(255, 191, 72);
+          &:hover {
+            background: orange;
+          }
+        }
+      }
+
+      img {
+        width: 60px;
+
+        @include base.devices(tablet) {
+          width: 80px;
         }
       }
     }
 
-    p {
+    p.status {
       font-weight: 700;
       margin-top: 20px;
 
