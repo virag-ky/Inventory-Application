@@ -5,12 +5,16 @@ const Bed = require('../models/bed');
 // Get all beds
 exports.beds_list_get = async (req, res, next) => {
   try {
-    const listOfBeds = await Bed.find().sort({ date_added: -1 });
-    res.render('beds/bed_list', {
-      title: 'All beds',
-      user: req.user,
-      list: listOfBeds,
-    });
+    if (req.user) {
+      const listOfBeds = await Bed.find().sort({ date_added: -1 });
+      res.render('beds/bed_list', {
+        title: 'All beds',
+        user: req.user,
+        list: listOfBeds,
+      });
+      return;
+    }
+    res.redirect('/login/?message=Session%20expired.');
   } catch (err) {
     next(err);
   }

@@ -2,44 +2,47 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.details-page
+    div.title
+      h1= title
+      div.decor
 
-  if error 
-    p= error 
-  else 
+    if error 
+      p= error 
+    else 
+      div.details
+        p 
+          span #[strong Username:]
+          |  !{hygiene.user.username}
+        p 
+          span #[strong Category:]
+          |  !{hygiene.category}
+        p 
+          span #[strong Name:]
+          |  !{hygiene.name}
+        p 
+          span #[strong Pet:]
+          |  !{hygiene.pet}
+        p 
+          span #[strong Description:]
+          |  !{hygiene.description}
+        p
+          span #[strong Price:]
+          |  $!{hygiene.price}
+        p 
+          span #[strong Number-in-Stock:]
+          |  !{hygiene.number_in_stock}
+        p 
+          span #[strong Date added:]
+          |  !{hygiene.date_added_formatted}
 
-    p 
-      span #[strong Username:]
-      |  !{hygiene.user.username}
-    p 
-      span #[strong Category:]
-      |  !{hygiene.category}
-    p 
-      span #[strong Name:]
-      |  !{hygiene.name}
-    p 
-      span #[strong Pet:]
-      |  !{hygiene.pet}
-    p 
-      span #[strong Description:]
-      |  !{hygiene.description}
-    p
-      span #[strong Price:]
-      |  $!{hygiene.price}
-    p 
-      span #[strong Number-in-Stock:]
-      |  !{hygiene.number_in_stock}
-    p 
-      span #[strong Date added:]
-      |  !{hygiene.date_added_formatted}
+        if hygiene.user.username === user.username 
+          div.form-container
+            form(method='POST', action='')
+              input#id(type='hidden', name='id', required='true', value=hygiene._id)
+              button(type='submit') Delete 
 
-    if hygiene.user.username === user.username 
-      form(method='POST', action='')
-        input#id(type='hidden', name='id', required='true', value=hygiene._id)
-        button(type='submit') Delete 
-
-      form(method='GET', action='/hygiene/update/' + hygiene._id)
-        input#hygiene_id(type='hidden', name='hygiene_id', required='true', value=hygiene._id)
-        input#hygiene_pet(type='hidden', name='hygiene_pet', required='true', value=hygiene.pet)
-        button(type='submit') Edit
-        
+            form(method='GET', action='/hygiene/update/' + hygiene._id)
+              input#hygiene_id(type='hidden', name='hygiene_id', required='true', value=hygiene._id)
+              input#hygiene_pet(type='hidden', name='hygiene_pet', required='true', value=hygiene.pet)
+              button(type='submit') Edit

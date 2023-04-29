@@ -5,12 +5,16 @@ const User = require('../models/user');
 // Get all bags
 exports.bag_list_get = async (req, res, next) => {
   try {
-    const listOfBags = await Bag.find().sort({ date_added: -1 });
-    res.render('bags/bag_list', {
-      title: 'All bags/carriers',
-      list: listOfBags,
-      user: req.user,
-    });
+    if (req.user) {
+      const listOfBags = await Bag.find().sort({ date_added: -1 });
+      res.render('bags/bag_list', {
+        title: 'All bags/carriers',
+        list: listOfBags,
+        user: req.user,
+      });
+      return;
+    }
+    res.redirect('/login/?message=Session%20expired.');
   } catch (err) {
     res.redirect('/login/?message=Session%20expired.');
     next(err);

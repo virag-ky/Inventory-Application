@@ -5,12 +5,16 @@ const Toy = require('../models/toy');
 // Get all toys
 exports.toy_list_get = async (req, res, next) => {
   try {
-    const listOfToys = await Toy.find().sort({ date_added: -1 });
-    res.render('toys/toy_list', {
-      title: 'All toys',
-      user: req.user,
-      list: listOfToys,
-    });
+    if (req.user) {
+      const listOfToys = await Toy.find().sort({ date_added: -1 });
+      res.render('toys/toy_list', {
+        title: 'All toys',
+        user: req.user,
+        list: listOfToys,
+      });
+      return;
+    }
+    res.redirect('/login/?message=Session%20expired.');
   } catch (err) {
     next(err);
   }

@@ -5,12 +5,16 @@ const Leash = require('../models/leash');
 // Get all leashes
 exports.leash_list_get = async (req, res, next) => {
   try {
-    const listOfLeashes = await Leash.find().sort({ date_added: -1 });
-    res.render('leashes/leash_list', {
-      title: 'All leashes',
-      user: req.user,
-      list: listOfLeashes,
-    });
+    if (req.user) {
+      const listOfLeashes = await Leash.find().sort({ date_added: -1 });
+      res.render('leashes/leash_list', {
+        title: 'All leashes',
+        user: req.user,
+        list: listOfLeashes,
+      });
+      return;
+    }
+    res.redirect('/login/?message=Session%20expired.');
   } catch (err) {
     next(err);
   }
@@ -178,4 +182,3 @@ exports.leash_update_post = [
     }
   },
 ];
-

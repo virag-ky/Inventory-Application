@@ -363,6 +363,7 @@ div.items-page {
       border-radius: 5px;
       border: solid base.$secondary-color2;
       margin-bottom: 25px;
+      box-shadow: 5px 5px 5px gainsboro;
 
       div.info {
         @extend %centered;
@@ -504,6 +505,11 @@ div.details-page {
   }
 
   div.details {
+    border: 2px solid base.$secondary-color2;
+    border-radius: 5px;
+    padding: 20px 10px;
+    box-shadow: 5px 5px 5px gainsboro;
+
     p {
       margin-bottom: 20px;
 

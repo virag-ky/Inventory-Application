@@ -401,6 +401,7 @@ div.items-page div.category div.item {
   border-radius: 5px;
   border: solid #629871;
   margin-bottom: 25px;
+  box-shadow: 5px 5px 5px gainsboro;
 }
 div.items-page div.category div.item div.info {
   align-items: flex-start;
@@ -510,6 +511,12 @@ div.details-page {
     width: 60%;
     max-width: 500px;
   }
+}
+div.details-page div.details {
+  border: 2px solid #629871;
+  border-radius: 5px;
+  padding: 20px 10px;
+  box-shadow: 5px 5px 5px gainsboro;
 }
 div.details-page div.details p {
   margin-bottom: 20px;

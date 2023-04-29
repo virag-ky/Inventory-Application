@@ -2,53 +2,56 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.details-page
+    div.title
+      h1= title
+      div.decor
 
-  if error 
-    p= error 
-  else 
+    if error 
+      p= error 
+    else 
+      div.details
+        p 
+          span #[strong Username:]
+          |  !{user.username}
+        p 
+          span #[strong Category:]
+          |  !{clothing.category}
+        p 
+          span #[strong Name:]
+          |  !{clothing.name}
+        p 
+          span #[strong Pet:]
+          |  !{clothing.pet}
+        p 
+          span #[strong Type:]
+          |  !{clothing.clothing_type}
+        p 
+          span #[strong Size:]
+          |  !{clothing.size}
+        p 
+          span #[strong Color:]
+          |  !{clothing.color}
+        p 
+          span #[strong Description:]
+          |  !{clothing.description}
+        p
+          span #[strong Price:]
+          |  $!{clothing.price}
+        p 
+          span #[strong Number-in-Stock:]
+          |  !{clothing.number_in_stock}
+        p 
+          span #[strong Date added:]
+          |  !{clothing.date_added_formatted}
 
-    p 
-      span #[strong Username:]
-      |  !{user.username}
-    p 
-      span #[strong Category:]
-      |  !{clothing.category}
-    p 
-      span #[strong Name:]
-      |  !{clothing.name}
-    p 
-      span #[strong Pet:]
-      |  !{clothing.pet}
-    p 
-      span #[strong Type:]
-      |  !{clothing.clothing_type}
-    p 
-      span #[strong Size:]
-      |  !{clothing.size}
-    p 
-      span #[strong Color:]
-      |  !{clothing.color}
-    p 
-      span #[strong Description:]
-      |  !{clothing.description}
-    p
-      span #[strong Price:]
-      |  $!{clothing.price}
-    p 
-      span #[strong Number-in-Stock:]
-      |  !{clothing.number_in_stock}
-    p 
-      span #[strong Date added:]
-      |  !{clothing.date_added_formatted}
+        if clothing.user.username === user.username 
+          div.form-container
+            form(method='POST', action='')
+              input#id(type='hidden', name='id', required='true', value=clothing._id)
+              button(type='submit') Delete 
 
-    if clothing.user.username === user.username 
-      form(method='POST', action='')
-        input#id(type='hidden', name='id', required='true', value=clothing._id)
-        button(type='submit') Delete 
-
-      form(method='GET', action='/clothes/update/' + clothing._id)
-        input#clothing_id(type='hidden', name='clothing_id', required='true', value=clothing._id)
-        input#clothing_pet(type='hidden', name='clothing_pet', required='true', value=clothing.pet)
-        button(type='submit') Edit
-        
+            form(method='GET', action='/clothes/update/' + clothing._id)
+              input#clothing_id(type='hidden', name='clothing_id', required='true', value=clothing._id)
+              input#clothing_pet(type='hidden', name='clothing_pet', required='true', value=clothing.pet)
+              button(type='submit') Edit

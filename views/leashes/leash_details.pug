@@ -2,47 +2,50 @@ extends ../layout
 
 block content 
 
-  h1= title 
+  div.details-page
+    div.title
+      h1= title
+      div.decor
 
-  if error 
-    p= error 
-  else 
+    if error 
+      p= error 
+    else 
+      div.details
+        p 
+          span #[strong Username:]
+          |  !{leash.user.username}
+        p 
+          span #[strong Category:]
+          |  !{leash.category}
+        p 
+          span #[strong Name:]
+          |  !{leash.name}
+        p 
+          span #[strong Pet:]
+          |  !{leash.pet}
+        p 
+          span #[strong Color:]
+          |  !{leash.color}
+        p 
+          span #[strong Description:]
+          |  !{leash.description}
+        p
+          span #[strong Price:]
+          |  $!{leash.price}
+        p 
+          span #[strong Number-in-Stock:]
+          |  !{leash.number_in_stock}
+        p 
+          span #[strong Date added:]
+          |  !{leash.date_added_formatted}
 
-    p 
-      span #[strong Username:]
-      |  !{leash.user.username}
-    p 
-      span #[strong Category:]
-      |  !{leash.category}
-    p 
-      span #[strong Name:]
-      |  !{leash.name}
-    p 
-      span #[strong Pet:]
-      |  !{leash.pet}
-    p 
-      span #[strong Color:]
-      |  !{leash.color}
-    p 
-      span #[strong Description:]
-      |  !{leash.description}
-    p
-      span #[strong Price:]
-      |  $!{leash.price}
-    p 
-      span #[strong Number-in-Stock:]
-      |  !{leash.number_in_stock}
-    p 
-      span #[strong Date added:]
-      |  !{leash.date_added_formatted}
+        if leash.user.username === user.username 
+          div.form-container
+            form(method='POST', action='')
+              input#id(type='hidden', name='id', required='true', value=leash._id)
+              button(type='submit') Delete 
 
-    if leash.user.username === user.username 
-      form(method='POST', action='')
-        input#id(type='hidden', name='id', required='true', value=leash._id)
-        button(type='submit') Delete 
-
-      form(method='GET', action='/leashes/update/' + leash._id)
-        input#leash_id(type='hidden', name='leash_id', required='true', value=leash._id)
-        input#leash_pet(type='hidden', name='leash_pet', required='true', value=leash.pet)
-        button(type='submit') Edit
-        
+            form(method='GET', action='/leashes/update/' + leash._id)
+              input#leash_id(type='hidden', name='leash_id', required='true', value=leash._id)
+              input#leash_pet(type='hidden', name='leash_pet', required='true', value=leash.pet)
+              button(type='submit') Edit

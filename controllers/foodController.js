@@ -5,12 +5,16 @@ const Food = require('../models/food');
 // Get all food
 exports.food_list_get = async (req, res, next) => {
   try {
-    const listOfFood = await Food.find().sort({ date_added: -1 });
-    res.render('food/food_list', {
-      title: 'All food',
-      user: req.user,
-      list: listOfFood,
-    });
+    if (req.user) {
+      const listOfFood = await Food.find().sort({ date_added: -1 });
+      res.render('food/food_list', {
+        title: 'All food',
+        user: req.user,
+        list: listOfFood,
+      });
+      return;
+    }
+    res.redirect('/login/?message=Session%20expired.');
   } catch (err) {
     next(err);
   }
