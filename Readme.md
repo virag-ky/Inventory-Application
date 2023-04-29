@@ -4,7 +4,7 @@ An inventory application which stores pet supplies such as food, pet carriers, b
 
 Users need to sign up in order to add items to the stock. Once they have logged-in to their account, they are able to add new items, delete them, and edit the details of the items.
 
-## Tech Stack:
+## :computer: Tech Stack:
 
 **Client:** Pug, SCSS
 
@@ -18,13 +18,13 @@ Users need to sign up in order to add items to the stock. Once they have logged-
 
 **Additional libraries:** Luxon, Multer
 
-## Features:
+## :bulb: Features:
 
 - Responsive design mobile/tablet/desktop
 - User login functionality
 - Create/Read/Update/Delete items
 
-## Color Reference
+## :art: Color Reference
 
 | Color            | Hex                                                              |
 | ---------------- | ---------------------------------------------------------------- |
@@ -33,7 +33,7 @@ Users need to sign up in order to add items to the stock. Once they have logged-
 | Secondary Color2 | ![#629871](https://via.placeholder.com/10/629871?text=+) #629871 |
 | Extra Color      | ![#ffa500](https://via.placeholder.com/10/ffa500?text=+) #ffa500 |
 
-## Screenshot:
+## :camera: Screenshot:
 
 ![screencapture-localhost-3000-2023-04-29-13_52_19](https://user-images.githubusercontent.com/79658534/235298921-7901d414-e8e5-44a3-a817-e692a625a4d2.png)
 
@@ -44,11 +44,11 @@ To run this project, you will need to add the following environment variables to
 
 `MONGODB_URI`
 
-## Feedback
+## :speech_balloon: Feedback
 
 If you have any feedback, please create an issue.
 
-## Acknowledgements
+## :loudspeaker: Acknowledgements
 
 ### Icons
 
