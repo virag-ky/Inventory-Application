@@ -4,8 +4,12 @@ An inventory application which stores pet supplies such as food, pet carriers, b
 
 Users need to sign up in order to add items to the stock. Once they have logged into their account, they are able to add new items, delete them, and edit the details of the items.
 
+<br/>
+
 ## :rocket: Deployment:
 **Railway:** [Pet Shop Inventory](https://pet-shop-inventory.up.railway.app/)
+
+<br/>
 
 ## :computer: Tech Stack:
 
@@ -21,11 +25,15 @@ Users need to sign up in order to add items to the stock. Once they have logged 
 
 **Additional libraries:** Luxon, Multer
 
+<br/>
+
 ## :bulb: Features:
 
 - Responsive design mobile/tablet/desktop
 - User login functionality
 - Create/Read/Update/Delete items
+
+<br/>
 
 ## :art: Color Reference
 
@@ -36,20 +44,47 @@ Users need to sign up in order to add items to the stock. Once they have logged 
 | Secondary Color2 | ![#629871](https://via.placeholder.com/10/629871?text=+) #629871 |
 | Extra Color      | ![#ffa500](https://via.placeholder.com/10/ffa500?text=+) #ffa500 |
 
+<br/>
+
 ## :camera: Screenshot:
 
 ![screencapture-localhost-3000-2023-04-29-13_52_19](https://user-images.githubusercontent.com/79658534/235298921-7901d414-e8e5-44a3-a817-e692a625a4d2.png)
 
+## Run the project locally:
+
+**Clone the project:**
+```
+git clone git@github.com:virag-ky/Inventory-Application.git
+```
+**Install all the dependencies:**
+```
+npm install
+```
+**Start the app in development (with debug and nodemon):**
+```
+npm run serverStart
+```
+**Start the app in production:**
+```
+npm run start
+```
+
+
+<br/>
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variable to your .env file, create a new project on your MongoDB account and add the connection string as a value to the variable.
 
 `MONGODB_URI`
+
+<br/>
 
 ## :speech_balloon: Feedback
 
 If you have any feedback, please create an issue.
+
+<br/>
 
 ## :loudspeaker: Acknowledgements
 
