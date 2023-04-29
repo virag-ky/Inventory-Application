@@ -4,6 +4,9 @@ An inventory application which stores pet supplies such as food, pet carriers, b
 
 Users need to sign up in order to add items to the stock. Once they have logged into their account, they are able to add new items, delete them, and edit the details of the items.
 
+## :rocket: Deployment:
+**Railway:** [Pet Shop Inventory](https://pet-shop-inventory.up.railway.app/)
+
 ## :computer: Tech Stack:
 
 **Client:** Pug, SCSS
