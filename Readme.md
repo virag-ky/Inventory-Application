@@ -1,21 +1,51 @@
 # Pet Shop Inventory App
 
-> An inventory application which stores pet supplies such as food, pet carriers, beds, clothes, hygiene products, dog leashes, toys, and cat scratching posts.
+An inventory application which stores pet supplies such as food, pet carriers, beds, clothes, hygiene products, dog leashes, toys, and cat scratching posts.
 
-> Users need to sign up in order to add items to the stock. Once they have logged-in to their account, they are able to add new items, delete them, and edit the details of the items.
+Users need to sign up in order to add items to the stock. Once they have logged-in to their account, they are able to add new items, delete them, and edit the details of the items.
 
-## Technologies used:
+## Tech Stack:
 
-- NodeJS
-- Express/Express validator
-- MongoDB/Mongoose
-- SCSS
-- Pug
-- PassportJS/Bycrpt
-- Luxon
-- Multer
+**Client:** Pug, SCSS
 
-## Icons
+**Server:** NodeJS, Express
+
+**Database:** MongoDB
+
+**Validations:** Express validator, Mongoose
+
+**User authentication:** PassportJS, Bycrpt
+
+**Additional libraries:** Luxon, Multer
+
+## Features:
+
+- Responsive design mobile/tablet/desktop
+- User login functionality
+- Create/Read/Update/Delete items
+
+## Color Reference
+
+| Color            | Hex                                                              |
+| ---------------- | ---------------------------------------------------------------- |
+| Primary color    | ![#92e3a9](https://via.placeholder.com/10/92e3a9?text=+) #92e3a9 |
+| Secondary Color1 | ![#263238](https://via.placeholder.com/10/263238?text=+) #263238 |
+| Secondary Color2 | ![#629871](https://via.placeholder.com/10/629871?text=+) #629871 |
+| Extra Color      | ![#ffa500](https://via.placeholder.com/10/ffa500?text=+) #ffa500 |
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`MONGODB_URI`
+
+## Feedback
+
+If you have any feedback, please create an issue.
+
+## Acknowledgements
+
+### Icons
 
 - <a href="https://www.flaticon.com/free-icons/pet-bed" title="pet bed icons">Pet bed icons created by Freepik - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/pet-carrier" title="pet carrier icons">Pet carrier icons created by Freepik - Flaticon</a>
@@ -53,7 +83,7 @@
 - <a href="https://www.flaticon.com/free-icons/pet" title="pet icons">Pet icons created by iconixar - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/clothes" title="clothes icons">Clothes icons created by Freepik - Flaticon</a>
 
-## Images
+### Images
 
 - <a href="https://storyset.com/friends">Friends illustrations by Storyset</a>
 - <a href="https://storyset.com/friends">Friends illustrations by Storyset</a>
