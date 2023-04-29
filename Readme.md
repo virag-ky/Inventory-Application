@@ -2,7 +2,7 @@
 
 An inventory application which stores pet supplies such as food, pet carriers, beds, clothes, hygiene products, dog leashes, toys, and cat scratching posts.
 
-Users need to sign up in order to add items to the stock. Once they have logged-in to their account, they are able to add new items, delete them, and edit the details of the items.
+Users need to sign up in order to add items to the stock. Once they have logged into their account, they are able to add new items, delete them, and edit the details of the items.
 
 ## :computer: Tech Stack:
 
