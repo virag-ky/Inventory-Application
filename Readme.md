@@ -14,7 +14,7 @@ Users need to sign up in order to add items to the stock. Once they have logged 
 
 **Validations:** Express validator, Mongoose
 
-**User authentication:** PassportJS, Bycrpt
+**User authentication:** PassportJS, Bcrypt
 
 **Additional libraries:** Luxon, Multer
 
