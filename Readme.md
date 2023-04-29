@@ -1,4 +1,4 @@
-# Pet Shop Inventory App
+# Pet Shop Inventory
 
 An inventory application which stores pet supplies such as food, pet carriers, beds, clothes, hygiene products, dog leashes, toys, and cat scratching posts.
 
@@ -32,6 +32,11 @@ Users need to sign up in order to add items to the stock. Once they have logged-
 | Secondary Color1 | ![#263238](https://via.placeholder.com/10/263238?text=+) #263238 |
 | Secondary Color2 | ![#629871](https://via.placeholder.com/10/629871?text=+) #629871 |
 | Extra Color      | ![#ffa500](https://via.placeholder.com/10/ffa500?text=+) #ffa500 |
+
+## Screenshot:
+
+![screencapture-localhost-3000-2023-04-29-13_52_19](https://user-images.githubusercontent.com/79658534/235298921-7901d414-e8e5-44a3-a817-e692a625a4d2.png)
+
 
 ## Environment Variables
 
