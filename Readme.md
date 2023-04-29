@@ -1,4 +1,4 @@
-# Pet Shop Inventory
+# Pet Shop Inventory <img src="https://user-images.githubusercontent.com/79658534/235299023-3adc13ba-ea87-4602-9d32-18cb0dc1a1ad.png" width='100px'/>
 
 An inventory application which stores pet supplies such as food, pet carriers, beds, clothes, hygiene products, dog leashes, toys, and cat scratching posts.
 
