@@ -505,6 +505,7 @@ div.form-page form button {
 div.details-page {
   margin: 100px 0;
   padding: 0 15px;
+  width: 100%;
 }
 @media only screen and (min-width: 601px) {
   div.details-page {
@@ -517,6 +518,7 @@ div.details-page div.details {
   border-radius: 5px;
   padding: 20px 10px;
   box-shadow: 5px 5px 5px gainsboro;
+  width: 100%;
 }
 div.details-page div.details p {
   margin-bottom: 20px;

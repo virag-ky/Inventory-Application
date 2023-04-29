@@ -494,6 +494,7 @@ div.form-page {
 div.details-page {
   margin: 100px 0;
   padding: 0 15px;
+  width: 100%;
 
   @include base.devices(tablet) {
     width: 60%;
@@ -509,6 +510,7 @@ div.details-page {
     border-radius: 5px;
     padding: 20px 10px;
     box-shadow: 5px 5px 5px gainsboro;
+    width: 100%;
 
     p {
       margin-bottom: 20px;
