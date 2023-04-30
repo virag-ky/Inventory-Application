@@ -69,6 +69,7 @@ exports.index = async (req, res, next) => {
         hygieneCount,
         foodCount,
       } = await getItemsCount(req);
+      console.log(req.originalUrl);
       res.render('index', {
         title: 'Pet Shop Inventory',
         user,
@@ -81,6 +82,7 @@ exports.index = async (req, res, next) => {
         hygieneCount,
         foodCount,
         sumOfItems,
+        req,
       });
     } else {
       res.render('index', {

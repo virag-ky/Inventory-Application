@@ -212,16 +212,12 @@ nav ul li img#avatar {
 }
 
 button#go-back {
-  width: 80px;
-  padding: 5px;
+  width: 75px;
+  padding: 5px 0;
   position: fixed;
-  bottom: 5%;
+  top: 10%;
   right: 5%;
 }
-button#go-back:hover {
-  bottom: 4.5%;
-}
-
 div.intro-page {
   width: 70%;
   max-width: 500px;
@@ -363,7 +359,7 @@ div.home-page ul li a:hover {
 }
 
 div.items-page {
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   width: 100%;
   padding: 0 10px;
 }
@@ -453,7 +449,7 @@ div.items-page div.divider {
 }
 
 div.form-page {
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   padding: 0 15px;
 }
 @media only screen and (min-width: 601px) {
@@ -503,7 +499,7 @@ div.form-page form button {
   font-size: 1rem;
 }
 div.details-page {
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   padding: 0 15px;
   width: 100%;
 }

@@ -107,15 +107,14 @@ nav {
 
 button#go-back {
   @extend %button;
-  width: 80px;
-  padding: 5px;
+  width: 75px;
+  padding: 5px 0;
   position: fixed;
-  bottom: 5%;
+  top: 10%;
   right: 5%;
 
   &:hover {
     @extend %button-hover;
-    bottom: 4.5%;
   }
 }
 
@@ -314,7 +313,7 @@ div.home-page {
 // Item's page
 div.items-page {
   @extend %centered;
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   width: 100%;
   padding: 0 10px;
 
@@ -425,7 +424,7 @@ div.items-page {
 
 // Form page
 div.form-page {
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   padding: 0 15px;
 
   @include base.devices(tablet) {
@@ -492,7 +491,7 @@ div.form-page {
 
 // Details page
 div.details-page {
-  margin: 100px 0;
+  margin: 150px 0 100px 0;
   padding: 0 15px;
   width: 100%;
 

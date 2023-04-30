@@ -25,8 +25,14 @@ html
           li 
             img#avatar(src='/uploads/' + user.avatar, alt='profile')
     
-      a(href='javascript:void(0)', onclick='goBack()')
-        button#go-back Go Back
+      if req
+        if req.originalUrl !== '/'
+          a(href='javascript:void(0)', onclick='goBack()')
+            button#go-back Go Back 
+      else 
+        a(href='javascript:void(0)', onclick='goBack()')
+          button#go-back Go Back 
+          
 
     block content
 
