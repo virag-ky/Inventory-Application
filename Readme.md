@@ -7,7 +7,7 @@ Users need to sign up in order to add items to the stock. Once they have logged 
 <br/>
 
 ## :rocket: Deployment:
-**Railway:** [Pet Shop Inventory](https://pet-shop-inventory.up.railway.app/)
+**Render:** [Pet Shop Inventory](https://inventory-app-fnqd.onrender.com/)
 
 <br/>
 
